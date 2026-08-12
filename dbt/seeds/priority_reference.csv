@@ -1,0 +1,5 @@
+priority,priority_sort,target_sla_hours,severity_weight
+Critical,1,12,4.0
+High,2,24,3.0
+Medium,3,36,2.0
+Low,4,48,1.0

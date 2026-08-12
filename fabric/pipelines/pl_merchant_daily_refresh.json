@@ -1,0 +1,167 @@
+{
+  "name": "pl_merchant_daily_refresh",
+  "objectId": "00000000-0000-0000-0000-000000000000",
+  "properties": {
+    "description": "Nightly medallion refresh. Every stage is gated on the one before it, and the data-quality gate blocks the semantic model refresh rather than warning after it.",
+    "activities": [
+      {
+        "name": "Bronze ingest",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": { "timeout": "0.02:00:00", "retry": 2, "retryIntervalInSeconds": 120 },
+        "typeProperties": {
+          "notebookId": "nb_01_bronze_ingest",
+          "workspaceId": "@pipeline().DataFactory",
+          "parameters": {
+            "source_folder": { "value": "@pipeline().parameters.landing_folder", "type": "string" },
+            "run_date": { "value": "@formatDateTime(pipeline().TriggerTime, 'yyyy-MM-dd')", "type": "string" },
+            "full_reload": { "value": "@pipeline().parameters.full_reload", "type": "bool" }
+          }
+        }
+      },
+      {
+        "name": "Silver conform",
+        "type": "TridentNotebook",
+        "dependsOn": [{ "activity": "Bronze ingest", "dependencyConditions": ["Succeeded"] }],
+        "policy": { "timeout": "0.02:00:00", "retry": 1, "retryIntervalInSeconds": 120 },
+        "typeProperties": {
+          "notebookId": "nb_02_silver_conform",
+          "parameters": {
+            "delayed_redemption_threshold_days": {
+              "value": "@pipeline().parameters.delayed_redemption_threshold_days",
+              "type": "int"
+            }
+          }
+        }
+      },
+      {
+        "name": "Gold star schema",
+        "type": "TridentNotebook",
+        "dependsOn": [{ "activity": "Silver conform", "dependencyConditions": ["Succeeded"] }],
+        "policy": { "timeout": "0.02:00:00", "retry": 1, "retryIntervalInSeconds": 120 },
+        "typeProperties": { "notebookId": "nb_03_gold_star_schema" }
+      },
+      {
+        "name": "Data quality gate",
+        "description": "Runs 02_data_quality_checks.sql. The query returns one row per FAILED check and nothing when healthy, so a non-empty result is the failure signal.",
+        "type": "Script",
+        "dependsOn": [{ "activity": "Gold star schema", "dependencyConditions": ["Succeeded"] }],
+        "policy": { "timeout": "0.00:30:00", "retry": 0 },
+        "linkedServiceName": { "referenceName": "wh_merchant_analytics", "type": "LinkedServiceReference" },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "@concat('EXEC sp_executesql N''', pipeline().parameters.dq_sql, '''')",
+                "type": "Expression"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Fail on data quality",
+        "type": "Fail",
+        "dependsOn": [{ "activity": "Data quality gate", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "message": {
+            "value": "@concat('Gold layer failed ', string(length(activity('Data quality gate').output.resultSets[0].rows)), ' data quality check(s). Semantic model refresh skipped. Failures: ', string(activity('Data quality gate').output.resultSets[0].rows))",
+            "type": "Expression"
+          },
+          "errorCode": "DQ_GATE_FAILED"
+        },
+        "userProperties": [
+          {
+            "name": "runCondition",
+            "value": "@greater(length(activity('Data quality gate').output.resultSets[0].rows), 0)"
+          }
+        ]
+      },
+      {
+        "name": "Anomaly and narrative",
+        "type": "TridentNotebook",
+        "dependsOn": [{ "activity": "Data quality gate", "dependencyConditions": ["Succeeded"] }],
+        "policy": { "timeout": "0.01:00:00", "retry": 1 },
+        "typeProperties": { "notebookId": "nb_04_ai_anomaly_and_narrative" }
+      },
+      {
+        "name": "ML models (weekly)",
+        "description": "Segmentation, propensity and forecast. Sundays only - the models do not move materially day to day, and retraining daily would churn segment labels under the account managers who work from them.",
+        "type": "IfCondition",
+        "dependsOn": [{ "activity": "Anomaly and narrative", "dependencyConditions": ["Succeeded"] }],
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(dayOfWeek(pipeline().TriggerTime), 0)",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "name": "Run ML notebook",
+              "type": "TridentNotebook",
+              "policy": { "timeout": "0.03:00:00", "retry": 1 },
+              "typeProperties": { "notebookId": "nb_05_ml_models" }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Refresh semantic model",
+        "type": "WebActivity",
+        "dependsOn": [{ "activity": "ML models (weekly)", "dependencyConditions": ["Succeeded"] }],
+        "policy": { "timeout": "0.01:00:00", "retry": 2, "retryIntervalInSeconds": 300 },
+        "typeProperties": {
+          "method": "POST",
+          "url": {
+            "value": "@concat('https://api.powerbi.com/v1.0/myorg/groups/', pipeline().parameters.workspace_id, '/datasets/', pipeline().parameters.semantic_model_id, '/refreshes')",
+            "type": "Expression"
+          },
+          "body": { "type": "Full", "commitMode": "transactional", "notifyOption": "MailOnFailure" },
+          "authentication": { "type": "MSI", "resource": "https://analysis.windows.net/powerbi/api" }
+        }
+      },
+      {
+        "name": "Alert on failure",
+        "type": "WebActivity",
+        "dependsOn": [
+          { "activity": "Bronze ingest", "dependencyConditions": ["Failed"] },
+          { "activity": "Silver conform", "dependencyConditions": ["Failed"] },
+          { "activity": "Gold star schema", "dependencyConditions": ["Failed"] },
+          { "activity": "Fail on data quality", "dependencyConditions": ["Failed"] },
+          { "activity": "Refresh semantic model", "dependencyConditions": ["Failed"] }
+        ],
+        "typeProperties": {
+          "method": "POST",
+          "url": { "value": "@pipeline().parameters.teams_webhook", "type": "Expression" },
+          "body": {
+            "value": "@concat('{\"text\":\"Merchant analytics refresh FAILED. Pipeline run ', pipeline().RunId, ' at ', pipeline().TriggerTime, '. The semantic model is still on its previous good refresh.\"}')",
+            "type": "Expression"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "landing_folder": { "type": "string", "defaultValue": "Files/landing" },
+      "full_reload": { "type": "bool", "defaultValue": false },
+      "delayed_redemption_threshold_days": { "type": "int", "defaultValue": 7 },
+      "workspace_id": { "type": "string", "defaultValue": "" },
+      "semantic_model_id": { "type": "string", "defaultValue": "" },
+      "teams_webhook": { "type": "string", "defaultValue": "" },
+      "dq_sql": {
+        "type": "string",
+        "defaultValue": "-- contents of fabric/sql/02_data_quality_checks.sql"
+      }
+    },
+    "annotations": ["merchant-analytics", "medallion", "nightly"],
+    "concurrency": 1
+  },
+  "schedule": {
+    "type": "ScheduleTrigger",
+    "recurrence": {
+      "frequency": "Day",
+      "interval": 1,
+      "startTime": "2026-08-01T02:00:00",
+      "timeZone": "South Africa Standard Time"
+    }
+  }
+}

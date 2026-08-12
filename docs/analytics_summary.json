@@ -1,0 +1,588 @@
+{
+  "exec_kpis": {
+    "TotalSales": 65521298.74999973,
+    "TotalTransactions": 510127,
+    "AvgBasketValue": 128.4411504390078,
+    "TotalTarget": 10676900.430000005,
+    "TargetAttainment": 6.13673408116626,
+    "VouchersSold": 120969,
+    "VouchersRedeemed": 101843,
+    "RedemptionRate": 0.8418933776422058,
+    "VoucherValueSold": 22019852.750000037,
+    "VoucherValueRedeemed": 18478289.669999875,
+    "ValueRedemptionRate": 0.8391649971410388,
+    "OutstandingLiability": 3541563.079999995,
+    "AvgDaysToRedeem": 3.582327700480151,
+    "DelayedRedemptionRate": 0.13869387194014315,
+    "TotalTickets": 1363,
+    "AvgResolutionHours": 23.729640498899506,
+    "SLABreachRate": 0.26265590608950845,
+    "OpenTickets": 239,
+    "TicketsPer1kTxn": 2.6718836681845892,
+    "Merchants": 25,
+    "AtRiskMerchants": 2
+  },
+  "best_voucher_type": {
+    "VoucherType": "Airtime",
+    "RedemptionRate": 0.9282748638250866,
+    "worst": "Gaming",
+    "worst_rate": 0.7594797178130511
+  },
+  "target_calibration": {
+    "portfolio_attainment_raw": 6.1367340811662885,
+    "implied_scaling_factor": 6.1367340811662885,
+    "note": "Supplied BaseMonthlySalesTarget is ~6.1x below realised monthly sales for all 25 merchants. Treated as a calibration/basis error; reported as a relative index pending business confirmation."
+  },
+  "crm_flag_check": {
+    "flagged_at_risk": [
+      "Mango Tree Mobile",
+      "Ubuntu Trading Post"
+    ],
+    "computed_critical": [
+      "North Coast Connect",
+      "Pretoria PayPoint",
+      "Table Bay Express",
+      "Umhlanga Value Mart",
+      "Wild Coast Convenience"
+    ],
+    "overlap": [],
+    "n_flagged": 2,
+    "n_critical": 5,
+    "n_overlap": 0,
+    "missed_revenue_at_risk": 1079726.039999999,
+    "interpretation": "The CRM At-Risk flag and computed deterioration have zero overlap. Both flagged merchants are growing and score Healthy; every merchant in genuine decline \u2014 including the one losing R571k annualised \u2014 is flagged 'Active'. The existing manual flag is not detecting the problem it exists to detect."
+  },
+  "top_merchants": [
+    {
+      "Merchant": "Durban Cash Hub",
+      "Region": "Western Cape",
+      "TotalSales": 5776118.740000002,
+      "TotalTransactions": 45371,
+      "SalesShare": 0.08815635297522247
+    },
+    {
+      "Merchant": "Kudu Digital Kiosk",
+      "Region": "KwaZulu-Natal",
+      "TotalSales": 4535329.729999999,
+      "TotalTransactions": 35458,
+      "SalesShare": 0.06921916714906386
+    },
+    {
+      "Merchant": "Zebra Route Services",
+      "Region": "Gauteng",
+      "TotalSales": 4519761.940000001,
+      "TotalTransactions": 35910,
+      "SalesShare": 0.06898156822631665
+    },
+    {
+      "Merchant": "Karoo Quick Shop",
+      "Region": "Gauteng",
+      "TotalSales": 4395067.11,
+      "TotalTransactions": 34657,
+      "SalesShare": 0.06707844920427497
+    },
+    {
+      "Merchant": "Lighthouse General Dealer",
+      "Region": "Gauteng",
+      "TotalSales": 3965086.390000001,
+      "TotalTransactions": 31124,
+      "SalesShare": 0.06051599198497269
+    }
+  ],
+  "bottom_merchants": [
+    {
+      "Merchant": "Berg River Retail",
+      "Region": "Western Cape",
+      "TotalSales": 1077657.9200000002,
+      "TotalTransactions": 8197
+    },
+    {
+      "Merchant": "Valley View Retail",
+      "Region": "Free State",
+      "TotalSales": 822002.7800000001,
+      "TotalTransactions": 6032
+    },
+    {
+      "Merchant": "Cape Point Cellular",
+      "Region": "Eastern Cape",
+      "TotalSales": 776438.0900000001,
+      "TotalTransactions": 5668
+    },
+    {
+      "Merchant": "Umhlanga Value Mart",
+      "Region": "Free State",
+      "TotalSales": 684341.39,
+      "TotalTransactions": 4954
+    },
+    {
+      "Merchant": "Highveld Voucher Depot",
+      "Region": "Free State",
+      "TotalSales": 505737.91,
+      "TotalTransactions": 3517
+    }
+  ],
+  "revenue_concentration": {
+    "top5_share": 0.35395152953985065,
+    "top10_share": 0.6142691666349182,
+    "hhi": 512.2601404000831,
+    "merchants_for_80pct": 15
+  },
+  "backlog_ownership": {
+    "awaiting_us": 146,
+    "awaiting_customer": 93,
+    "total_open": 239,
+    "pct_awaiting_customer": 0.3891213389121339
+  },
+  "ops_correlations": {
+    "TicketsPer1kTxn~Last3vsFirst3": {
+      "pearson": -0.15735260160123596,
+      "spearman": 0.30615384615384617,
+      "n": 25
+    },
+    "TicketsPer1kTxn~MoMChange": {
+      "pearson": -0.4935888229462686,
+      "spearman": -0.050769230769230775,
+      "n": 25
+    },
+    "TicketsPer1kTxn~TargetAttainment": {
+      "pearson": -0.5582459969022237,
+      "spearman": -0.6000000000000001,
+      "n": 25
+    },
+    "TicketsPer1kTxn~RedemptionRate": {
+      "pearson": 0.5364037858689367,
+      "spearman": 0.51,
+      "n": 25
+    },
+    "SLABreachRate~Last3vsFirst3": {
+      "pearson": -0.032089898074284064,
+      "spearman": -0.11656087924791934,
+      "n": 25
+    },
+    "SLABreachRate~MoMChange": {
+      "pearson": 0.16942590537911997,
+      "spearman": -0.18118869348438948,
+      "n": 25
+    },
+    "SLABreachRate~TargetAttainment": {
+      "pearson": 0.03864620193227058,
+      "spearman": 0.06424312486601495,
+      "n": 25
+    },
+    "SLABreachRate~RedemptionRate": {
+      "pearson": 0.03154294929376045,
+      "spearman": -0.06270436738419423,
+      "n": 25
+    },
+    "AvgResolutionHours~Last3vsFirst3": {
+      "pearson": -0.09350839871631282,
+      "spearman": -0.12923076923076923,
+      "n": 25
+    },
+    "AvgResolutionHours~MoMChange": {
+      "pearson": 0.18833316189158059,
+      "spearman": -0.27692307692307694,
+      "n": 25
+    },
+    "AvgResolutionHours~TargetAttainment": {
+      "pearson": -0.18491158509975864,
+      "spearman": -0.14384615384615382,
+      "n": 25
+    },
+    "AvgResolutionHours~RedemptionRate": {
+      "pearson": 0.1824676510329523,
+      "spearman": 0.03846153846153846,
+      "n": 25
+    },
+    "HighPriorityTickets~Last3vsFirst3": {
+      "pearson": 0.11163244572968387,
+      "spearman": 0.2578170706131408,
+      "n": 25
+    },
+    "HighPriorityTickets~MoMChange": {
+      "pearson": -0.0015863769030234757,
+      "spearman": -0.0721733416237385,
+      "n": 25
+    },
+    "HighPriorityTickets~TargetAttainment": {
+      "pearson": -0.2019970428060831,
+      "spearman": -0.3211134771708579,
+      "n": 25
+    },
+    "HighPriorityTickets~RedemptionRate": {
+      "pearson": -0.01410698418716625,
+      "spearman": 0.07989241559419183,
+      "n": 25
+    }
+  },
+  "panel_correlation": {
+    "TicketsDelta_vs_SalesMoM_pearson": -0.13410207416224693,
+    "TicketsDelta_vs_SalesMoM_spearman": 0.1010332122498587,
+    "n_observations": 150
+  },
+  "size_confounder": {
+    "friction_vs_log_size_pearson": -0.8320550270220026,
+    "friction_vs_size_spearman": -0.7323076923076922,
+    "partial_corr_friction_vs_attainment_controlling_size": -0.19919308878035216,
+    "raw_corr_friction_vs_attainment": -0.5582459969022237,
+    "interpretation": "Tickets per 1k transactions is strongly size-dependent, so the raw negative correlation with target attainment is largely a size effect. Controlling for log(total sales) the association weakens materially."
+  },
+  "event_evidence": [
+    {
+      "Merchant": "Durban Cash Hub",
+      "Region": "Western Cape",
+      "Month": "2026-06",
+      "Tickets": 44,
+      "PriorAvgTickets": 5.0,
+      "TicketUplift": 7.800000000000001,
+      "SalesValue": 906153.9100000006,
+      "SalesVsPrior3Avg": 0.08206344159801549
+    },
+    {
+      "Merchant": "Durban Cash Hub",
+      "Region": "Western Cape",
+      "Month": "2026-07",
+      "Tickets": 52,
+      "PriorAvgTickets": 18.3,
+      "TicketUplift": 1.8363636363636364,
+      "SalesValue": 922088.0500000003,
+      "SalesVsPrior3Avg": 0.06279984033091712
+    },
+    {
+      "Merchant": "Soweto Super Save",
+      "Region": "Western Cape",
+      "Month": "2026-05",
+      "Tickets": 11,
+      "PriorAvgTickets": 4.3,
+      "TicketUplift": 1.5384615384615388,
+      "SalesValue": 464662.5500000001,
+      "SalesVsPrior3Avg": 0.1321740072002846
+    },
+    {
+      "Merchant": "Umhlanga Value Mart",
+      "Region": "Free State",
+      "Month": "2026-07",
+      "Tickets": 37,
+      "PriorAvgTickets": 4.7,
+      "TicketUplift": 6.928571428571428,
+      "SalesValue": 64394.12999999998,
+      "SalesVsPrior3Avg": -0.42515822608249043
+    }
+  ],
+  "business_answers": {
+    "Q1_highest_sales": {
+      "by_value": "Durban Cash Hub",
+      "value": 5776118.740000002,
+      "share": 0.08815635297522247,
+      "by_transactions": "Durban Cash Hub",
+      "transactions": 45371,
+      "same_merchant": true
+    },
+    "Q2_best_voucher_type": {
+      "VoucherType": "Airtime",
+      "RedemptionRate": 0.9282748638250866,
+      "worst": "Gaming",
+      "worst_rate": 0.7594797178130511
+    },
+    "Q3_declining_region": {
+      "weakest_recent": "Eastern Cape",
+      "last2_avg_mom": -0.04701756854718103,
+      "vs_peak": -0.09750911281473118,
+      "table": [
+        {
+          "Region": "Eastern Cape",
+          "TotalSales": 8781129.59,
+          "TrendPctOfAvg": 0.019703190885262633,
+          "LastMonthMoM": 0.028378900020371134,
+          "Last2MonthAvgMoM": -0.04701756854718103,
+          "SalesVsPeak": -0.09750911281473118
+        },
+        {
+          "Region": "Free State",
+          "TotalSales": 18009802.269999996,
+          "TrendPctOfAvg": 0.04384430104573269,
+          "LastMonthMoM": 0.008919815777959306,
+          "Last2MonthAvgMoM": 0.017602624092435515,
+          "SalesVsPeak": 0.0
+        },
+        {
+          "Region": "KwaZulu-Natal",
+          "TotalSales": 9516588.94,
+          "TrendPctOfAvg": 0.08543074074396234,
+          "LastMonthMoM": 0.04087156578998319,
+          "Last2MonthAvgMoM": 0.027665287191311894,
+          "SalesVsPeak": 0.0
+        },
+        {
+          "Region": "Western Cape",
+          "TotalSales": 13068297.250000004,
+          "TrendPctOfAvg": 0.04369811204745901,
+          "LastMonthMoM": 0.032183219399546825,
+          "Last2MonthAvgMoM": 0.031010091185253885,
+          "SalesVsPeak": 0.0
+        },
+        {
+          "Region": "Gauteng",
+          "TotalSales": 16145480.699999994,
+          "TrendPctOfAvg": 0.04519076304120214,
+          "LastMonthMoM": 0.03551584513579931,
+          "Last2MonthAvgMoM": 0.0369521143901167,
+          "SalesVsPeak": 0.0
+        }
+      ]
+    },
+    "Q4_ops_vs_performance": {
+      "merchant_level": {
+        "TicketsPer1kTxn~Last3vsFirst3": {
+          "pearson": -0.15735260160123596,
+          "spearman": 0.30615384615384617,
+          "n": 25
+        },
+        "TicketsPer1kTxn~MoMChange": {
+          "pearson": -0.4935888229462686,
+          "spearman": -0.050769230769230775,
+          "n": 25
+        },
+        "TicketsPer1kTxn~TargetAttainment": {
+          "pearson": -0.5582459969022237,
+          "spearman": -0.6000000000000001,
+          "n": 25
+        },
+        "TicketsPer1kTxn~RedemptionRate": {
+          "pearson": 0.5364037858689367,
+          "spearman": 0.51,
+          "n": 25
+        },
+        "SLABreachRate~Last3vsFirst3": {
+          "pearson": -0.032089898074284064,
+          "spearman": -0.11656087924791934,
+          "n": 25
+        },
+        "SLABreachRate~MoMChange": {
+          "pearson": 0.16942590537911997,
+          "spearman": -0.18118869348438948,
+          "n": 25
+        },
+        "SLABreachRate~TargetAttainment": {
+          "pearson": 0.03864620193227058,
+          "spearman": 0.06424312486601495,
+          "n": 25
+        },
+        "SLABreachRate~RedemptionRate": {
+          "pearson": 0.03154294929376045,
+          "spearman": -0.06270436738419423,
+          "n": 25
+        },
+        "AvgResolutionHours~Last3vsFirst3": {
+          "pearson": -0.09350839871631282,
+          "spearman": -0.12923076923076923,
+          "n": 25
+        },
+        "AvgResolutionHours~MoMChange": {
+          "pearson": 0.18833316189158059,
+          "spearman": -0.27692307692307694,
+          "n": 25
+        },
+        "AvgResolutionHours~TargetAttainment": {
+          "pearson": -0.18491158509975864,
+          "spearman": -0.14384615384615382,
+          "n": 25
+        },
+        "AvgResolutionHours~RedemptionRate": {
+          "pearson": 0.1824676510329523,
+          "spearman": 0.03846153846153846,
+          "n": 25
+        },
+        "HighPriorityTickets~Last3vsFirst3": {
+          "pearson": 0.11163244572968387,
+          "spearman": 0.2578170706131408,
+          "n": 25
+        },
+        "HighPriorityTickets~MoMChange": {
+          "pearson": -0.0015863769030234757,
+          "spearman": -0.0721733416237385,
+          "n": 25
+        },
+        "HighPriorityTickets~TargetAttainment": {
+          "pearson": -0.2019970428060831,
+          "spearman": -0.3211134771708579,
+          "n": 25
+        },
+        "HighPriorityTickets~RedemptionRate": {
+          "pearson": -0.01410698418716625,
+          "spearman": 0.07989241559419183,
+          "n": 25
+        }
+      },
+      "panel": {
+        "TicketsDelta_vs_SalesMoM_pearson": -0.13410207416224693,
+        "TicketsDelta_vs_SalesMoM_spearman": 0.1010332122498587,
+        "n_observations": 150
+      },
+      "quartiles": [
+        {
+          "FrictionQuartile": "Q1 lowest friction",
+          "Merchants": 7,
+          "AvgTicketsPer1kTxn": 1.349924814728286,
+          "AvgGrowthLast3vsFirst3": 0.17507353484253452,
+          "AvgTargetAttainment": 7.093433416207538,
+          "AvgRedemptionRate": 0.8402113542379864,
+          "AvgHealthScore": 47.24285714285714
+        },
+        {
+          "FrictionQuartile": "Q2",
+          "Merchants": 6,
+          "AvgTicketsPer1kTxn": 1.9922413322123766,
+          "AvgGrowthLast3vsFirst3": 0.2599938102881374,
+          "AvgTargetAttainment": 6.665310172870529,
+          "AvgRedemptionRate": 0.8367046575775178,
+          "AvgHealthScore": 48.68333333333333
+        },
+        {
+          "FrictionQuartile": "Q3",
+          "Merchants": 6,
+          "AvgTicketsPer1kTxn": 3.7127296647461754,
+          "AvgGrowthLast3vsFirst3": 0.20997795968443253,
+          "AvgTargetAttainment": 5.419371758345336,
+          "AvgRedemptionRate": 0.8412059428965023,
+          "AvgHealthScore": 54.03333333333333
+        },
+        {
+          "FrictionQuartile": "Q4 highest friction",
+          "Merchants": 6,
+          "AvgTicketsPer1kTxn": 10.296483090904745,
+          "AvgGrowthLast3vsFirst3": 0.1585523770435401,
+          "AvgTargetAttainment": 4.841534701368324,
+          "AvgRedemptionRate": 0.8538013361097961,
+          "AvgHealthScore": 50.28333333333333
+        }
+      ],
+      "size_confounder": {
+        "friction_vs_log_size_pearson": -0.8320550270220026,
+        "friction_vs_size_spearman": -0.7323076923076922,
+        "partial_corr_friction_vs_attainment_controlling_size": -0.19919308878035216,
+        "raw_corr_friction_vs_attainment": -0.5582459969022237,
+        "interpretation": "Tickets per 1k transactions is strongly size-dependent, so the raw negative correlation with target attainment is largely a size effect. Controlling for log(total sales) the association weakens materially."
+      },
+      "event_evidence": [
+        {
+          "Merchant": "Durban Cash Hub",
+          "Region": "Western Cape",
+          "Month": "2026-06",
+          "Tickets": 44,
+          "PriorAvgTickets": 5.0,
+          "TicketUplift": 7.800000000000001,
+          "SalesValue": 906153.9100000006,
+          "SalesVsPrior3Avg": 0.08206344159801549
+        },
+        {
+          "Merchant": "Durban Cash Hub",
+          "Region": "Western Cape",
+          "Month": "2026-07",
+          "Tickets": 52,
+          "PriorAvgTickets": 18.3,
+          "TicketUplift": 1.8363636363636364,
+          "SalesValue": 922088.0500000003,
+          "SalesVsPrior3Avg": 0.06279984033091712
+        },
+        {
+          "Merchant": "Soweto Super Save",
+          "Region": "Western Cape",
+          "Month": "2026-05",
+          "Tickets": 11,
+          "PriorAvgTickets": 4.3,
+          "TicketUplift": 1.5384615384615388,
+          "SalesValue": 464662.5500000001,
+          "SalesVsPrior3Avg": 0.1321740072002846
+        },
+        {
+          "Merchant": "Umhlanga Value Mart",
+          "Region": "Free State",
+          "Month": "2026-07",
+          "Tickets": 37,
+          "PriorAvgTickets": 4.7,
+          "TicketUplift": 6.928571428571428,
+          "SalesValue": 64394.12999999998,
+          "SalesVsPrior3Avg": -0.42515822608249043
+        }
+      ]
+    },
+    "Q5_focus_merchants": [
+      {
+        "Merchant": "Umhlanga Value Mart",
+        "Region": "Free State",
+        "FocusPriorityScore": 91.4,
+        "HealthScore": 17.3,
+        "HealthBand": "Critical",
+        "TotalSales": 684341.39,
+        "LatestMonthSales": 64394.12999999998,
+        "SalesVsPrior3Avg": -0.42515822608249043,
+        "RevenueAtRiskAnnualised": 571517.8399999997,
+        "TicketsVsPrior3Avg": 6.928571428571428,
+        "LatestMonthTickets": 37,
+        "TargetAttainmentIndex": 0.7216014632777048,
+        "SLABreachRate": 0.18840579710144928
+      },
+      {
+        "Merchant": "Table Bay Express",
+        "Region": "Eastern Cape",
+        "FocusPriorityScore": 80.9,
+        "HealthScore": 24.0,
+        "HealthBand": "Critical",
+        "TotalSales": 3325306.2600000002,
+        "LatestMonthSales": 473867.4800000001,
+        "SalesVsPrior3Avg": -0.058630729625356426,
+        "RevenueAtRiskAnnualised": 354163.199999999,
+        "TicketsVsPrior3Avg": 0.2857142857142858,
+        "LatestMonthTickets": 9,
+        "TargetAttainmentIndex": 1.0548027488223997,
+        "SLABreachRate": 0.3333333333333333
+      },
+      {
+        "Merchant": "Mzansi Mini Market",
+        "Region": "Eastern Cape",
+        "FocusPriorityScore": 72.9,
+        "HealthScore": 40.4,
+        "HealthBand": "Watch",
+        "TotalSales": 2613183.07,
+        "LatestMonthSales": 381800.4,
+        "SalesVsPrior3Avg": -0.018670624285470505,
+        "RevenueAtRiskAnnualised": 87168.91999999853,
+        "TicketsVsPrior3Avg": 1.0,
+        "LatestMonthTickets": 6,
+        "TargetAttainmentIndex": 0.8812576685855146,
+        "SLABreachRate": 0.17391304347826086
+      },
+      {
+        "Merchant": "Pretoria PayPoint",
+        "Region": "Eastern Cape",
+        "FocusPriorityScore": 72.7,
+        "HealthScore": 31.2,
+        "HealthBand": "Critical",
+        "TotalSales": 2066202.17,
+        "LatestMonthSales": 296383.30999999994,
+        "SalesVsPrior3Avg": -0.04151434902126672,
+        "RevenueAtRiskAnnualised": 154045.00000000047,
+        "TicketsVsPrior3Avg": 0.0,
+        "LatestMonthTickets": 5,
+        "TargetAttainmentIndex": 0.972879397511112,
+        "SLABreachRate": 0.3125
+      },
+      {
+        "Merchant": "Cape Point Cellular",
+        "Region": "Eastern Cape",
+        "FocusPriorityScore": 57.3,
+        "HealthScore": 45.0,
+        "HealthBand": "Watch",
+        "TotalSales": 776438.0900000001,
+        "LatestMonthSales": 112219.35999999997,
+        "SalesVsPrior3Avg": -0.034850700448213034,
+        "RevenueAtRiskAnnualised": 48625.72000000079,
+        "TicketsVsPrior3Avg": -0.5263157894736842,
+        "LatestMonthTickets": 3,
+        "TargetAttainmentIndex": 0.9661490398560668,
+        "SLABreachRate": 0.3409090909090909
+      }
+    ]
+  }
+}

@@ -1,0 +1,337 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gold layer ERD</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#EEF3F9;margin:0;padding:26px;
+  color:#12203A}
+h1{color:#12305B;font-size:23px;margin:0 0 4px}
+h2{color:#12305B;font-size:17px;margin:26px 0 4px}
+.sub{color:#5A6672;font-size:13px;margin-bottom:18px}
+.wrap{background:#fff;border-radius:12px;padding:18px;box-shadow:0 6px 24px rgba(18,48,91,.10)}
+.key{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0 4px;font-size:12px;color:#5A6672}
+.key span{display:flex;align-items:center;gap:6px}
+.sw{width:13px;height:13px;border-radius:3px}
+.note{background:#F0F9F9;border-left:4px solid #0E8B8B;padding:12px 15px;border-radius:0 8px 8px 0;
+  font-size:13px;line-height:1.6;margin-top:18px}
+.warn{background:#FEF8EC;border-left-color:#E8A317}
+table.j{border-collapse:collapse;width:100%;font-size:12.5px;background:#fff;
+  border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(18,48,91,.10)}
+table.j th{background:#12305B;color:#fff;text-align:left;padding:9px 12px;font-size:11px;
+  text-transform:uppercase;letter-spacing:.5px}
+table.j td{border-bottom:1px solid #E4EAF2;padding:9px 12px;vertical-align:top}
+td.tn{font-family:Consolas,monospace;font-weight:700;color:#12305B;white-space:nowrap}
+td.rw{text-align:right;font-variant-numeric:tabular-nums;color:#5A6672;white-space:nowrap}
+td.wy span{color:#5A6672;line-height:1.55}
+</style></head><body>
+<h1>Gold layer ERD &mdash; Merchant Sales &amp; Voucher Intelligence</h1>
+<div class="sub">16 tables &middot; 15 enforced foreign keys &middot; generated from the dbt manifest</div>
+<div class="key">
+  <span><i class="sw" style="background:#12305B"></i>README model (4)</span>
+  <span><i class="sw" style="background:#0E8B8B"></i>Brief deliverable (4)</span>
+  <span><i class="sw" style="background:#B8860B"></i>Grain necessity (1)</span>
+  <span><i class="sw" style="background:#7B4B94"></i>My extension (4)</span>
+  <span><b style="color:#E8A317">PK</b> primary key</span>
+  <span><b style="color:#0E8B8B">FK</b> foreign key</span>
+</div>
+<div class="wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 2091.5" style="width:100%;height:auto;font-family:Segoe UI,Arial,sans-serif">
+<rect width="1180" height="2091.5" fill="#F7FAFC"/>
+<path d="M256,401.75 C366.5,401.75 366.5,1250.25 477.0,1250.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,1250.25 l-9,-5 M477.0,1250.25 l-9,0 M477.0,1250.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M30,401.75 C143.0,401.75 143.0,628.25 256,628.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="30" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M256,628.25 l9,-5 M256,628.25 l9,0 M256,628.25 l9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,175.25 C366.5,175.25 366.5,167.5 477.0,167.5" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="175.25" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,167.5 l-9,-5 M477.0,167.5 l-9,0 M477.0,167.5 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,401.75 C366.5,401.75 366.5,167.5 477.0,167.5" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,167.5 l-9,-5 M477.0,167.5 l-9,0 M477.0,167.5 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M924,411.25 C813.5,411.25 813.5,167.5 703.0,167.5" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="924" cy="411.25" r="3.4" fill="#0E8B8B"/>
+<path d="M703.0,167.5 l9,-5 M703.0,167.5 l9,0 M703.0,167.5 l9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,175.25 C366.5,175.25 366.5,789.25 477.0,789.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="175.25" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,789.25 l-9,-5 M477.0,789.25 l-9,0 M477.0,789.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,175.25 C366.5,175.25 366.5,789.25 477.0,789.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="175.25" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,789.25 l-9,-5 M477.0,789.25 l-9,0 M477.0,789.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,401.75 C366.5,401.75 366.5,789.25 477.0,789.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,789.25 l-9,-5 M477.0,789.25 l-9,0 M477.0,789.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,175.25 C366.5,175.25 366.5,558.75 477.0,558.75" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="175.25" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,558.75 l-9,-5 M477.0,558.75 l-9,0 M477.0,558.75 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,401.75 C366.5,401.75 366.5,558.75 477.0,558.75" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,558.75 l-9,-5 M477.0,558.75 l-9,0 M477.0,558.75 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M924,277.75 C813.5,277.75 813.5,558.75 703.0,558.75" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="924" cy="277.75" r="3.4" fill="#0E8B8B"/>
+<path d="M703.0,558.75 l9,-5 M703.0,558.75 l9,0 M703.0,558.75 l9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,854.75 C366.5,854.75 366.5,558.75 477.0,558.75" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="854.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,558.75 l-9,-5 M477.0,558.75 l-9,0 M477.0,558.75 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M924,136.5 C813.5,136.5 813.5,558.75 703.0,558.75" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="924" cy="136.5" r="3.4" fill="#0E8B8B"/>
+<path d="M703.0,558.75 l9,-5 M703.0,558.75 l9,0 M703.0,558.75 l9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,175.25 C366.5,175.25 366.5,359.25 477.0,359.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="175.25" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,359.25 l-9,-5 M477.0,359.25 l-9,0 M477.0,359.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<path d="M256,401.75 C366.5,401.75 366.5,359.25 477.0,359.25" fill="none" stroke="#0E8B8B" stroke-width="1.5" opacity=".55"/>
+<circle cx="256" cy="401.75" r="3.4" fill="#0E8B8B"/>
+<path d="M477.0,359.25 l-9,-5 M477.0,359.25 l-9,0 M477.0,359.25 l-9,5" stroke="#0E8B8B" stroke-width="1.5" fill="none"/>
+<rect x="477.0" y="914.5" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,921.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="487.0" y="934.5" font-size="12.5" font-weight="700" fill="#fff">mart_merchant_change_alerts</text>
+<text x="487.0" y="956.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="956.5" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="487.0" y="972.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_id</text>
+<text x="487.0" y="987.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="487.0" y="1003.0" font-size="10.5" fill="#5A6672" font-weight="400">changed_at</text>
+<text x="487.0" y="1018.5" font-size="10.5" fill="#5A6672" font-weight="400">field_changed</text>
+<text x="487.0" y="1034.0" font-size="10.5" fill="#5A6672" font-weight="400">old_value</text>
+<text x="487.0" y="1049.5" font-size="10.5" fill="#5A6672" font-weight="400">new_value</text>
+<text x="487.0" y="1065.0" font-size="10.5" fill="#5A6672" font-weight="400">severity</text>
+<text x="487.0" y="1080.5" font-size="10.5" fill="#5A6672" font-weight="400">alert_message</text>
+<text x="487.0" y="1096.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_total_sales</text>
+<text x="487.0" y="1111.5" font-size="10.5" fill="#5A6672" font-weight="400">health_score</text>
+<text x="487.0" y="1127.0" font-size="9.5" fill="#5A6672" font-style="italic">+1 more columns</text>
+<rect x="477.0" y="1145.0" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,1152.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="487.0" y="1165.0" font-size="12.5" font-weight="700" fill="#fff">mart_merchant_scorecard</text>
+<text x="487.0" y="1187.0" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="1187.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="1202.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_id</text>
+<text x="487.0" y="1218.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="487.0" y="1233.5" font-size="10.5" fill="#5A6672" font-weight="400">region</text>
+<text x="487.0" y="1249.0" font-size="10.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="487.0" y="1264.5" font-size="10.5" fill="#5A6672" font-weight="400">active_status</text>
+<text x="487.0" y="1280.0" font-size="10.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="487.0" y="1295.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_size_band</text>
+<text x="487.0" y="1311.0" font-size="10.5" fill="#5A6672" font-weight="400">months_observed</text>
+<text x="487.0" y="1326.5" font-size="10.5" fill="#5A6672" font-weight="400">total_sales</text>
+<text x="487.0" y="1342.0" font-size="10.5" fill="#5A6672" font-weight="400">total_transactions</text>
+<text x="487.0" y="1357.5" font-size="9.5" fill="#5A6672" font-style="italic">+46 more columns</text>
+<rect x="477.0" y="1375.5" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,1382.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="487.0" y="1395.5" font-size="12.5" font-weight="700" fill="#fff">mart_merchant_value_risk</text>
+<text x="487.0" y="1417.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="1417.5" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="487.0" y="1433.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="487.0" y="1448.5" font-size="10.5" fill="#5A6672" font-weight="400">region</text>
+<text x="487.0" y="1464.0" font-size="10.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="487.0" y="1479.5" font-size="10.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="487.0" y="1495.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_size_band</text>
+<text x="487.0" y="1510.5" font-size="10.5" fill="#5A6672" font-weight="400">health_score</text>
+<text x="487.0" y="1526.0" font-size="10.5" fill="#5A6672" font-weight="400">health_band</text>
+<text x="487.0" y="1541.5" font-size="10.5" fill="#5A6672" font-weight="400">total_sales</text>
+<text x="487.0" y="1557.0" font-size="10.5" fill="#5A6672" font-weight="400">total_transactions</text>
+<text x="487.0" y="1572.5" font-size="10.5" fill="#5A6672" font-weight="400">avg_basket_value</text>
+<text x="487.0" y="1588.0" font-size="9.5" fill="#5A6672" font-style="italic">+27 more columns</text>
+<rect x="477.0" y="1606.0" width="226" height="195.0" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,1613.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="487.0" y="1626.0" font-size="12.5" font-weight="700" fill="#fff">mart_reconciliation</text>
+<text x="487.0" y="1648.0" font-size="10.5" fill="#5A6672" font-weight="400">control_order</text>
+<text x="487.0" y="1663.5" font-size="10.5" fill="#5A6672" font-weight="400">control_family</text>
+<text x="487.0" y="1679.0" font-size="10.5" fill="#5A6672" font-weight="400">control_name</text>
+<text x="487.0" y="1694.5" font-size="10.5" fill="#5A6672" font-weight="400">expected_value</text>
+<text x="487.0" y="1710.0" font-size="10.5" fill="#5A6672" font-weight="400">actual_value</text>
+<text x="487.0" y="1725.5" font-size="10.5" fill="#5A6672" font-weight="400">variance</text>
+<text x="487.0" y="1741.0" font-size="10.5" fill="#5A6672" font-weight="400">variance_pct</text>
+<text x="487.0" y="1756.5" font-size="10.5" fill="#5A6672" font-weight="400">control_status</text>
+<text x="487.0" y="1772.0" font-size="10.5" fill="#5A6672" font-weight="400">txn_per_voucher</text>
+<text x="487.0" y="1787.5" font-size="10.5" fill="#5A6672" font-weight="400">rationale</text>
+<rect x="30" y="70" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M30,77 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#1B6CA8"/>
+<text x="40" y="90" font-size="12.5" font-weight="700" fill="#fff">dim_date</text>
+<text x="40" y="112.0" font-size="10.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="234" y="112.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="40" y="127.5" font-size="10.5" fill="#5A6672" font-weight="400">date</text>
+<text x="40" y="143.0" font-size="10.5" fill="#5A6672" font-weight="400">year</text>
+<text x="40" y="158.5" font-size="10.5" fill="#5A6672" font-weight="400">quarter</text>
+<text x="40" y="174.0" font-size="10.5" fill="#5A6672" font-weight="400">quarter_name</text>
+<text x="40" y="189.5" font-size="10.5" fill="#5A6672" font-weight="400">year_quarter</text>
+<text x="40" y="205.0" font-size="10.5" fill="#5A6672" font-weight="400">month_number</text>
+<text x="40" y="220.5" font-size="10.5" fill="#5A6672" font-weight="400">month_name</text>
+<text x="40" y="236.0" font-size="10.5" fill="#5A6672" font-weight="400">month_short</text>
+<text x="40" y="251.5" font-size="10.5" fill="#5A6672" font-weight="400">year_month</text>
+<text x="40" y="267.0" font-size="10.5" fill="#5A6672" font-weight="400">month_year_label</text>
+<text x="40" y="282.5" font-size="9.5" fill="#5A6672" font-style="italic">+13 more columns</text>
+<rect x="30" y="296.5" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M30,303.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#12305B"/>
+<text x="40" y="316.5" font-size="12.5" font-weight="700" fill="#fff">dim_merchant</text>
+<text x="40" y="338.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="234" y="338.5" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="40" y="354.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_id</text>
+<text x="40" y="369.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="40" y="385.0" font-size="10.5" fill="#5A6672" font-weight="400">region</text>
+<text x="40" y="400.5" font-size="10.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="40" y="416.0" font-size="10.5" fill="#5A6672" font-weight="400">active_status</text>
+<text x="40" y="431.5" font-size="10.5" fill="#5A6672" font-weight="400">is_at_risk</text>
+<text x="40" y="447.0" font-size="10.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="40" y="462.5" font-size="10.5" fill="#5A6672" font-weight="400">onboarded_date</text>
+<text x="40" y="478.0" font-size="10.5" fill="#5A6672" font-weight="400">tenure_months</text>
+<text x="40" y="493.5" font-size="10.5" fill="#5A6672" font-weight="400">tenure_band</text>
+<text x="40" y="509.0" font-size="9.5" fill="#5A6672" font-style="italic">+5 more columns</text>
+<rect x="30" y="523.0" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M30,530.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="40" y="543.0" font-size="12.5" font-weight="700" fill="#fff">dim_merchant_history</text>
+<text x="40" y="565.0" font-size="10.5" fill="#12305B" font-weight="700">merchant_version_key</text>
+<text x="234" y="565.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="40" y="580.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="234" y="580.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="40" y="596.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_id</text>
+<text x="40" y="611.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="40" y="627.0" font-size="10.5" fill="#5A6672" font-weight="400">region</text>
+<text x="40" y="642.5" font-size="10.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="40" y="658.0" font-size="10.5" fill="#5A6672" font-weight="400">active_status</text>
+<text x="40" y="673.5" font-size="10.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="40" y="689.0" font-size="10.5" fill="#5A6672" font-weight="400">onboarded_date</text>
+<text x="40" y="704.5" font-size="10.5" fill="#5A6672" font-weight="400">base_monthly_sales_target</text>
+<text x="40" y="720.0" font-size="10.5" fill="#5A6672" font-weight="400">valid_from</text>
+<text x="40" y="735.5" font-size="9.5" fill="#5A6672" font-style="italic">+5 more columns</text>
+<rect x="30" y="749.5" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M30,756.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#0E8B8B"/>
+<text x="40" y="769.5" font-size="12.5" font-weight="700" fill="#fff">dim_priority</text>
+<text x="40" y="791.5" font-size="10.5" fill="#12305B" font-weight="700">priority_key</text>
+<text x="234" y="791.5" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="40" y="807.0" font-size="10.5" fill="#5A6672" font-weight="400">priority</text>
+<text x="40" y="822.5" font-size="10.5" fill="#5A6672" font-weight="400">priority_sort</text>
+<text x="40" y="838.0" font-size="10.5" fill="#5A6672" font-weight="400">target_sla_hours</text>
+<text x="40" y="853.5" font-size="10.5" fill="#5A6672" font-weight="400">severity_weight</text>
+<text x="40" y="869.0" font-size="10.5" fill="#5A6672" font-weight="400">is_high_priority</text>
+<text x="40" y="884.5" font-size="10.5" fill="#5A6672" font-weight="400">observed_avg_hours</text>
+<text x="40" y="900.0" font-size="10.5" fill="#5A6672" font-weight="400">observed_median_hours</text>
+<text x="40" y="915.5" font-size="10.5" fill="#5A6672" font-weight="400">observed_p90_hours</text>
+<text x="40" y="931.0" font-size="10.5" fill="#5A6672" font-weight="400">sla_is_achievable</text>
+<text x="40" y="946.5" font-size="10.5" fill="#5A6672" font-weight="400">sla_for_90pct_compliance</text>
+<rect x="924" y="70" width="226" height="133.0" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M924,77 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#0E8B8B"/>
+<text x="934" y="90" font-size="12.5" font-weight="700" fill="#fff">dim_ticket_status</text>
+<text x="934" y="112.0" font-size="10.5" fill="#12305B" font-weight="700">status_key</text>
+<text x="1128" y="112.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="934" y="127.5" font-size="10.5" fill="#5A6672" font-weight="400">status</text>
+<text x="934" y="143.0" font-size="10.5" fill="#5A6672" font-weight="400">status_sort</text>
+<text x="934" y="158.5" font-size="10.5" fill="#5A6672" font-weight="400">status_group</text>
+<text x="934" y="174.0" font-size="10.5" fill="#5A6672" font-weight="400">is_open_status</text>
+<text x="934" y="189.5" font-size="10.5" fill="#5A6672" font-weight="400">ownership</text>
+<rect x="924" y="219.0" width="226" height="117.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M924,226.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#0E8B8B"/>
+<text x="934" y="239.0" font-size="12.5" font-weight="700" fill="#fff">dim_ticket_type</text>
+<text x="934" y="261.0" font-size="10.5" fill="#12305B" font-weight="700">ticket_type_key</text>
+<text x="1128" y="261.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="934" y="276.5" font-size="10.5" fill="#5A6672" font-weight="400">ticket_type</text>
+<text x="934" y="292.0" font-size="10.5" fill="#5A6672" font-weight="400">ticket_category</text>
+<text x="934" y="307.5" font-size="10.5" fill="#5A6672" font-weight="400">impact_area</text>
+<text x="934" y="323.0" font-size="10.5" fill="#5A6672" font-weight="400">ticket_type_group</text>
+<rect x="924" y="352.5" width="226" height="117.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M924,359.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#0E8B8B"/>
+<text x="934" y="372.5" font-size="12.5" font-weight="700" fill="#fff">dim_voucher_type</text>
+<text x="934" y="394.5" font-size="10.5" fill="#12305B" font-weight="700">voucher_type_key</text>
+<text x="1128" y="394.5" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="934" y="410.0" font-size="10.5" fill="#5A6672" font-weight="400">voucher_type</text>
+<text x="934" y="425.5" font-size="10.5" fill="#5A6672" font-weight="400">voucher_category</text>
+<text x="934" y="441.0" font-size="10.5" fill="#5A6672" font-weight="400">margin_band</text>
+<text x="934" y="456.5" font-size="10.5" fill="#5A6672" font-weight="400">voucher_type_sort</text>
+<rect x="477.0" y="70" width="226" height="195.0" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,77 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#12305B"/>
+<text x="487.0" y="90" font-size="12.5" font-weight="700" fill="#fff">fct_merchant_sales</text>
+<text x="487.0" y="112.0" font-size="10.5" fill="#12305B" font-weight="700">sales_key</text>
+<text x="681.0" y="112.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="487.0" y="127.5" font-size="10.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="681.0" y="127.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="143.0" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="143.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="158.5" font-size="10.5" fill="#12305B" font-weight="700">voucher_type_key</text>
+<text x="681.0" y="158.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="174.0" font-size="10.5" fill="#5A6672" font-weight="400">sales_date</text>
+<text x="487.0" y="189.5" font-size="10.5" fill="#5A6672" font-weight="400">sales_value</text>
+<text x="487.0" y="205.0" font-size="10.5" fill="#5A6672" font-weight="400">transactions</text>
+<text x="487.0" y="220.5" font-size="10.5" fill="#5A6672" font-weight="400">avg_basket_value</text>
+<text x="487.0" y="236.0" font-size="10.5" fill="#5A6672" font-weight="400">batch_id</text>
+<text x="487.0" y="251.5" font-size="10.5" fill="#5A6672" font-weight="400">ingested_at</text>
+<rect x="477.0" y="285.0" width="226" height="148.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,292.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#B8860B"/>
+<text x="487.0" y="305.0" font-size="12.5" font-weight="700" fill="#fff">fct_merchant_target</text>
+<text x="487.0" y="327.0" font-size="10.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="681.0" y="327.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="342.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="342.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="358.0" font-size="10.5" fill="#5A6672" font-weight="400">month_start_date</text>
+<text x="487.0" y="373.5" font-size="10.5" fill="#5A6672" font-weight="400">monthly_sales_target</text>
+<text x="487.0" y="389.0" font-size="10.5" fill="#5A6672" font-weight="400">base_monthly_sales_target</text>
+<text x="487.0" y="404.5" font-size="10.5" fill="#5A6672" font-weight="400">days_covered</text>
+<text x="487.0" y="420.0" font-size="10.5" fill="#5A6672" font-weight="400">days_in_month</text>
+<rect x="477.0" y="453.5" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,460.5 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#12305B"/>
+<text x="487.0" y="473.5" font-size="12.5" font-weight="700" fill="#fff">fct_support_tickets</text>
+<text x="487.0" y="495.5" font-size="10.5" fill="#5A6672" font-weight="400">ticket_id</text>
+<text x="487.0" y="511.0" font-size="10.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="681.0" y="511.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="526.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="526.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="542.0" font-size="10.5" fill="#12305B" font-weight="700">ticket_type_key</text>
+<text x="681.0" y="542.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="557.5" font-size="10.5" fill="#12305B" font-weight="700">priority_key</text>
+<text x="681.0" y="557.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="573.0" font-size="10.5" fill="#12305B" font-weight="700">status_key</text>
+<text x="681.0" y="573.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="588.5" font-size="10.5" fill="#5A6672" font-weight="400">ticket_date</text>
+<text x="487.0" y="604.0" font-size="10.5" fill="#5A6672" font-weight="400">ticket_count</text>
+<text x="487.0" y="619.5" font-size="10.5" fill="#5A6672" font-weight="400">resolution_hours</text>
+<text x="487.0" y="635.0" font-size="10.5" fill="#5A6672" font-weight="400">sla_hours</text>
+<text x="487.0" y="650.5" font-size="10.5" fill="#5A6672" font-weight="400">sla_breach_hours</text>
+<text x="487.0" y="666.0" font-size="9.5" fill="#5A6672" font-style="italic">+11 more columns</text>
+<rect x="477.0" y="684.0" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,691.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#12305B"/>
+<text x="487.0" y="704.0" font-size="12.5" font-weight="700" fill="#fff">fct_voucher_redemptions</text>
+<text x="487.0" y="726.0" font-size="10.5" fill="#5A6672" font-weight="400">voucher_id</text>
+<text x="487.0" y="741.5" font-size="10.5" fill="#12305B" font-weight="700">sold_date_key</text>
+<text x="681.0" y="741.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="757.0" font-size="10.5" fill="#12305B" font-weight="700">redeemed_date_key</text>
+<text x="681.0" y="757.0" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="772.5" font-size="10.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="681.0" y="772.5" font-size="8.5" font-weight="800" fill="#0E8B8B">FK</text>
+<text x="487.0" y="788.0" font-size="10.5" fill="#12305B" font-weight="700">voucher_type_key</text>
+<text x="681.0" y="788.0" font-size="8.5" font-weight="800" fill="#E8A317">PK</text>
+<text x="487.0" y="803.5" font-size="10.5" fill="#5A6672" font-weight="400">sold_date</text>
+<text x="487.0" y="819.0" font-size="10.5" fill="#5A6672" font-weight="400">redeemed_date</text>
+<text x="487.0" y="834.5" font-size="10.5" fill="#5A6672" font-weight="400">voucher_value</text>
+<text x="487.0" y="850.0" font-size="10.5" fill="#5A6672" font-weight="400">voucher_count</text>
+<text x="487.0" y="865.5" font-size="10.5" fill="#5A6672" font-weight="400">redeemed_count</text>
+<text x="487.0" y="881.0" font-size="10.5" fill="#5A6672" font-weight="400">redeemed_value</text>
+<text x="487.0" y="896.5" font-size="9.5" fill="#5A6672" font-style="italic">+10 more columns</text>
+<rect x="477.0" y="1821.0" width="226" height="210.5" rx="7" fill="#fff" stroke="#C9D6E6" stroke-width="1.2"/>
+<path d="M477.0,1828.0 a7,7 0 0 1 7,-7 h212 a7,7 0 0 1 7,7 v23 h-226 Z" fill="#7B4B94"/>
+<text x="487.0" y="1841.0" font-size="12.5" font-weight="700" fill="#fff">snap_merchant</text>
+<text x="487.0" y="1863.0" font-size="10.5" fill="#5A6672" font-weight="400">merchant_id</text>
+<text x="487.0" y="1878.5" font-size="10.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="487.0" y="1894.0" font-size="10.5" fill="#5A6672" font-weight="400">region</text>
+<text x="487.0" y="1909.5" font-size="10.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="487.0" y="1925.0" font-size="10.5" fill="#5A6672" font-weight="400">active_status</text>
+<text x="487.0" y="1940.5" font-size="10.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="487.0" y="1956.0" font-size="10.5" fill="#5A6672" font-weight="400">onboarded_date</text>
+<text x="487.0" y="1971.5" font-size="10.5" fill="#5A6672" font-weight="400">base_monthly_sales_target</text>
+<text x="487.0" y="1987.0" font-size="10.5" fill="#5A6672" font-weight="400">ingested_at</text>
+<text x="487.0" y="2002.5" font-size="10.5" fill="#5A6672" font-weight="400">dbt_scd_id</text>
+<text x="487.0" y="2018.0" font-size="10.5" fill="#5A6672" font-weight="400">dbt_updated_at</text>
+<text x="487.0" y="2033.5" font-size="9.5" fill="#5A6672" font-style="italic">+2 more columns</text>
+</svg></div>
+
+<div class="note warn"><b>Why 14 tables when the README suggests 5.</b><br>The supplied README suggests a 5-table model. This solution has 14. Five come straight from the README; four exist because the brief's own report requirements (voucher type performance, ticket priority, SLA risk, backlog) need somewhere to put those attributes; one is a grain necessity; and four are extensions I added on judgement and have labelled as such. Presenting all 14 as though the brief demanded them would be overselling it — the honest split is a 10-table core plus 4 extensions.</div>
+
+<h2>Justification, table by table</h2>
+<table class="j"><thead><tr><th style="width:120px">Tier</th><th>Table</th>
+<th style="text-align:right">Rows</th><th>Why it exists</th></tr></thead>
+<tbody><tr><td rowspan="4" style="background:#12305B;color:#fff;font-weight:700;font-size:12px;vertical-align:top;padding:10px 12px">Supplied CSV<div style="font-weight:400;opacity:.85;font-size:10.5px;margin-top:4px">Named in the README and supplied as a file</div><div style="font-size:20px;font-weight:800;margin-top:8px">4</div></td><td class="tn">dim_merchant</td><td class="rw">26</td><td class="wy"><b>README: DimMerchant from MerchantReference.csv.</b><br><span>Conformed dimension — the single filter path for every fact. Carries an Unknown (-1) member so a future unmatched fact row lands somewhere visible instead of vanishing from every total.</span></td></tr><tr><td class="tn">fct_merchant_sales</td><td class="rw">26,500</td><td class="wy"><b>README: FactMerchantSales from MerchantSales.csv.</b><br><span>Grain Date x Merchant x VoucherType. Merchant/Region/Channel were DROPPED from the fact — profiling proved 100% agreement with MerchantReference, so keeping both would allow two competing versions of 'Region' in one model.</span></td></tr><tr><td class="tn">fct_support_tickets</td><td class="rw">1,363</td><td class="wy"><b>README: FactSupportTickets from SupportTickets.csv.</b><br><span>One row per ticket. sla_hours is stored ON the fact, not resolved from the priority dimension, so a future SLA policy change cannot retrospectively restate whether a historic ticket breached.</span></td></tr><tr><td class="tn">fct_voucher_redemptions</td><td class="rw">120,969</td><td class="wy"><b>README: FactVoucherRedemptions from VoucherRedemptions.csv.</b><br><span>Accumulating snapshot — one row per voucher, updated when the second event (redemption) occurs. Carries TWO date foreign keys: sold_date_key active, redeemed_date_key inactive. Without that split, late redemptions are attributed back to the month of sale and a backlog is invisible.</span></td></tr><tr><td rowspan="1" style="background:#1B6CA8;color:#fff;font-weight:700;font-size:12px;vertical-align:top;padding:10px 12px">README-required<div style="font-weight:400;opacity:.85;font-size:10.5px;margin-top:4px">Named in the README, no file — built here</div><div style="font-size:20px;font-weight:800;margin-top:8px">1</div></td><td class="tn">dim_date</td><td class="rw">365</td><td class="wy"><b>README: 'DimDate: candidate should create a proper date table'. This is the one table in the suggested model with NO source CSV — it is built, not loaded.</b><br><span>Generated to full calendar-year boundaries rather than derived from the facts. Power BI time intelligence (DATEADD, SAMEPERIODLASTYEAR, TOTALYTD) does not error on a gapped calendar — it silently returns a wrong number. Contiguity is therefore tested, not assumed.</span></td></tr><tr><td rowspan="4" style="background:#0E8B8B;color:#fff;font-weight:700;font-size:12px;vertical-align:top;padding:10px 12px">Brief deliverable<div style="font-weight:400;opacity:.85;font-size:10.5px;margin-top:4px">Required by a stated deliverable</div><div style="font-size:20px;font-weight:800;margin-top:8px">4</div></td><td class="tn">dim_priority</td><td class="rw">4</td><td class="wy"><b>Brief section 5 requires 'ticket priority' and 'SLA risk'; section 4 requires an SLA breach indicator.</b><br><span>Carries target_sla_hours plus observed median/P90 resolution time, and derives sla_is_achievable from them. This is what turns the headline operational finding into DATA rather than prose: Critical has a 12h target against a 74h P90, and the model says so in a sortable column.</span></td></tr><tr><td class="tn">dim_ticket_status</td><td class="rw">4</td><td class="wy"><b>Brief section 5 requires ticket status and backlog visibility.</b><br><span>Carries an explicit `ownership` attribute that splits the backlog into 'awaiting us' (146 tickets) and 'awaiting customer' (93). A single '239 open' figure conflates a capacity problem with a chase-the-customer problem — different remediation entirely.</span></td></tr><tr><td class="tn">dim_ticket_type</td><td class="rw">6</td><td class="wy"><b>Brief section 5 requires ticket analysis on the Operational page.</b><br><span>Adds category (Fulfilment / Financial / Commercial) and impact area (Customer vs Merchant impacting) — groupings that do not exist in the source but are how operations actually triage.</span></td></tr><tr><td class="tn">dim_voucher_type</td><td class="rw">5</td><td class="wy"><b>Brief section 5 requires 'voucher type performance' on the Merchant page.</b><br><span>Used by BOTH the sales fact and the redemption fact — the textbook definition of a conformed dimension. Also carries category and margin band, which do not exist in the source and are maintained as a dbt seed so the commercial team can change them without a code deployment.</span></td></tr><tr><td rowspan="1" style="background:#B8860B;color:#fff;font-weight:700;font-size:12px;vertical-align:top;padding:10px 12px">Grain necessity<div style="font-weight:400;opacity:.85;font-size:10.5px;margin-top:4px">Separate grain — additivity</div><div style="font-size:20px;font-weight:800;margin-top:8px">1</div></td><td class="tn">fct_merchant_target</td><td class="rw">175</td><td class="wy"><b>Brief section 4 requires period comparison and a target measure; BaseMonthlySalesTarget is supplied on MerchantReference.</b><br><span>Could have been an attribute on dim_merchant — but it is a MONTHLY measure while sales are DAILY. On the dimension it would re-count once per fact row. A separate fact at month grain, joined only through shared dimensions, is the standard Kimball answer to multi-grain reporting. 25 merchants x 7 months = 175 rows. Targets are pro-rated by days covered so a part-month never shows a false shortfall.</span></td></tr><tr><td rowspan="4" style="background:#7B4B94;color:#fff;font-weight:700;font-size:12px;vertical-align:top;padding:10px 12px">My extension<div style="font-weight:400;opacity:.85;font-size:10.5px;margin-top:4px">Beyond the brief, added on judgement</div><div style="font-size:20px;font-weight:800;margin-top:8px">4</div></td><td class="tn">dim_merchant_history</td><td class="rw">25</td><td class="wy"><b>NOT requested. The Type 2 face of snap_merchant.</b><br><span>dim_merchant answers 'what is this merchant TODAY' and is what the semantic model joins to. This answers 'what was this merchant WHEN that fact happened'. Loading only Type 2 and forcing every query through a date-range join would be purer and practically worse; loading only Type 1 loses history permanently. Both, clearly labelled, is the workable answer.</span></td></tr><tr><td class="tn">mart_merchant_change_alerts</td><td class="rw">0</td><td class="wy"><b>NOT requested. Makes the snapshot actionable.</b><br><span>Diffs consecutive snapshot versions and emits one row per changed field with a severity. A merchant moving to 'At Risk' is Critical; a re-based sales target is High, because it silently invalidates every period-over-period attainment comparison unless someone is told. Capturing history that nobody reads is not worth the storage — this is what makes the snapshot earn its place. Currently 0 rows: no change has occurred since first capture.</span></td></tr><tr><td class="tn">mart_merchant_scorecard</td><td class="rw">25</td><td class="wy"><b>NOT requested. Drill-through target for the Merchant page and feature table for the ML layer.</b><br><span>Holds the composite Health Score. Computed in SQL rather than DAX deliberately: it needs percentile ranking across the whole merchant population (expensive and awkward in DAX) and it must be byte-identical in Power BI, the Excel pack and the ML feature set. One definition in the warehouse is what keeps three artefacts agreeing.</span></td></tr><tr><td class="tn">snap_merchant</td><td class="rw">25</td><td class="wy"><b>NOT requested. Added because MerchantReference is a current-state extract.</b><br><span>Each load overwrites the last, so active_status, account_manager, region and target history is destroyed at source. Two merchants are currently flagged 'At Risk' — 'when did that change, and did performance decline before or after?' is otherwise unanswerable forever. Uses the `check` strategy because the source has no reliable last-modified column (OnboardedDate is when the merchant joined, not when the row was edited).</span></td></tr></tbody></table>
+
+<div class="note warn"><b>The fair criticism, and the answer.</b><br>The fair criticism is that four dimensions of 4-6 rows each is over-normalisation, and some modellers would keep those as degenerate columns on the ticket fact. That was in fact the first design here — all three ticket dimensions unioned into one table behind a discriminator — and it was worse for two concrete reasons. The three foreign keys on fct_support_tickets could not be relationship-tested, because a test cannot distinguish 'priority_key resolves to a priority' from 'resolves to something, somewhere'. And Power BI cannot build three independent filter paths off one physical table without role-playing copies. Splitting them added 9 enforced foreign keys that previously could not exist.</div>
+
+<div class="note"><b>Why this diagram is generated, not drawn.</b> <code>dbt docs</code> shows
+the DAG &mdash; which model <i>builds from</i> which. That is build lineage, not entity
+relationships: it cannot show that <code>fct_support_tickets.priority_key</code> joins to
+<code>dim_priority</code>, because the fact is built from staging, not from the dimension.<br><br>
+The real foreign keys live in the schema tests. Every <code>relationships</code> test is a
+statement of &ldquo;this column must resolve to that column&rdquo;, and it is enforced on
+every <code>dbt build</code>. This ERD is derived from those tests, so it cannot drift from
+reality &mdash; drop a join and the test disappears, and so does the line.</div>
+</body></html>

@@ -1,0 +1,268 @@
+{
+    "name": "PL_MerchantVoucher_Master",
+    "properties": {
+        "description": "Master orchestration pipeline for the Merchant Sales & Voucher Intelligence solution. Runs daily at 02:00 SAST. Design principles: (1) ingest is metadata-driven via ForEach over a parameter array, so adding a source is a config change not a pipeline change; (2) the transformation layer is gated on data-quality validation - bad data never reaches gold; (3) the semantic model refresh is the LAST step and only fires if everything upstream succeeded, so the report is never partially refreshed.",
+        "activities": [
+            {
+                "name": "Set Batch ID",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "policy": {"secureOutput": false, "secureInput": false},
+                "typeProperties": {
+                    "variableName": "BatchId",
+                    "value": {
+                        "value": "@formatDateTime(utcnow(), 'yyyyMMddTHHmmssZ')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Log Pipeline Start",
+                "type": "Script",
+                "dependsOn": [{"activity": "Set Batch ID", "dependencyConditions": ["Succeeded"]}],
+                "linkedServiceName": {"referenceName": "LS_Fabric_Warehouse", "type": "LinkedServiceReference"},
+                "typeProperties": {
+                    "scripts": [{
+                        "type": "NonQuery",
+                        "text": {
+                            "value": "INSERT INTO audit.pipeline_run (batch_id, pipeline_name, run_id, started_at, status) VALUES ('@{variables('BatchId')}', '@{pipeline().Pipeline}', '@{pipeline().RunId}', SYSUTCDATETIME(), 'RUNNING')",
+                            "type": "Expression"
+                        }
+                    }]
+                }
+            },
+            {
+                "name": "ForEach Source File",
+                "description": "Metadata-driven ingest. The SourceFiles parameter carries one object per source; adding a fifth file requires no change to this pipeline. Sequential is false so the four copies run in parallel, but batchCount is capped at 4 to avoid saturating the capacity.",
+                "type": "ForEach",
+                "dependsOn": [{"activity": "Log Pipeline Start", "dependencyConditions": ["Succeeded"]}],
+                "typeProperties": {
+                    "items": {"value": "@pipeline().parameters.SourceFiles", "type": "Expression"},
+                    "isSequential": false,
+                    "batchCount": 4,
+                    "activities": [
+                        {
+                            "name": "Copy to Bronze",
+                            "type": "Copy",
+                            "policy": {
+                                "timeout": "0.02:00:00",
+                                "retry": 3,
+                                "retryIntervalInSeconds": 60,
+                                "secureOutput": false
+                            },
+                            "typeProperties": {
+                                "source": {
+                                    "type": "DelimitedTextSource",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSReadSettings",
+                                        "recursive": false,
+                                        "wildcardFileName": {"value": "@item().fileName", "type": "Expression"}
+                                    },
+                                    "formatSettings": {"type": "DelimitedTextReadSettings"}
+                                },
+                                "sink": {
+                                    "type": "LakehouseTableSink",
+                                    "tableActionOption": "Overwrite",
+                                    "partitionOption": "None"
+                                },
+                                "enableStaging": false,
+                                "translator": {
+                                    "type": "TabularTranslator",
+                                    "typeConversion": true,
+                                    "typeConversionSettings": {
+                                        "allowDataTruncation": false,
+                                        "treatBooleanAsNumber": false
+                                    }
+                                }
+                            },
+                            "inputs": [{
+                                "referenceName": "DS_Landing_CSV",
+                                "type": "DatasetReference",
+                                "parameters": {"fileName": {"value": "@item().fileName", "type": "Expression"}}
+                            }],
+                            "outputs": [{
+                                "referenceName": "DS_Lakehouse_Bronze",
+                                "type": "DatasetReference",
+                                "parameters": {"tableName": {"value": "@item().bronzeTable", "type": "Expression"}}
+                            }]
+                        },
+                        {
+                            "name": "Validate Row Count",
+                            "description": "Fails the iteration if the landed row count falls below the configured floor. An empty or truncated file is the most common silent pipeline failure - it does not error, it just produces a dashboard showing zero.",
+                            "type": "IfCondition",
+                            "dependsOn": [{"activity": "Copy to Bronze", "dependencyConditions": ["Succeeded"]}],
+                            "typeProperties": {
+                                "expression": {
+                                    "value": "@less(activity('Copy to Bronze').output.rowsCopied, item().minRows)",
+                                    "type": "Expression"
+                                },
+                                "ifTrueActivities": [{
+                                    "name": "Fail Low Row Count",
+                                    "type": "Fail",
+                                    "typeProperties": {
+                                        "message": {
+                                            "value": "@concat('Row count validation failed for ', item().fileName, '. Expected at least ', string(item().minRows), ' rows, received ', string(activity('Copy to Bronze').output.rowsCopied), '. Pipeline halted before gold to prevent publishing an under-populated report.')",
+                                            "type": "Expression"
+                                        },
+                                        "errorCode": "ROWCOUNT_BELOW_THRESHOLD"
+                                    }
+                                }]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Transform Bronze to Silver",
+                "description": "Fabric notebook: typing, cleansing, conformance and business rules.",
+                "type": "TridentNotebook",
+                "dependsOn": [{"activity": "ForEach Source File", "dependencyConditions": ["Succeeded"]}],
+                "policy": {"timeout": "0.02:00:00", "retry": 1, "retryIntervalInSeconds": 120},
+                "typeProperties": {
+                    "notebookId": "@pipeline().parameters.NotebookId_BronzeToSilver",
+                    "workspaceId": "@pipeline().parameters.WorkspaceId",
+                    "parameters": {
+                        "batch_id": {"value": {"value": "@variables('BatchId')", "type": "Expression"}, "type": "string"},
+                        "run_id": {"value": {"value": "@pipeline().RunId", "type": "Expression"}, "type": "string"}
+                    }
+                }
+            },
+            {
+                "name": "Run Data Quality Gate",
+                "description": "Executes the dbt test suite (69 tests) against silver. This is the gate: gold is not built unless every test passes. Running the tests AFTER loading gold would mean discovering the problem once the report already showed it.",
+                "type": "TridentNotebook",
+                "dependsOn": [{"activity": "Transform Bronze to Silver", "dependencyConditions": ["Succeeded"]}],
+                "policy": {"timeout": "0.01:00:00", "retry": 0},
+                "typeProperties": {
+                    "notebookId": "@pipeline().parameters.NotebookId_DataQuality",
+                    "workspaceId": "@pipeline().parameters.WorkspaceId",
+                    "parameters": {
+                        "batch_id": {"value": {"value": "@variables('BatchId')", "type": "Expression"}, "type": "string"},
+                        "fail_on_error": {"value": true, "type": "bool"}
+                    }
+                }
+            },
+            {
+                "name": "Check Quality Gate Result",
+                "type": "IfCondition",
+                "dependsOn": [{"activity": "Run Data Quality Gate", "dependencyConditions": ["Succeeded"]}],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@equals(activity('Run Data Quality Gate').output.result.exitValue, 'PASS')",
+                        "type": "Expression"
+                    },
+                    "ifFalseActivities": [
+                        {
+                            "name": "Alert Data Quality Failure",
+                            "type": "WebActivity",
+                            "typeProperties": {
+                                "url": {"value": "@pipeline().parameters.TeamsWebhookUrl", "type": "Expression"},
+                                "method": "POST",
+                                "body": {
+                                    "value": "@concat('{\"text\":\"DATA QUALITY GATE FAILED - batch ', variables('BatchId'), '. Gold layer was NOT refreshed; the Power BI report is still showing the previous good load. Review the dbt test output before re-running.\"}')",
+                                    "type": "Expression"
+                                }
+                            }
+                        },
+                        {
+                            "name": "Fail Pipeline on DQ",
+                            "type": "Fail",
+                            "dependsOn": [{"activity": "Alert Data Quality Failure", "dependencyConditions": ["Completed"]}],
+                            "typeProperties": {
+                                "message": "Data quality gate failed. Gold layer intentionally not refreshed - stale-but-correct beats fresh-but-wrong.",
+                                "errorCode": "DQ_GATE_FAILED"
+                            }
+                        }
+                    ],
+                    "ifTrueActivities": [
+                        {
+                            "name": "Build Gold Star Schema",
+                            "description": "dbt run --select marts. Builds dimensions then facts then the analytics mart, in dependency order resolved by dbt.",
+                            "type": "TridentNotebook",
+                            "policy": {"timeout": "0.02:00:00", "retry": 1, "retryIntervalInSeconds": 120},
+                            "typeProperties": {
+                                "notebookId": "@pipeline().parameters.NotebookId_SilverToGold",
+                                "workspaceId": "@pipeline().parameters.WorkspaceId",
+                                "parameters": {
+                                    "batch_id": {"value": {"value": "@variables('BatchId')", "type": "Expression"}, "type": "string"}
+                                }
+                            }
+                        },
+                        {
+                            "name": "Run ML Scoring",
+                            "description": "Anomaly detection, redemption propensity, resolution-time regression, forecasting and segmentation. Scored outputs are written back to gold so Power BI reads predictions as ordinary tables - no model call at query time, so report performance is unaffected.",
+                            "type": "TridentNotebook",
+                            "dependsOn": [{"activity": "Build Gold Star Schema", "dependencyConditions": ["Succeeded"]}],
+                            "policy": {"timeout": "0.03:00:00", "retry": 1, "retryIntervalInSeconds": 180},
+                            "typeProperties": {
+                                "notebookId": "@pipeline().parameters.NotebookId_MLScoring",
+                                "workspaceId": "@pipeline().parameters.WorkspaceId",
+                                "parameters": {
+                                    "batch_id": {"value": {"value": "@variables('BatchId')", "type": "Expression"}, "type": "string"},
+                                    "retrain": {"value": false, "type": "bool"}
+                                }
+                            }
+                        },
+                        {
+                            "name": "Refresh Semantic Model",
+                            "description": "Direct Lake means no data import, but the semantic model still needs framing after the underlying Delta tables change. This is deliberately the last step.",
+                            "type": "WebActivity",
+                            "dependsOn": [{"activity": "Run ML Scoring", "dependencyConditions": ["Succeeded"]}],
+                            "policy": {"timeout": "0.01:00:00", "retry": 2, "retryIntervalInSeconds": 60},
+                            "typeProperties": {
+                                "url": {
+                                    "value": "@concat('https://api.powerbi.com/v1.0/myorg/groups/', pipeline().parameters.WorkspaceId, '/datasets/', pipeline().parameters.SemanticModelId, '/refreshes')",
+                                    "type": "Expression"
+                                },
+                                "method": "POST",
+                                "body": {"type": "Full", "commitMode": "Transactional", "notifyOption": "MailOnFailure"},
+                                "authentication": {
+                                    "type": "MSI",
+                                    "resource": "https://analysis.windows.net/powerbi/api"
+                                }
+                            }
+                        },
+                        {
+                            "name": "Log Pipeline Success",
+                            "type": "Script",
+                            "dependsOn": [{"activity": "Refresh Semantic Model", "dependencyConditions": ["Succeeded"]}],
+                            "linkedServiceName": {"referenceName": "LS_Fabric_Warehouse", "type": "LinkedServiceReference"},
+                            "typeProperties": {
+                                "scripts": [{
+                                    "type": "NonQuery",
+                                    "text": {
+                                        "value": "UPDATE audit.pipeline_run SET status = 'SUCCEEDED', finished_at = SYSUTCDATETIME() WHERE batch_id = '@{variables('BatchId')}'",
+                                        "type": "Expression"
+                                    }
+                                }]
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "parameters": {
+            "WorkspaceId": {"type": "string"},
+            "SemanticModelId": {"type": "string"},
+            "NotebookId_BronzeToSilver": {"type": "string"},
+            "NotebookId_SilverToGold": {"type": "string"},
+            "NotebookId_DataQuality": {"type": "string"},
+            "NotebookId_MLScoring": {"type": "string"},
+            "TeamsWebhookUrl": {"type": "string"},
+            "SourceFiles": {
+                "type": "array",
+                "defaultValue": [
+                    {"fileName": "MerchantReference.csv",   "bronzeTable": "bronze_merchant_reference",   "minRows": 20},
+                    {"fileName": "MerchantSales.csv",       "bronzeTable": "bronze_merchant_sales",       "minRows": 20000},
+                    {"fileName": "VoucherRedemptions.csv",  "bronzeTable": "bronze_voucher_redemptions",  "minRows": 100000},
+                    {"fileName": "SupportTickets.csv",      "bronzeTable": "bronze_support_tickets",      "minRows": 1000}
+                ]
+            }
+        },
+        "variables": {
+            "BatchId": {"type": "String"}
+        },
+        "folder": {"name": "MerchantVoucherIntelligence"},
+        "annotations": ["medallion", "daily", "production"]
+    }
+}

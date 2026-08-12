@@ -1,0 +1,3321 @@
+{
+ "meta": {
+  "period_start": "2026-01-01",
+  "period_end": "2026-07-31",
+  "months": [
+   "Jan 2026",
+   "Feb 2026",
+   "Mar 2026",
+   "Apr 2026",
+   "May 2026",
+   "Jun 2026",
+   "Jul 2026"
+  ],
+  "merchants": 25,
+  "regions": 5,
+  "voucher_types": 5,
+  "currency": "ZAR"
+ },
+ "kpi": {
+  "total_sales": 65521298.75,
+  "total_transactions": 510127,
+  "avg_basket": 128.44,
+  "redemption_rate": 84.19,
+  "avg_resolution_hours": 23.73,
+  "sla_breach_pct": 26.27,
+  "delayed_redemption_pct": 13.87,
+  "avg_days_to_redeem": 3.58,
+  "total_tickets": 1363,
+  "open_tickets": 239,
+  "vouchers_sold": 120969,
+  "voucher_value": 22019852.75,
+  "current_month_sales": 10466949.49,
+  "prev_month_sales": 10186806.44,
+  "mom_pct": 2.75
+ },
+ "monthly_sales": [
+  {
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "SalesValue": 8163258.77,
+   "Transactions": 63581
+  },
+  {
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "SalesValue": 7914804.79,
+   "Transactions": 62058
+  },
+  {
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "SalesValue": 9261644.49,
+   "Transactions": 72488
+  },
+  {
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "SalesValue": 9415908.87,
+   "Transactions": 74021
+  },
+  {
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "SalesValue": 10111925.9,
+   "Transactions": 79228
+  },
+  {
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "SalesValue": 10186806.44,
+   "Transactions": 78445
+  },
+  {
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "SalesValue": 10466949.49,
+   "Transactions": 80306
+  }
+ ],
+ "monthly_redemption": [
+  {
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "RedemptionRate": 84.19
+  },
+  {
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "RedemptionRate": 84.53
+  },
+  {
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "RedemptionRate": 83.89
+  },
+  {
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "RedemptionRate": 84.17
+  },
+  {
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "RedemptionRate": 84.02
+  },
+  {
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "RedemptionRate": 84.15
+  },
+  {
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "RedemptionRate": 84.41
+  }
+ ],
+ "monthly_tickets": [
+  {
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "Tickets": 198,
+   "AvgResolutionHours": 22.97,
+   "Breaches": 55,
+   "SLABreachPct": 27.78
+  },
+  {
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "Tickets": 156,
+   "AvgResolutionHours": 21.67,
+   "Breaches": 35,
+   "SLABreachPct": 22.44
+  },
+  {
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "Tickets": 177,
+   "AvgResolutionHours": 25.97,
+   "Breaches": 47,
+   "SLABreachPct": 26.55
+  },
+  {
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "Tickets": 170,
+   "AvgResolutionHours": 21.94,
+   "Breaches": 34,
+   "SLABreachPct": 20.0
+  },
+  {
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "Tickets": 188,
+   "AvgResolutionHours": 26.34,
+   "Breaches": 58,
+   "SLABreachPct": 30.85
+  },
+  {
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "Tickets": 215,
+   "AvgResolutionHours": 24.21,
+   "Breaches": 58,
+   "SLABreachPct": 26.98
+  },
+  {
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "Tickets": 259,
+   "AvgResolutionHours": 22.89,
+   "Breaches": 71,
+   "SLABreachPct": 27.41
+  }
+ ],
+ "region_totals": [
+  {
+   "Region": "Free State",
+   "SalesValue": 18009802.27,
+   "Transactions": 138619
+  },
+  {
+   "Region": "Gauteng",
+   "SalesValue": 16145480.7,
+   "Transactions": 127223
+  },
+  {
+   "Region": "Western Cape",
+   "SalesValue": 13068297.25,
+   "Transactions": 101805
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "SalesValue": 9516588.94,
+   "Transactions": 74265
+  },
+  {
+   "Region": "Eastern Cape",
+   "SalesValue": 8781129.59,
+   "Transactions": 68215
+  }
+ ],
+ "region_series": {
+  "Eastern Cape": [
+   1141173.17,
+   1114985.56,
+   1306887.95,
+   1323562.38,
+   1400867.94,
+   1229382.04,
+   1264270.55
+  ],
+  "Free State": [
+   2257866.24,
+   2191076.83,
+   2559988.03,
+   2612295.79,
+   2739819.87,
+   2811837.22,
+   2836918.29
+  ],
+  "Gauteng": [
+   2029746.14,
+   1954437.36,
+   2310502.4,
+   2328157.67,
+   2416014.2,
+   2508761.08,
+   2597861.85
+  ],
+  "KwaZulu-Natal": [
+   1085436.49,
+   1062190.14,
+   1229639.89,
+   1252640.24,
+   1591555.87,
+   1614568.19,
+   1680558.12
+  ],
+  "Western Cape": [
+   1649036.73,
+   1592114.9,
+   1854626.22,
+   1899252.79,
+   1963668.02,
+   2022257.91,
+   2087340.68
+  ]
+ },
+ "region_momentum": [
+  {
+   "Region": "Eastern Cape",
+   "LastMonth": 1264270.55,
+   "Prior3MonthAvg": 1317937.45,
+   "MomentumPct": -4.07
+  },
+  {
+   "Region": "Free State",
+   "LastMonth": 2836918.29,
+   "Prior3MonthAvg": 2721317.63,
+   "MomentumPct": 4.25
+  },
+  {
+   "Region": "Western Cape",
+   "LastMonth": 2087340.68,
+   "Prior3MonthAvg": 1961726.24,
+   "MomentumPct": 6.4
+  },
+  {
+   "Region": "Gauteng",
+   "LastMonth": 2597861.85,
+   "Prior3MonthAvg": 2417644.32,
+   "MomentumPct": 7.45
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "LastMonth": 1680558.12,
+   "Prior3MonthAvg": 1486254.77,
+   "MomentumPct": 13.07
+  }
+ ],
+ "merchants": [
+  {
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Channel": "Retail",
+   "SalesValue": 5776118.74,
+   "Transactions": 45371,
+   "SharePct": 8.82,
+   "CumSharePct": 8.82,
+   "Rank": 1,
+   "AvgBasket": 127.31,
+   "RedemptionRate": 83.79,
+   "Vouchers": 5267,
+   "Tickets": 124,
+   "AvgResolutionHours": 27.29,
+   "SLABreaches": 44,
+   "SLABreachPct": 35.48,
+   "TicketsPer1kTx": 2.73,
+   "SalesMoMPct": 1.76,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Durban Cash Hub (Western Cape, Retail) stable: sales +1.8% month on month, driven by average basket size (+3.8%) rather than transaction volume (-1.9%). Support ticket volume was 52 versus 44 last month."
+  },
+  {
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Agent Network",
+   "SalesValue": 4535329.73,
+   "Transactions": 35458,
+   "SharePct": 6.92,
+   "CumSharePct": 15.74,
+   "Rank": 2,
+   "AvgBasket": 127.91,
+   "RedemptionRate": 84.5,
+   "Vouchers": 5285,
+   "Tickets": 63,
+   "AvgResolutionHours": 22.39,
+   "SLABreaches": 16,
+   "SLABreachPct": 25.4,
+   "TicketsPer1kTx": 1.78,
+   "SalesMoMPct": 4.16,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Kudu Digital Kiosk (KwaZulu-Natal, Agent Network) stable: sales +4.2% month on month, driven by transaction volume (+10.5%) rather than basket size (-5.7%). Support ticket volume was 13 versus 12 last month."
+  },
+  {
+   "MerchantKey": "M018",
+   "Merchant": "Zebra Route Services",
+   "Region": "Gauteng",
+   "Channel": "Agent Network",
+   "SalesValue": 4519761.94,
+   "Transactions": 35910,
+   "SharePct": 6.9,
+   "CumSharePct": 22.64,
+   "Rank": 3,
+   "AvgBasket": 125.86,
+   "RedemptionRate": 84.06,
+   "Vouchers": 5326,
+   "Tickets": 67,
+   "AvgResolutionHours": 25.15,
+   "SLABreaches": 25,
+   "SLABreachPct": 37.31,
+   "TicketsPer1kTx": 1.87,
+   "SalesMoMPct": 3.46,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Zebra Route Services (Gauteng, Agent Network) stable: sales +3.5% month on month, driven by average basket size (+2.6%) rather than transaction volume (+0.8%). Support ticket volume was 7 versus 9 last month."
+  },
+  {
+   "MerchantKey": "M025",
+   "Merchant": "Karoo Quick Shop",
+   "Region": "Gauteng",
+   "Channel": "Wholesale",
+   "SalesValue": 4395067.11,
+   "Transactions": 34657,
+   "SharePct": 6.71,
+   "CumSharePct": 29.34,
+   "Rank": 4,
+   "AvgBasket": 126.82,
+   "RedemptionRate": 84.61,
+   "Vouchers": 5210,
+   "Tickets": 51,
+   "AvgResolutionHours": 19.86,
+   "SLABreaches": 10,
+   "SLABreachPct": 19.61,
+   "TicketsPer1kTx": 1.47,
+   "SalesMoMPct": 3.14,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Karoo Quick Shop (Gauteng, Wholesale) stable: sales +3.1% month on month, driven by average basket size (+7.1%) rather than transaction volume (-3.7%). Support ticket volume was 5 versus 8 last month."
+  },
+  {
+   "MerchantKey": "M017",
+   "Merchant": "Lighthouse General Dealer",
+   "Region": "Gauteng",
+   "Channel": "Wholesale",
+   "SalesValue": 3965086.39,
+   "Transactions": 31124,
+   "SharePct": 6.05,
+   "CumSharePct": 35.4,
+   "Rank": 5,
+   "AvgBasket": 127.4,
+   "RedemptionRate": 83.37,
+   "Vouchers": 5195,
+   "Tickets": 35,
+   "AvgResolutionHours": 20.32,
+   "SLABreaches": 7,
+   "SLABreachPct": 20.0,
+   "TicketsPer1kTx": 1.12,
+   "SalesMoMPct": 3.58,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Lighthouse General Dealer (Gauteng, Wholesale) stable: sales +3.6% month on month, driven by transaction volume (+5.4%) rather than basket size (-1.7%). Support ticket volume was 3 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M022",
+   "Merchant": "North Coast Connect",
+   "Region": "Free State",
+   "Channel": "Online",
+   "SalesValue": 3731381.85,
+   "Transactions": 29341,
+   "SharePct": 5.69,
+   "CumSharePct": 41.09,
+   "Rank": 6,
+   "AvgBasket": 127.17,
+   "RedemptionRate": 84.05,
+   "Vouchers": 5398,
+   "Tickets": 45,
+   "AvgResolutionHours": 25.41,
+   "SLABreaches": 13,
+   "SLABreachPct": 28.89,
+   "TicketsPer1kTx": 1.53,
+   "SalesMoMPct": 2.2,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "North Coast Connect (Free State, Online) stable: sales +2.2% month on month, volume and basket size moved together (+1.3% and +0.9%). Support ticket volume was 8 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M024",
+   "Merchant": "Ubuntu Trading Post",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Retail",
+   "SalesValue": 3548946.51,
+   "Transactions": 27865,
+   "SharePct": 5.42,
+   "CumSharePct": 46.51,
+   "Rank": 7,
+   "AvgBasket": 127.36,
+   "RedemptionRate": 83.32,
+   "Vouchers": 5431,
+   "Tickets": 80,
+   "AvgResolutionHours": 20.79,
+   "SLABreaches": 21,
+   "SLABreachPct": 26.25,
+   "TicketsPer1kTx": 2.87,
+   "SalesMoMPct": 5.42,
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "Narrative": "Ubuntu Trading Post (KwaZulu-Natal, Retail) growing: sales +5.4% month on month, driven by transaction volume (+4.7%) rather than basket size (+0.7%). Support ticket volume was 11 versus 13 last month."
+  },
+  {
+   "MerchantKey": "M008",
+   "Merchant": "Table Bay Express",
+   "Region": "Eastern Cape",
+   "Channel": "Wholesale",
+   "SalesValue": 3325306.26,
+   "Transactions": 26056,
+   "SharePct": 5.08,
+   "CumSharePct": 51.58,
+   "Rank": 8,
+   "AvgBasket": 127.62,
+   "RedemptionRate": 83.76,
+   "Vouchers": 5307,
+   "Tickets": 48,
+   "AvgResolutionHours": 25.61,
+   "SLABreaches": 16,
+   "SLABreachPct": 33.33,
+   "TicketsPer1kTx": 1.84,
+   "SalesMoMPct": -0.27,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Table Bay Express (Eastern Cape, Wholesale) stable: sales -0.3% month on month, volume and basket size moved together (+3.1% and -3.2%). Support ticket volume was 9 versus 6 last month."
+  },
+  {
+   "MerchantKey": "M001",
+   "Merchant": "Blue Crane Trading",
+   "Region": "Gauteng",
+   "Channel": "Retail",
+   "SalesValue": 3265565.26,
+   "Transactions": 25532,
+   "SharePct": 4.98,
+   "CumSharePct": 56.57,
+   "Rank": 9,
+   "AvgBasket": 127.9,
+   "RedemptionRate": 84.86,
+   "Vouchers": 5217,
+   "Tickets": 44,
+   "AvgResolutionHours": 23.2,
+   "SLABreaches": 9,
+   "SLABreachPct": 20.45,
+   "TicketsPer1kTx": 1.72,
+   "SalesMoMPct": 4.21,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Blue Crane Trading (Gauteng, Retail) stable: sales +4.2% month on month, driven by average basket size (+3.7%) rather than transaction volume (+0.5%). Support ticket volume was 9 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M021",
+   "Merchant": "Liberty Lane Stores",
+   "Region": "Western Cape",
+   "Channel": "Wholesale",
+   "SalesValue": 3185149.79,
+   "Transactions": 24828,
+   "SharePct": 4.86,
+   "CumSharePct": 61.43,
+   "Rank": 10,
+   "AvgBasket": 128.29,
+   "RedemptionRate": 83.66,
+   "Vouchers": 5356,
+   "Tickets": 30,
+   "AvgResolutionHours": 28.2,
+   "SLABreaches": 10,
+   "SLABreachPct": 33.33,
+   "TicketsPer1kTx": 1.21,
+   "SalesMoMPct": 2.99,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Liberty Lane Stores (Western Cape, Wholesale) stable: sales +3.0% month on month, driven by average basket size (+2.5%) rather than transaction volume (+0.5%). Support ticket volume was 1 versus 2 last month."
+  },
+  {
+   "MerchantKey": "M012",
+   "Merchant": "Wild Coast Convenience",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "SalesValue": 3040622.49,
+   "Transactions": 23836,
+   "SharePct": 4.64,
+   "CumSharePct": 66.07,
+   "Rank": 11,
+   "AvgBasket": 127.56,
+   "RedemptionRate": 83.34,
+   "Vouchers": 5258,
+   "Tickets": 30,
+   "AvgResolutionHours": 28.43,
+   "SLABreaches": 8,
+   "SLABreachPct": 26.67,
+   "TicketsPer1kTx": 1.26,
+   "SalesMoMPct": 1.33,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Wild Coast Convenience (Free State, Retail) stable: sales +1.3% month on month, driven by transaction volume (+1.0%) rather than basket size (+0.3%). Support tickets rose from 2 to 8 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M009",
+   "Merchant": "Soweto Super Save",
+   "Region": "Western Cape",
+   "Channel": "Online",
+   "SalesValue": 3029370.8,
+   "Transactions": 23409,
+   "SharePct": 4.62,
+   "CumSharePct": 70.69,
+   "Rank": 12,
+   "AvgBasket": 129.41,
+   "RedemptionRate": 83.29,
+   "Vouchers": 5242,
+   "Tickets": 41,
+   "AvgResolutionHours": 18.91,
+   "SLABreaches": 7,
+   "SLABreachPct": 17.07,
+   "TicketsPer1kTx": 1.75,
+   "SalesMoMPct": 4.98,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Soweto Super Save (Western Cape, Online) stable: sales +5.0% month on month, driven by transaction volume (+5.5%) rather than basket size (-0.5%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M019",
+   "Merchant": "Mzansi Mini Market",
+   "Region": "Eastern Cape",
+   "Channel": "Retail",
+   "SalesValue": 2613183.07,
+   "Transactions": 20364,
+   "SharePct": 3.99,
+   "CumSharePct": 74.68,
+   "Rank": 13,
+   "AvgBasket": 128.32,
+   "RedemptionRate": 84.26,
+   "Vouchers": 5306,
+   "Tickets": 23,
+   "AvgResolutionHours": 22.3,
+   "SLABreaches": 4,
+   "SLABreachPct": 17.39,
+   "TicketsPer1kTx": 1.13,
+   "SalesMoMPct": 5.71,
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "Narrative": "Mzansi Mini Market (Eastern Cape, Retail) growing: sales +5.7% month on month, driven by transaction volume (+5.7%) rather than basket size (+0.0%). Support tickets rose from 3 to 6 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M015",
+   "Merchant": "Mango Tree Mobile",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "SalesValue": 2196476.67,
+   "Transactions": 16929,
+   "SharePct": 3.35,
+   "CumSharePct": 78.03,
+   "Rank": 14,
+   "AvgBasket": 129.75,
+   "RedemptionRate": 84.44,
+   "Vouchers": 5187,
+   "Tickets": 109,
+   "AvgResolutionHours": 27.09,
+   "SLABreaches": 32,
+   "SLABreachPct": 29.36,
+   "TicketsPer1kTx": 6.44,
+   "SalesMoMPct": 5.46,
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "Narrative": "Mango Tree Mobile (Free State, Agent Network) growing: sales +5.5% month on month, driven by transaction volume (+4.1%) rather than basket size (+1.3%). Support ticket volume was 17 versus 18 last month."
+  },
+  {
+   "MerchantKey": "M006",
+   "Merchant": "Marula Market",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "SalesValue": 2138321.62,
+   "Transactions": 16518,
+   "SharePct": 3.26,
+   "CumSharePct": 81.3,
+   "Rank": 15,
+   "AvgBasket": 129.45,
+   "RedemptionRate": 84.63,
+   "Vouchers": 5113,
+   "Tickets": 62,
+   "AvgResolutionHours": 21.56,
+   "SLABreaches": 13,
+   "SLABreachPct": 20.97,
+   "TicketsPer1kTx": 3.75,
+   "SalesMoMPct": 2.73,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Marula Market (Free State, Agent Network) stable: sales +2.7% month on month, driven by transaction volume (+3.6%) rather than basket size (-0.8%). Support ticket volume was 5 versus 9 last month."
+  },
+  {
+   "MerchantKey": "M016",
+   "Merchant": "Pretoria PayPoint",
+   "Region": "Eastern Cape",
+   "Channel": "Online",
+   "SalesValue": 2066202.17,
+   "Transactions": 16127,
+   "SharePct": 3.15,
+   "CumSharePct": 84.45,
+   "Rank": 16,
+   "AvgBasket": 128.12,
+   "RedemptionRate": 82.63,
+   "Vouchers": 5129,
+   "Tickets": 32,
+   "AvgResolutionHours": 23.42,
+   "SLABreaches": 10,
+   "SLABreachPct": 31.25,
+   "TicketsPer1kTx": 1.98,
+   "SalesMoMPct": 3.99,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Pretoria PayPoint (Eastern Cape, Online) stable: sales +4.0% month on month, driven by transaction volume (+2.6%) rather than basket size (+1.4%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M010",
+   "Merchant": "Nelson Bay Traders",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "SalesValue": 1694276.03,
+   "Transactions": 12930,
+   "SharePct": 2.59,
+   "CumSharePct": 87.03,
+   "Rank": 17,
+   "AvgBasket": 131.03,
+   "RedemptionRate": 83.41,
+   "Vouchers": 5002,
+   "Tickets": 76,
+   "AvgResolutionHours": 22.15,
+   "SLABreaches": 16,
+   "SLABreachPct": 21.05,
+   "TicketsPer1kTx": 5.88,
+   "SalesMoMPct": 2.97,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Nelson Bay Traders (Free State, Agent Network) stable: sales +3.0% month on month, driven by transaction volume (+7.4%) rather than basket size (-4.1%). Support ticket volume was 13 versus 10 last month."
+  },
+  {
+   "MerchantKey": "M020",
+   "Merchant": "Sunbird Topups",
+   "Region": "Free State",
+   "Channel": "Wholesale",
+   "SalesValue": 1693657.85,
+   "Transactions": 13079,
+   "SharePct": 2.58,
+   "CumSharePct": 89.62,
+   "Rank": 18,
+   "AvgBasket": 129.49,
+   "RedemptionRate": 84.06,
+   "Vouchers": 4963,
+   "Tickets": 43,
+   "AvgResolutionHours": 21.88,
+   "SLABreaches": 7,
+   "SLABreachPct": 16.28,
+   "TicketsPer1kTx": 3.29,
+   "SalesMoMPct": 3.25,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Sunbird Topups (Free State, Wholesale) stable: sales +3.3% month on month, driven by transaction volume (+3.7%) rather than basket size (-0.5%). Support ticket volume was 7 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M005",
+   "Merchant": "Jozi Corner Store",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "SalesValue": 1502983.68,
+   "Transactions": 11483,
+   "SharePct": 2.29,
+   "CumSharePct": 91.91,
+   "Rank": 19,
+   "AvgBasket": 130.89,
+   "RedemptionRate": 84.59,
+   "Vouchers": 4875,
+   "Tickets": 43,
+   "AvgResolutionHours": 24.18,
+   "SLABreaches": 11,
+   "SLABreachPct": 25.58,
+   "TicketsPer1kTx": 3.74,
+   "SalesMoMPct": 3.47,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Jozi Corner Store (Free State, Retail) stable: sales +3.5% month on month, driven by transaction volume (+7.0%) rather than basket size (-3.3%). Support tickets rose from 4 to 11 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M014",
+   "Merchant": "Golden Mile Grocers",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Retail",
+   "SalesValue": 1432312.7,
+   "Transactions": 10942,
+   "SharePct": 2.19,
+   "CumSharePct": 94.1,
+   "Rank": 20,
+   "AvgBasket": 130.9,
+   "RedemptionRate": 84.71,
+   "Vouchers": 4730,
+   "Tickets": 30,
+   "AvgResolutionHours": 24.86,
+   "SLABreaches": 9,
+   "SLABreachPct": 30.0,
+   "TicketsPer1kTx": 2.74,
+   "SalesMoMPct": 0.59,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Golden Mile Grocers (KwaZulu-Natal, Retail) stable: sales +0.6% month on month, volume and basket size moved together (+3.5% and -2.8%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M011",
+   "Merchant": "Berg River Retail",
+   "Region": "Western Cape",
+   "Channel": "Agent Network",
+   "SalesValue": 1077657.92,
+   "Transactions": 8197,
+   "SharePct": 1.64,
+   "CumSharePct": 95.74,
+   "Rank": 21,
+   "AvgBasket": 131.47,
+   "RedemptionRate": 85.14,
+   "Vouchers": 4165,
+   "Tickets": 69,
+   "AvgResolutionHours": 21.56,
+   "SLABreaches": 16,
+   "SLABreachPct": 23.19,
+   "TicketsPer1kTx": 8.42,
+   "SalesMoMPct": 7.01,
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "Narrative": "Berg River Retail (Western Cape, Agent Network) growing: sales +7.0% month on month, driven by transaction volume (+8.4%) rather than basket size (-1.3%). Support ticket volume was 7 versus 8 last month."
+  },
+  {
+   "MerchantKey": "M023",
+   "Merchant": "Valley View Retail",
+   "Region": "Free State",
+   "Channel": "Wholesale",
+   "SalesValue": 822002.78,
+   "Transactions": 6032,
+   "SharePct": 1.25,
+   "CumSharePct": 97.0,
+   "Rank": 22,
+   "AvgBasket": 136.27,
+   "RedemptionRate": 85.86,
+   "Vouchers": 3628,
+   "Tickets": 39,
+   "AvgResolutionHours": 21.68,
+   "SLABreaches": 10,
+   "SLABreachPct": 25.64,
+   "TicketsPer1kTx": 6.47,
+   "SalesMoMPct": 5.44,
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "Narrative": "Valley View Retail (Free State, Wholesale) growing: sales +5.4% month on month, driven by transaction volume (+5.7%) rather than basket size (-0.2%). Support ticket volume was 4 versus 10 last month."
+  },
+  {
+   "MerchantKey": "M004",
+   "Merchant": "Cape Point Cellular",
+   "Region": "Eastern Cape",
+   "Channel": "Online",
+   "SalesValue": 776438.09,
+   "Transactions": 5668,
+   "SharePct": 1.19,
+   "CumSharePct": 98.18,
+   "Rank": 23,
+   "AvgBasket": 136.99,
+   "RedemptionRate": 86.75,
+   "Vouchers": 3571,
+   "Tickets": 44,
+   "AvgResolutionHours": 29.53,
+   "SLABreaches": 15,
+   "SLABreachPct": 34.09,
+   "TicketsPer1kTx": 7.76,
+   "SalesMoMPct": 3.84,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Cape Point Cellular (Eastern Cape, Online) stable: sales +3.8% month on month, driven by average basket size (+2.5%) rather than transaction volume (+1.3%). Support ticket volume was 3 versus 4 last month."
+  },
+  {
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "SalesValue": 684341.39,
+   "Transactions": 4954,
+   "SharePct": 1.04,
+   "CumSharePct": 99.23,
+   "Rank": 24,
+   "AvgBasket": 138.14,
+   "RedemptionRate": 84.32,
+   "Vouchers": 3201,
+   "Tickets": 69,
+   "AvgResolutionHours": 19.8,
+   "SLABreaches": 13,
+   "SLABreachPct": 18.84,
+   "TicketsPer1kTx": 13.93,
+   "SalesMoMPct": -44.74,
+   "Headline": "Sharp decline",
+   "ActionFlag": "Investigate",
+   "Narrative": "Umhlanga Value Mart (Free State, Retail) sharp decline: sales -44.7% month on month, driven by transaction volume (-48.1%) rather than basket size (+6.4%). Support tickets rose from 3 to 37 over the same period, which is the most likely operational cause. Redemption rate moved -9.1 points to 76.6%."
+  },
+  {
+   "MerchantKey": "M013",
+   "Merchant": "Highveld Voucher Depot",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "SalesValue": 505737.91,
+   "Transactions": 3517,
+   "SharePct": 0.77,
+   "CumSharePct": 100.0,
+   "Rank": 25,
+   "AvgBasket": 143.8,
+   "RedemptionRate": 85.77,
+   "Vouchers": 2607,
+   "Tickets": 66,
+   "AvgResolutionHours": 24.99,
+   "SLABreaches": 16,
+   "SLABreachPct": 24.24,
+   "TicketsPer1kTx": 18.77,
+   "SalesMoMPct": -0.98,
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "Narrative": "Highveld Voucher Depot (Free State, Agent Network) stable: sales -1.0% month on month, volume and basket size moved together (+2.2% and -3.1%). Support ticket volume was 8 versus 9 last month. Redemption rate moved +5.2 points to 87.0%."
+  }
+ ],
+ "voucher_types": [
+  {
+   "VoucherTypeKey": "Airtime",
+   "SalesValue": 14355277.16,
+   "Transactions": 258347,
+   "RedemptionRate": 92.83,
+   "Vouchers": 26253,
+   "AvgDaysToRedeem": 3.55,
+   "DelayedPct": 13.48
+  },
+  {
+   "VoucherTypeKey": "Electricity",
+   "SalesValue": 17787701.57,
+   "Transactions": 78390,
+   "RedemptionRate": 87.79,
+   "Vouchers": 24691,
+   "AvgDaysToRedeem": 3.56,
+   "DelayedPct": 13.68
+  },
+  {
+   "VoucherTypeKey": "Groceries",
+   "SalesValue": 11425970.21,
+   "Transactions": 79117,
+   "RedemptionRate": 82.67,
+   "Vouchers": 24856,
+   "AvgDaysToRedeem": 3.57,
+   "DelayedPct": 13.82
+  },
+  {
+   "VoucherTypeKey": "Bill Payment",
+   "SalesValue": 13013794.08,
+   "Transactions": 47435,
+   "RedemptionRate": 80.14,
+   "Vouchers": 22489,
+   "AvgDaysToRedeem": 3.7,
+   "DelayedPct": 14.63
+  },
+  {
+   "VoucherTypeKey": "Gaming",
+   "SalesValue": 8938555.73,
+   "Transactions": 46838,
+   "RedemptionRate": 75.95,
+   "Vouchers": 22680,
+   "AvgDaysToRedeem": 3.56,
+   "DelayedPct": 13.92
+  }
+ ],
+ "lag_grid": [
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.54,
+   "Vouchers": 596
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 2.97,
+   "Vouchers": 400
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.78,
+   "Vouchers": 388
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.79,
+   "Vouchers": 484
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.42,
+   "Vouchers": 443
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.44,
+   "Vouchers": 850
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.35,
+   "Vouchers": 854
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.65,
+   "Vouchers": 1432
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.59,
+   "Vouchers": 1156
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.8,
+   "Vouchers": 427
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.72,
+   "Vouchers": 392
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.83,
+   "Vouchers": 496
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.67,
+   "Vouchers": 534
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.55,
+   "Vouchers": 518
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.37,
+   "Vouchers": 635
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.68,
+   "Vouchers": 1103
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.55,
+   "Vouchers": 479
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.42,
+   "Vouchers": 317
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.54,
+   "Vouchers": 443
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.3,
+   "Vouchers": 477
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.66,
+   "Vouchers": 449
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.46,
+   "Vouchers": 574
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.58,
+   "Vouchers": 395
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.56,
+   "Vouchers": 325
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jan 2026",
+   "MonthYearSort": 202601,
+   "AvgDays": 3.53,
+   "Vouchers": 530
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.63,
+   "Vouchers": 1265
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.81,
+   "Vouchers": 430
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.31,
+   "Vouchers": 865
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.19,
+   "Vouchers": 338
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.43,
+   "Vouchers": 375
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.53,
+   "Vouchers": 418
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.45,
+   "Vouchers": 486
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.3,
+   "Vouchers": 1044
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.84,
+   "Vouchers": 508
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.58,
+   "Vouchers": 403
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.28,
+   "Vouchers": 457
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.44,
+   "Vouchers": 290
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.46,
+   "Vouchers": 502
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.49,
+   "Vouchers": 434
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.54,
+   "Vouchers": 390
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.65,
+   "Vouchers": 445
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.33,
+   "Vouchers": 463
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.72,
+   "Vouchers": 786
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.5,
+   "Vouchers": 1089
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.58,
+   "Vouchers": 325
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.78,
+   "Vouchers": 431
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.58,
+   "Vouchers": 361
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.42,
+   "Vouchers": 495
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.07,
+   "Vouchers": 341
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Feb 2026",
+   "MonthYearSort": 202602,
+   "AvgDays": 3.85,
+   "Vouchers": 371
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.91,
+   "Vouchers": 527
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.61,
+   "Vouchers": 395
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.54,
+   "Vouchers": 556
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.15,
+   "Vouchers": 466
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.31,
+   "Vouchers": 421
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.14,
+   "Vouchers": 483
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.39,
+   "Vouchers": 462
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.91,
+   "Vouchers": 500
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.4,
+   "Vouchers": 405
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.25,
+   "Vouchers": 350
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.38,
+   "Vouchers": 435
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 4.02,
+   "Vouchers": 572
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.62,
+   "Vouchers": 1142
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.46,
+   "Vouchers": 552
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.2,
+   "Vouchers": 440
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.39,
+   "Vouchers": 508
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.71,
+   "Vouchers": 618
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.63,
+   "Vouchers": 1415
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.43,
+   "Vouchers": 1160
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.44,
+   "Vouchers": 906
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.54,
+   "Vouchers": 929
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.54,
+   "Vouchers": 345
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.63,
+   "Vouchers": 419
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.55,
+   "Vouchers": 515
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Mar 2026",
+   "MonthYearSort": 202603,
+   "AvgDays": 3.9,
+   "Vouchers": 395
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.48,
+   "Vouchers": 501
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.51,
+   "Vouchers": 466
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.52,
+   "Vouchers": 908
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 15.69,
+   "Vouchers": 357
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.82,
+   "Vouchers": 561
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.37,
+   "Vouchers": 310
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.82,
+   "Vouchers": 398
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.78,
+   "Vouchers": 333
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.79,
+   "Vouchers": 493
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.39,
+   "Vouchers": 430
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.47,
+   "Vouchers": 526
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.47,
+   "Vouchers": 470
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.39,
+   "Vouchers": 1350
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.74,
+   "Vouchers": 1101
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.43,
+   "Vouchers": 1153
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.45,
+   "Vouchers": 941
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.39,
+   "Vouchers": 444
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.47,
+   "Vouchers": 452
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.66,
+   "Vouchers": 380
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.54,
+   "Vouchers": 475
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.45,
+   "Vouchers": 565
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.58,
+   "Vouchers": 371
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.5,
+   "Vouchers": 545
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.34,
+   "Vouchers": 457
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Apr 2026",
+   "MonthYearSort": 202604,
+   "AvgDays": 3.66,
+   "Vouchers": 444
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.86,
+   "Vouchers": 465
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.41,
+   "Vouchers": 525
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.41,
+   "Vouchers": 343
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.76,
+   "Vouchers": 370
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.55,
+   "Vouchers": 532
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.6,
+   "Vouchers": 507
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.68,
+   "Vouchers": 1111
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.39,
+   "Vouchers": 542
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.65,
+   "Vouchers": 483
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.7,
+   "Vouchers": 466
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.6,
+   "Vouchers": 448
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.29,
+   "Vouchers": 336
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.35,
+   "Vouchers": 858
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.49,
+   "Vouchers": 1225
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.54,
+   "Vouchers": 511
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.31,
+   "Vouchers": 926
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.21,
+   "Vouchers": 435
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.36,
+   "Vouchers": 564
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.6,
+   "Vouchers": 515
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 2.86,
+   "Vouchers": 427
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.46,
+   "Vouchers": 524
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.48,
+   "Vouchers": 404
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.5,
+   "Vouchers": 1417
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.43,
+   "Vouchers": 565
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "May 2026",
+   "MonthYearSort": 202605,
+   "AvgDays": 3.63,
+   "Vouchers": 424
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.83,
+   "Vouchers": 379
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.49,
+   "Vouchers": 1270
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.23,
+   "Vouchers": 431
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.9,
+   "Vouchers": 868
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.37,
+   "Vouchers": 316
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.74,
+   "Vouchers": 398
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.46,
+   "Vouchers": 412
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.49,
+   "Vouchers": 473
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.76,
+   "Vouchers": 557
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.89,
+   "Vouchers": 420
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.62,
+   "Vouchers": 530
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.51,
+   "Vouchers": 1162
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.79,
+   "Vouchers": 454
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.53,
+   "Vouchers": 462
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.69,
+   "Vouchers": 551
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.45,
+   "Vouchers": 414
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.46,
+   "Vouchers": 484
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.51,
+   "Vouchers": 333
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.55,
+   "Vouchers": 394
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.36,
+   "Vouchers": 514
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.87,
+   "Vouchers": 583
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.51,
+   "Vouchers": 1379
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.29,
+   "Vouchers": 503
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.75,
+   "Vouchers": 440
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jun 2026",
+   "MonthYearSort": 202606,
+   "AvgDays": 3.69,
+   "Vouchers": 970
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.34,
+   "Vouchers": 490
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.69,
+   "Vouchers": 602
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.69,
+   "Vouchers": 1064
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.49,
+   "Vouchers": 367
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.72,
+   "Vouchers": 486
+  },
+  {
+   "Region": "Eastern Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.33,
+   "Vouchers": 424
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.33,
+   "Vouchers": 944
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.57,
+   "Vouchers": 1429
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.52,
+   "Vouchers": 1186
+  },
+  {
+   "Region": "Free State",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.48,
+   "Vouchers": 886
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.53,
+   "Vouchers": 386
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.54,
+   "Vouchers": 337
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.54,
+   "Vouchers": 496
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.87,
+   "Vouchers": 434
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.24,
+   "Vouchers": 550
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.51,
+   "Vouchers": 496
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.55,
+   "Vouchers": 539
+  },
+  {
+   "Region": "Gauteng",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.95,
+   "Vouchers": 499
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Electricity",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.64,
+   "Vouchers": 534
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Bill Payment",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.51,
+   "Vouchers": 513
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.63,
+   "Vouchers": 377
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Airtime",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.5,
+   "Vouchers": 536
+  },
+  {
+   "Region": "KwaZulu-Natal",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.56,
+   "Vouchers": 333
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Gaming",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.46,
+   "Vouchers": 440
+  },
+  {
+   "Region": "Western Cape",
+   "VoucherTypeKey": "Groceries",
+   "MonthYear": "Jul 2026",
+   "MonthYearSort": 202607,
+   "AvgDays": 3.97,
+   "Vouchers": 519
+  }
+ ],
+ "priority": [
+  {
+   "PriorityKey": "Critical",
+   "PrioritySort": 1,
+   "Tickets": 119,
+   "AvgResolutionHours": 52.7,
+   "Breaches": 117,
+   "SLATargetHours": 12,
+   "SLABreachPct": 98.32
+  },
+  {
+   "PriorityKey": "High",
+   "PrioritySort": 2,
+   "Tickets": 270,
+   "AvgResolutionHours": 41.56,
+   "Breaches": 222,
+   "SLATargetHours": 24,
+   "SLABreachPct": 82.22
+  },
+  {
+   "PriorityKey": "Medium",
+   "PrioritySort": 3,
+   "Tickets": 454,
+   "AvgResolutionHours": 19.78,
+   "Breaches": 18,
+   "SLATargetHours": 36,
+   "SLABreachPct": 3.96
+  },
+  {
+   "PriorityKey": "Low",
+   "PrioritySort": 4,
+   "Tickets": 520,
+   "AvgResolutionHours": 11.29,
+   "Breaches": 1,
+   "SLATargetHours": 48,
+   "SLABreachPct": 0.19
+  }
+ ],
+ "ticket_types": [
+  {
+   "TicketTypeKey": "Voucher Not Received",
+   "TicketCategory": "Fulfilment",
+   "Tickets": 253,
+   "AvgResolutionHours": 22.49,
+   "Breaches": 55,
+   "SLABreachPct": 21.74
+  },
+  {
+   "TicketTypeKey": "Pricing Query",
+   "TicketCategory": "Financial",
+   "Tickets": 247,
+   "AvgResolutionHours": 23.62,
+   "Breaches": 66,
+   "SLABreachPct": 26.72
+  },
+  {
+   "TicketTypeKey": "Merchant Support",
+   "TicketCategory": "Service",
+   "Tickets": 234,
+   "AvgResolutionHours": 25.47,
+   "Breaches": 77,
+   "SLABreachPct": 32.91
+  },
+  {
+   "TicketTypeKey": "Reversal Query",
+   "TicketCategory": "Financial",
+   "Tickets": 215,
+   "AvgResolutionHours": 24.09,
+   "Breaches": 64,
+   "SLABreachPct": 29.77
+  },
+  {
+   "TicketTypeKey": "Settlement Delay",
+   "TicketCategory": "Financial",
+   "Tickets": 212,
+   "AvgResolutionHours": 24.43,
+   "Breaches": 56,
+   "SLABreachPct": 26.42
+  },
+  {
+   "TicketTypeKey": "Redemption Issue",
+   "TicketCategory": "Fulfilment",
+   "Tickets": 202,
+   "AvgResolutionHours": 22.28,
+   "Breaches": 40,
+   "SLABreachPct": 19.8
+  }
+ ],
+ "ticket_status": [
+  {
+   "Status": "Closed",
+   "Tickets": 1124
+  },
+  {
+   "Status": "Pending Merchant",
+   "Tickets": 93
+  },
+  {
+   "Status": "Open",
+   "Tickets": 87
+  },
+  {
+   "Status": "Escalated",
+   "Tickets": 59
+  }
+ ],
+ "anomalies": [
+  {
+   "AnomalyID": "A-RED-FRE-AIR-20251229",
+   "Date": "2025-12-29",
+   "MerchantKey": NaN,
+   "Merchant": "Free State / Airtime",
+   "Region": "Free State",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 4.19,
+   "ExpectedValue": 3.56,
+   "Score": 4.13,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 17.7
+  },
+  {
+   "AnomalyID": "A-RED-GAU-GRO-20251229",
+   "Date": "2025-12-29",
+   "MerchantKey": NaN,
+   "Merchant": "Gauteng / Groceries",
+   "Region": "Gauteng",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 4.46,
+   "ExpectedValue": 3.51,
+   "Score": 3.64,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 27.1
+  },
+  {
+   "AnomalyID": "A-RED-GAU-AIR-20260202",
+   "Date": "2026-02-02",
+   "MerchantKey": NaN,
+   "Merchant": "Gauteng / Airtime",
+   "Region": "Gauteng",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 4.57,
+   "ExpectedValue": 3.4,
+   "Score": 3.57,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 34.4
+  },
+  {
+   "AnomalyID": "A-RED-WES-BIL-20260330",
+   "Date": "2026-03-30",
+   "MerchantKey": NaN,
+   "Merchant": "Western Cape / Bill Payment",
+   "Region": "Western Cape",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 12.4,
+   "ExpectedValue": 3.84,
+   "Score": 14.83,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 222.9
+  },
+  {
+   "AnomalyID": "A-RED-WES-BIL-20260406",
+   "Date": "2026-04-06",
+   "MerchantKey": NaN,
+   "Merchant": "Western Cape / Bill Payment",
+   "Region": "Western Cape",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 15.22,
+   "ExpectedValue": 3.84,
+   "Score": 19.73,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 296.4
+  },
+  {
+   "AnomalyID": "A-RED-WES-BIL-20260413",
+   "Date": "2026-04-13",
+   "MerchantKey": NaN,
+   "Merchant": "Western Cape / Bill Payment",
+   "Region": "Western Cape",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 15.44,
+   "ExpectedValue": 3.84,
+   "Score": 20.11,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 302.1
+  },
+  {
+   "AnomalyID": "A-RED-WES-BIL-20260420",
+   "Date": "2026-04-20",
+   "MerchantKey": NaN,
+   "Merchant": "Western Cape / Bill Payment",
+   "Region": "Western Cape",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 15.3,
+   "ExpectedValue": 3.84,
+   "Score": 19.86,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 298.4
+  },
+  {
+   "AnomalyID": "A-RED-WES-BIL-20260427",
+   "Date": "2026-04-27",
+   "MerchantKey": NaN,
+   "Merchant": "Western Cape / Bill Payment",
+   "Region": "Western Cape",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 9.52,
+   "ExpectedValue": 3.84,
+   "Score": 9.85,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 147.9
+  },
+  {
+   "AnomalyID": "A-RED-GAU-GRO-20260727",
+   "Date": "2026-07-27",
+   "MerchantKey": NaN,
+   "Merchant": "Gauteng / Groceries",
+   "Region": "Gauteng",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 4.49,
+   "ExpectedValue": 3.51,
+   "Score": 3.77,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 27.9
+  },
+  {
+   "AnomalyID": "A-RED-KWA-AIR-20260727",
+   "Date": "2026-07-27",
+   "MerchantKey": NaN,
+   "Merchant": "KwaZulu-Natal / Airtime",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Avg Days To Redeem (weekly)",
+   "ActualValue": 4.87,
+   "ExpectedValue": 3.63,
+   "Score": 3.54,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 34.2
+  },
+  {
+   "AnomalyID": "A-SAL-M025-20260210",
+   "Date": "2026-02-10",
+   "MerchantKey": "M025",
+   "Merchant": "Karoo Quick Shop",
+   "Region": "Gauteng",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 15618.6,
+   "ExpectedValue": 18891.71,
+   "Score": -3.5,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": -17.3
+  },
+  {
+   "AnomalyID": "A-SAL-M006-20260402",
+   "Date": "2026-04-02",
+   "MerchantKey": "M006",
+   "Merchant": "Marula Market",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 13044.79,
+   "ExpectedValue": 9470.64,
+   "Score": 3.92,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 37.7
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260501",
+   "Date": "2026-05-01",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 25596.14,
+   "ExpectedValue": 18674.75,
+   "Score": 4.32,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 37.1
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260503",
+   "Date": "2026-05-03",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 20534.71,
+   "ExpectedValue": 18731.44,
+   "Score": 4.23,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 9.6
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260504",
+   "Date": "2026-05-04",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 31258.01,
+   "ExpectedValue": 18790.88,
+   "Score": 8.25,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "High",
+   "DeviationPct": 66.3
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260505",
+   "Date": "2026-05-05",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 29607.14,
+   "ExpectedValue": 18854.78,
+   "Score": 6.31,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Medium",
+   "DeviationPct": 57.0
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260506",
+   "Date": "2026-05-06",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 27381.65,
+   "ExpectedValue": 18854.78,
+   "Score": 4.64,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 45.2
+  },
+  {
+   "AnomalyID": "A-SAL-M003-20260507",
+   "Date": "2026-05-07",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 27863.55,
+   "ExpectedValue": 19204.92,
+   "Score": 4.32,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 45.1
+  },
+  {
+   "AnomalyID": "A-SAL-M006-20260521",
+   "Date": "2026-05-21",
+   "MerchantKey": "M006",
+   "Merchant": "Marula Market",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 13792.35,
+   "ExpectedValue": 10170.78,
+   "Score": 4.11,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 35.6
+  },
+  {
+   "AnomalyID": "A-SAL-M008-20260612",
+   "Date": "2026-06-12",
+   "MerchantKey": "M008",
+   "Merchant": "Table Bay Express",
+   "Region": "Eastern Cape",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 13490.05,
+   "ExpectedValue": 17297.99,
+   "Score": -3.7,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": -22.0
+  },
+  {
+   "AnomalyID": "A-SAL-M002-20260701",
+   "Date": "2026-07-01",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 2132.68,
+   "ExpectedValue": 3693.07,
+   "Score": -5.21,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Medium",
+   "DeviationPct": -42.3
+  },
+  {
+   "AnomalyID": "A-SAL-M002-20260702",
+   "Date": "2026-07-02",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 2129.12,
+   "ExpectedValue": 3693.07,
+   "Score": -4.7,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": -42.3
+  },
+  {
+   "AnomalyID": "A-SAL-M002-20260703",
+   "Date": "2026-07-03",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 1958.81,
+   "ExpectedValue": 3693.07,
+   "Score": -5.2,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Medium",
+   "DeviationPct": -47.0
+  },
+  {
+   "AnomalyID": "A-SAL-M002-20260706",
+   "Date": "2026-07-06",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Daily Sales Value",
+   "ActualValue": 2180.04,
+   "ExpectedValue": 3667.5,
+   "Score": -4.02,
+   "Direction": "Below expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": -40.6
+  },
+  {
+   "AnomalyID": "A-LVL-M003-202605",
+   "Date": "2026-05-01",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Monthly Sales Level Shift",
+   "ActualValue": 832191.81,
+   "ExpectedValue": 506429.01,
+   "Score": 64.33,
+   "Direction": "Above expected",
+   "ScoreType": "Percent change",
+   "Severity": "High",
+   "DeviationPct": 64.3
+  },
+  {
+   "AnomalyID": "A-LVL-M003-202606",
+   "Date": "2026-06-01",
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Measure": "Monthly Sales Level Shift",
+   "ActualValue": 845123.6,
+   "ExpectedValue": 632147.05,
+   "Score": 33.69,
+   "Direction": "Above expected",
+   "ScoreType": "Percent change",
+   "Severity": "Medium",
+   "DeviationPct": 33.7
+  },
+  {
+   "AnomalyID": "A-LVL-M002-202607",
+   "Date": "2026-07-01",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Monthly Sales Level Shift",
+   "ActualValue": 64394.13,
+   "ExpectedValue": 112020.62,
+   "Score": -42.52,
+   "Direction": "Below expected",
+   "ScoreType": "Percent change",
+   "Severity": "High",
+   "DeviationPct": -42.5
+  },
+  {
+   "AnomalyID": "A-TLV-M007-202606",
+   "Date": "2026-06-01",
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Measure": "Monthly Ticket Level Shift",
+   "ActualValue": 44.0,
+   "ExpectedValue": 5.0,
+   "Score": 780.0,
+   "Direction": "Above expected",
+   "ScoreType": "Percent change",
+   "Severity": "High",
+   "DeviationPct": 780.0
+  },
+  {
+   "AnomalyID": "A-TLV-M002-202607",
+   "Date": "2026-07-01",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Monthly Ticket Level Shift",
+   "ActualValue": 37.0,
+   "ExpectedValue": 4.67,
+   "Score": 692.86,
+   "Direction": "Above expected",
+   "ScoreType": "Percent change",
+   "Severity": "High",
+   "DeviationPct": 692.3
+  },
+  {
+   "AnomalyID": "A-TLV-M007-202607",
+   "Date": "2026-07-01",
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Measure": "Monthly Ticket Level Shift",
+   "ActualValue": 52.0,
+   "ExpectedValue": 18.33,
+   "Score": 183.64,
+   "Direction": "Above expected",
+   "ScoreType": "Percent change",
+   "Severity": "High",
+   "DeviationPct": 183.7
+  },
+  {
+   "AnomalyID": "A-TKT-M009-20260504",
+   "Date": "2026-05-04",
+   "MerchantKey": "M009",
+   "Merchant": "Soweto Super Save",
+   "Region": "Western Cape",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 6.0,
+   "ExpectedValue": 0.5,
+   "Score": 3.71,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 1100.0
+  },
+  {
+   "AnomalyID": "A-TKT-M007-20260601",
+   "Date": "2026-06-01",
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 11.0,
+   "ExpectedValue": 1.5,
+   "Score": 6.41,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Medium",
+   "DeviationPct": 633.3
+  },
+  {
+   "AnomalyID": "A-TKT-M007-20260608",
+   "Date": "2026-06-08",
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 9.0,
+   "ExpectedValue": 2.0,
+   "Score": 4.72,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 350.0
+  },
+  {
+   "AnomalyID": "A-TKT-M007-20260622",
+   "Date": "2026-06-22",
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 12.0,
+   "ExpectedValue": 2.0,
+   "Score": 4.5,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 500.0
+  },
+  {
+   "AnomalyID": "A-TKT-M002-20260706",
+   "Date": "2026-07-06",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 7.0,
+   "ExpectedValue": 1.5,
+   "Score": 3.71,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 366.7
+  },
+  {
+   "AnomalyID": "A-TKT-M002-20260713",
+   "Date": "2026-07-13",
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Measure": "Weekly Ticket Volume",
+   "ActualValue": 10.0,
+   "ExpectedValue": 2.0,
+   "Score": 3.6,
+   "Direction": "Above expected",
+   "ScoreType": "Robust z",
+   "Severity": "Low",
+   "DeviationPct": 400.0
+  }
+ ],
+ "narrative": [
+  {
+   "MerchantKey": "M002",
+   "Merchant": "Umhlanga Value Mart",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "Headline": "Sharp decline",
+   "ActionFlag": "Investigate",
+   "SalesMoMPct": -44.74,
+   "TransactionsMoMPct": -48.07,
+   "AvgBasketMoMPct": 6.41,
+   "TicketsThisMonth": 37,
+   "TicketsPrevMonth": 3,
+   "Narrative": "Umhlanga Value Mart (Free State, Retail) sharp decline: sales -44.7% month on month, driven by transaction volume (-48.1%) rather than basket size (+6.4%). Support tickets rose from 3 to 37 over the same period, which is the most likely operational cause. Redemption rate moved -9.1 points to 76.6%."
+  },
+  {
+   "MerchantKey": "M013",
+   "Merchant": "Highveld Voucher Depot",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": -0.98,
+   "TransactionsMoMPct": 2.21,
+   "AvgBasketMoMPct": -3.11,
+   "TicketsThisMonth": 8,
+   "TicketsPrevMonth": 9,
+   "Narrative": "Highveld Voucher Depot (Free State, Agent Network) stable: sales -1.0% month on month, volume and basket size moved together (+2.2% and -3.1%). Support ticket volume was 8 versus 9 last month. Redemption rate moved +5.2 points to 87.0%."
+  },
+  {
+   "MerchantKey": "M008",
+   "Merchant": "Table Bay Express",
+   "Region": "Eastern Cape",
+   "Channel": "Wholesale",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": -0.27,
+   "TransactionsMoMPct": 3.07,
+   "AvgBasketMoMPct": -3.23,
+   "TicketsThisMonth": 9,
+   "TicketsPrevMonth": 6,
+   "Narrative": "Table Bay Express (Eastern Cape, Wholesale) stable: sales -0.3% month on month, volume and basket size moved together (+3.1% and -3.2%). Support ticket volume was 9 versus 6 last month."
+  },
+  {
+   "MerchantKey": "M014",
+   "Merchant": "Golden Mile Grocers",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Retail",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 0.59,
+   "TransactionsMoMPct": 3.52,
+   "AvgBasketMoMPct": -2.83,
+   "TicketsThisMonth": 5,
+   "TicketsPrevMonth": 5,
+   "Narrative": "Golden Mile Grocers (KwaZulu-Natal, Retail) stable: sales +0.6% month on month, volume and basket size moved together (+3.5% and -2.8%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M012",
+   "Merchant": "Wild Coast Convenience",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 1.33,
+   "TransactionsMoMPct": 0.98,
+   "AvgBasketMoMPct": 0.34,
+   "TicketsThisMonth": 8,
+   "TicketsPrevMonth": 2,
+   "Narrative": "Wild Coast Convenience (Free State, Retail) stable: sales +1.3% month on month, driven by transaction volume (+1.0%) rather than basket size (+0.3%). Support tickets rose from 2 to 8 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M007",
+   "Merchant": "Durban Cash Hub",
+   "Region": "Western Cape",
+   "Channel": "Retail",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 1.76,
+   "TransactionsMoMPct": -1.93,
+   "AvgBasketMoMPct": 3.76,
+   "TicketsThisMonth": 52,
+   "TicketsPrevMonth": 44,
+   "Narrative": "Durban Cash Hub (Western Cape, Retail) stable: sales +1.8% month on month, driven by average basket size (+3.8%) rather than transaction volume (-1.9%). Support ticket volume was 52 versus 44 last month."
+  },
+  {
+   "MerchantKey": "M022",
+   "Merchant": "North Coast Connect",
+   "Region": "Free State",
+   "Channel": "Online",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 2.2,
+   "TransactionsMoMPct": 1.3,
+   "AvgBasketMoMPct": 0.89,
+   "TicketsThisMonth": 8,
+   "TicketsPrevMonth": 7,
+   "Narrative": "North Coast Connect (Free State, Online) stable: sales +2.2% month on month, volume and basket size moved together (+1.3% and +0.9%). Support ticket volume was 8 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M006",
+   "Merchant": "Marula Market",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 2.73,
+   "TransactionsMoMPct": 3.6,
+   "AvgBasketMoMPct": -0.84,
+   "TicketsThisMonth": 5,
+   "TicketsPrevMonth": 9,
+   "Narrative": "Marula Market (Free State, Agent Network) stable: sales +2.7% month on month, driven by transaction volume (+3.6%) rather than basket size (-0.8%). Support ticket volume was 5 versus 9 last month."
+  },
+  {
+   "MerchantKey": "M010",
+   "Merchant": "Nelson Bay Traders",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 2.97,
+   "TransactionsMoMPct": 7.36,
+   "AvgBasketMoMPct": -4.08,
+   "TicketsThisMonth": 13,
+   "TicketsPrevMonth": 10,
+   "Narrative": "Nelson Bay Traders (Free State, Agent Network) stable: sales +3.0% month on month, driven by transaction volume (+7.4%) rather than basket size (-4.1%). Support ticket volume was 13 versus 10 last month."
+  },
+  {
+   "MerchantKey": "M021",
+   "Merchant": "Liberty Lane Stores",
+   "Region": "Western Cape",
+   "Channel": "Wholesale",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 2.99,
+   "TransactionsMoMPct": 0.48,
+   "AvgBasketMoMPct": 2.5,
+   "TicketsThisMonth": 1,
+   "TicketsPrevMonth": 2,
+   "Narrative": "Liberty Lane Stores (Western Cape, Wholesale) stable: sales +3.0% month on month, driven by average basket size (+2.5%) rather than transaction volume (+0.5%). Support ticket volume was 1 versus 2 last month."
+  },
+  {
+   "MerchantKey": "M025",
+   "Merchant": "Karoo Quick Shop",
+   "Region": "Gauteng",
+   "Channel": "Wholesale",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.14,
+   "TransactionsMoMPct": -3.68,
+   "AvgBasketMoMPct": 7.08,
+   "TicketsThisMonth": 5,
+   "TicketsPrevMonth": 8,
+   "Narrative": "Karoo Quick Shop (Gauteng, Wholesale) stable: sales +3.1% month on month, driven by average basket size (+7.1%) rather than transaction volume (-3.7%). Support ticket volume was 5 versus 8 last month."
+  },
+  {
+   "MerchantKey": "M020",
+   "Merchant": "Sunbird Topups",
+   "Region": "Free State",
+   "Channel": "Wholesale",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.25,
+   "TransactionsMoMPct": 3.74,
+   "AvgBasketMoMPct": -0.47,
+   "TicketsThisMonth": 7,
+   "TicketsPrevMonth": 7,
+   "Narrative": "Sunbird Topups (Free State, Wholesale) stable: sales +3.3% month on month, driven by transaction volume (+3.7%) rather than basket size (-0.5%). Support ticket volume was 7 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M018",
+   "Merchant": "Zebra Route Services",
+   "Region": "Gauteng",
+   "Channel": "Agent Network",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.46,
+   "TransactionsMoMPct": 0.8,
+   "AvgBasketMoMPct": 2.64,
+   "TicketsThisMonth": 7,
+   "TicketsPrevMonth": 9,
+   "Narrative": "Zebra Route Services (Gauteng, Agent Network) stable: sales +3.5% month on month, driven by average basket size (+2.6%) rather than transaction volume (+0.8%). Support ticket volume was 7 versus 9 last month."
+  },
+  {
+   "MerchantKey": "M005",
+   "Merchant": "Jozi Corner Store",
+   "Region": "Free State",
+   "Channel": "Retail",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.47,
+   "TransactionsMoMPct": 7.02,
+   "AvgBasketMoMPct": -3.32,
+   "TicketsThisMonth": 11,
+   "TicketsPrevMonth": 4,
+   "Narrative": "Jozi Corner Store (Free State, Retail) stable: sales +3.5% month on month, driven by transaction volume (+7.0%) rather than basket size (-3.3%). Support tickets rose from 4 to 11 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M017",
+   "Merchant": "Lighthouse General Dealer",
+   "Region": "Gauteng",
+   "Channel": "Wholesale",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.58,
+   "TransactionsMoMPct": 5.38,
+   "AvgBasketMoMPct": -1.71,
+   "TicketsThisMonth": 3,
+   "TicketsPrevMonth": 5,
+   "Narrative": "Lighthouse General Dealer (Gauteng, Wholesale) stable: sales +3.6% month on month, driven by transaction volume (+5.4%) rather than basket size (-1.7%). Support ticket volume was 3 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M004",
+   "Merchant": "Cape Point Cellular",
+   "Region": "Eastern Cape",
+   "Channel": "Online",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.84,
+   "TransactionsMoMPct": 1.26,
+   "AvgBasketMoMPct": 2.54,
+   "TicketsThisMonth": 3,
+   "TicketsPrevMonth": 4,
+   "Narrative": "Cape Point Cellular (Eastern Cape, Online) stable: sales +3.8% month on month, driven by average basket size (+2.5%) rather than transaction volume (+1.3%). Support ticket volume was 3 versus 4 last month."
+  },
+  {
+   "MerchantKey": "M016",
+   "Merchant": "Pretoria PayPoint",
+   "Region": "Eastern Cape",
+   "Channel": "Online",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 3.99,
+   "TransactionsMoMPct": 2.61,
+   "AvgBasketMoMPct": 1.35,
+   "TicketsThisMonth": 5,
+   "TicketsPrevMonth": 5,
+   "Narrative": "Pretoria PayPoint (Eastern Cape, Online) stable: sales +4.0% month on month, driven by transaction volume (+2.6%) rather than basket size (+1.4%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M003",
+   "Merchant": "Kudu Digital Kiosk",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Agent Network",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 4.16,
+   "TransactionsMoMPct": 10.5,
+   "AvgBasketMoMPct": -5.74,
+   "TicketsThisMonth": 13,
+   "TicketsPrevMonth": 12,
+   "Narrative": "Kudu Digital Kiosk (KwaZulu-Natal, Agent Network) stable: sales +4.2% month on month, driven by transaction volume (+10.5%) rather than basket size (-5.7%). Support ticket volume was 13 versus 12 last month."
+  },
+  {
+   "MerchantKey": "M001",
+   "Merchant": "Blue Crane Trading",
+   "Region": "Gauteng",
+   "Channel": "Retail",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 4.21,
+   "TransactionsMoMPct": 0.5,
+   "AvgBasketMoMPct": 3.69,
+   "TicketsThisMonth": 9,
+   "TicketsPrevMonth": 7,
+   "Narrative": "Blue Crane Trading (Gauteng, Retail) stable: sales +4.2% month on month, driven by average basket size (+3.7%) rather than transaction volume (+0.5%). Support ticket volume was 9 versus 7 last month."
+  },
+  {
+   "MerchantKey": "M009",
+   "Merchant": "Soweto Super Save",
+   "Region": "Western Cape",
+   "Channel": "Online",
+   "Headline": "Stable",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 4.98,
+   "TransactionsMoMPct": 5.48,
+   "AvgBasketMoMPct": -0.47,
+   "TicketsThisMonth": 5,
+   "TicketsPrevMonth": 5,
+   "Narrative": "Soweto Super Save (Western Cape, Online) stable: sales +5.0% month on month, driven by transaction volume (+5.5%) rather than basket size (-0.5%). Support ticket volume was 5 versus 5 last month."
+  },
+  {
+   "MerchantKey": "M024",
+   "Merchant": "Ubuntu Trading Post",
+   "Region": "KwaZulu-Natal",
+   "Channel": "Retail",
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 5.42,
+   "TransactionsMoMPct": 4.73,
+   "AvgBasketMoMPct": 0.66,
+   "TicketsThisMonth": 11,
+   "TicketsPrevMonth": 13,
+   "Narrative": "Ubuntu Trading Post (KwaZulu-Natal, Retail) growing: sales +5.4% month on month, driven by transaction volume (+4.7%) rather than basket size (+0.7%). Support ticket volume was 11 versus 13 last month."
+  },
+  {
+   "MerchantKey": "M023",
+   "Merchant": "Valley View Retail",
+   "Region": "Free State",
+   "Channel": "Wholesale",
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 5.44,
+   "TransactionsMoMPct": 5.7,
+   "AvgBasketMoMPct": -0.24,
+   "TicketsThisMonth": 4,
+   "TicketsPrevMonth": 10,
+   "Narrative": "Valley View Retail (Free State, Wholesale) growing: sales +5.4% month on month, driven by transaction volume (+5.7%) rather than basket size (-0.2%). Support ticket volume was 4 versus 10 last month."
+  },
+  {
+   "MerchantKey": "M015",
+   "Merchant": "Mango Tree Mobile",
+   "Region": "Free State",
+   "Channel": "Agent Network",
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 5.46,
+   "TransactionsMoMPct": 4.1,
+   "AvgBasketMoMPct": 1.3,
+   "TicketsThisMonth": 17,
+   "TicketsPrevMonth": 18,
+   "Narrative": "Mango Tree Mobile (Free State, Agent Network) growing: sales +5.5% month on month, driven by transaction volume (+4.1%) rather than basket size (+1.3%). Support ticket volume was 17 versus 18 last month."
+  },
+  {
+   "MerchantKey": "M019",
+   "Merchant": "Mzansi Mini Market",
+   "Region": "Eastern Cape",
+   "Channel": "Retail",
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 5.71,
+   "TransactionsMoMPct": 5.7,
+   "AvgBasketMoMPct": 0.01,
+   "TicketsThisMonth": 6,
+   "TicketsPrevMonth": 3,
+   "Narrative": "Mzansi Mini Market (Eastern Cape, Retail) growing: sales +5.7% month on month, driven by transaction volume (+5.7%) rather than basket size (+0.0%). Support tickets rose from 3 to 6 over the same period, which is the most likely operational cause."
+  },
+  {
+   "MerchantKey": "M011",
+   "Merchant": "Berg River Retail",
+   "Region": "Western Cape",
+   "Channel": "Agent Network",
+   "Headline": "Growing",
+   "ActionFlag": "Healthy",
+   "SalesMoMPct": 7.01,
+   "TransactionsMoMPct": 8.39,
+   "AvgBasketMoMPct": -1.27,
+   "TicketsThisMonth": 7,
+   "TicketsPrevMonth": 8,
+   "Narrative": "Berg River Retail (Western Cape, Agent Network) growing: sales +7.0% month on month, driven by transaction volume (+8.4%) rather than basket size (-1.3%). Support ticket volume was 7 versus 8 last month."
+  }
+ ],
+ "correlation": {
+  "tickets_per_1k_tx_vs_mom": -0.494,
+  "avg_resolution_hours_vs_mom": 0.188,
+  "sla_breach_pct_vs_mom": 0.169,
+  "ticket_surge_vs_mom_panel": -0.134,
+  "mom_when_ticket_surge": -12.85,
+  "mom_when_no_surge": 4.4,
+  "surge_month_count": 3
+ },
+ "concentration": {
+  "top5_share": 35.4,
+  "top10_share": 61.43,
+  "merchants_to_80pct": 15
+ }
+}

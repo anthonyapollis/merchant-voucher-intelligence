@@ -1,0 +1,2129 @@
+{
+ "vouchers": {
+  "IsRedeemed": {
+   "label": "Voucher Redemption Propensity",
+   "algorithm": "Logistic regression",
+   "auc": 0.6213,
+   "base_rate": 0.8428,
+   "n_train": 85890,
+   "n_test": 35079
+  },
+  "IsDelayedRedemption": {
+   "label": "Delayed Redemption Risk",
+   "algorithm": "Gradient boosting",
+   "auc": 0.506,
+   "base_rate": 0.1394,
+   "n_train": 72279,
+   "n_test": 29564
+  },
+  "risk_table": [
+   {
+    "MerchantKey": "M024",
+    "Merchant": "Ubuntu Trading Post",
+    "Region": "KwaZulu-Natal",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 309,
+    "PredictedRedemptionRate": 75.82,
+    "ActualRedemptionRate": 70.87,
+    "VoucherValue": 60708.81,
+    "NonRedemptionRisk": 24.18,
+    "ExpectedUnredeemedValue": 14678.95
+   },
+   {
+    "MerchantKey": "M022",
+    "Merchant": "North Coast Connect",
+    "Region": "Free State",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 331,
+    "PredictedRedemptionRate": 75.83,
+    "ActualRedemptionRate": 73.72,
+    "VoucherValue": 60622.2,
+    "NonRedemptionRisk": 24.17,
+    "ExpectedUnredeemedValue": 14650.74
+   },
+   {
+    "MerchantKey": "M001",
+    "Merchant": "Blue Crane Trading",
+    "Region": "Gauteng",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 331,
+    "PredictedRedemptionRate": 76.54,
+    "ActualRedemptionRate": 80.66,
+    "VoucherValue": 61403.83,
+    "NonRedemptionRisk": 23.46,
+    "ExpectedUnredeemedValue": 14408.3
+   },
+   {
+    "MerchantKey": "M007",
+    "Merchant": "Durban Cash Hub",
+    "Region": "Western Cape",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 310,
+    "PredictedRedemptionRate": 75.77,
+    "ActualRedemptionRate": 78.39,
+    "VoucherValue": 57617.87,
+    "NonRedemptionRisk": 24.23,
+    "ExpectedUnredeemedValue": 13961.35
+   },
+   {
+    "MerchantKey": "M009",
+    "Merchant": "Soweto Super Save",
+    "Region": "Western Cape",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 308,
+    "PredictedRedemptionRate": 75.26,
+    "ActualRedemptionRate": 76.3,
+    "VoucherValue": 56369.2,
+    "NonRedemptionRisk": 24.74,
+    "ExpectedUnredeemedValue": 13948.25
+   },
+   {
+    "MerchantKey": "M021",
+    "Merchant": "Liberty Lane Stores",
+    "Region": "Western Cape",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 305,
+    "PredictedRedemptionRate": 75.61,
+    "ActualRedemptionRate": 73.77,
+    "VoucherValue": 56925.64,
+    "NonRedemptionRisk": 24.39,
+    "ExpectedUnredeemedValue": 13882.4
+   },
+   {
+    "MerchantKey": "M008",
+    "Merchant": "Table Bay Express",
+    "Region": "Eastern Cape",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 281,
+    "PredictedRedemptionRate": 74.87,
+    "ActualRedemptionRate": 81.49,
+    "VoucherValue": 52610.43,
+    "NonRedemptionRisk": 25.13,
+    "ExpectedUnredeemedValue": 13218.39
+   },
+   {
+    "MerchantKey": "M016",
+    "Merchant": "Pretoria PayPoint",
+    "Region": "Eastern Cape",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 275,
+    "PredictedRedemptionRate": 73.73,
+    "ActualRedemptionRate": 76.73,
+    "VoucherValue": 49679.16,
+    "NonRedemptionRisk": 26.27,
+    "ExpectedUnredeemedValue": 13050.02
+   },
+   {
+    "MerchantKey": "M017",
+    "Merchant": "Lighthouse General Dealer",
+    "Region": "Gauteng",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 302,
+    "PredictedRedemptionRate": 75.41,
+    "ActualRedemptionRate": 77.15,
+    "VoucherValue": 52484.16,
+    "NonRedemptionRisk": 24.59,
+    "ExpectedUnredeemedValue": 12905.79
+   },
+   {
+    "MerchantKey": "M012",
+    "Merchant": "Wild Coast Convenience",
+    "Region": "Free State",
+    "VoucherTypeKey": "Bill Payment",
+    "Vouchers": 322,
+    "PredictedRedemptionRate": 79.17,
+    "ActualRedemptionRate": 82.92,
+    "VoucherValue": 61853.03,
+    "NonRedemptionRisk": 20.83,
+    "ExpectedUnredeemedValue": 12884.68
+   },
+   {
+    "MerchantKey": "M003",
+    "Merchant": "Kudu Digital Kiosk",
+    "Region": "KwaZulu-Natal",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 308,
+    "PredictedRedemptionRate": 76.54,
+    "ActualRedemptionRate": 77.6,
+    "VoucherValue": 54499.09,
+    "NonRedemptionRisk": 23.46,
+    "ExpectedUnredeemedValue": 12783.52
+   },
+   {
+    "MerchantKey": "M018",
+    "Merchant": "Zebra Route Services",
+    "Region": "Gauteng",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 292,
+    "PredictedRedemptionRate": 76.0,
+    "ActualRedemptionRate": 78.42,
+    "VoucherValue": 52424.3,
+    "NonRedemptionRisk": 24.0,
+    "ExpectedUnredeemedValue": 12581.3
+   },
+   {
+    "MerchantKey": "M012",
+    "Merchant": "Wild Coast Convenience",
+    "Region": "Free State",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 292,
+    "PredictedRedemptionRate": 75.05,
+    "ActualRedemptionRate": 71.23,
+    "VoucherValue": 50414.32,
+    "NonRedemptionRisk": 24.95,
+    "ExpectedUnredeemedValue": 12578.36
+   },
+   {
+    "MerchantKey": "M021",
+    "Merchant": "Liberty Lane Stores",
+    "Region": "Western Cape",
+    "VoucherTypeKey": "Bill Payment",
+    "Vouchers": 316,
+    "PredictedRedemptionRate": 79.66,
+    "ActualRedemptionRate": 79.75,
+    "VoucherValue": 61701.67,
+    "NonRedemptionRisk": 20.34,
+    "ExpectedUnredeemedValue": 12551.86
+   },
+   {
+    "MerchantKey": "M010",
+    "Merchant": "Nelson Bay Traders",
+    "Region": "Free State",
+    "VoucherTypeKey": "Gaming",
+    "Vouchers": 276,
+    "PredictedRedemptionRate": 74.88,
+    "ActualRedemptionRate": 76.09,
+    "VoucherValue": 49650.02,
+    "NonRedemptionRisk": 25.12,
+    "ExpectedUnredeemedValue": 12472.87
+   }
+  ],
+  "expected_breakage_value": 1012271.87
+ },
+ "sla": {
+  "auc": 0.9661,
+  "base_rate": 0.2627,
+  "n": 1363,
+  "by_merchant": [
+   {
+    "MerchantKey": "M018",
+    "Merchant": "Zebra Route Services",
+    "Tickets": 67,
+    "PredBreachRate": 36.5,
+    "ActualBreachRate": 37.31
+   },
+   {
+    "MerchantKey": "M007",
+    "Merchant": "Durban Cash Hub",
+    "Tickets": 124,
+    "PredBreachRate": 35.34,
+    "ActualBreachRate": 35.48
+   },
+   {
+    "MerchantKey": "M004",
+    "Merchant": "Cape Point Cellular",
+    "Tickets": 44,
+    "PredBreachRate": 32.36,
+    "ActualBreachRate": 34.09
+   },
+   {
+    "MerchantKey": "M021",
+    "Merchant": "Liberty Lane Stores",
+    "Tickets": 30,
+    "PredBreachRate": 28.66,
+    "ActualBreachRate": 33.33
+   },
+   {
+    "MerchantKey": "M008",
+    "Merchant": "Table Bay Express",
+    "Tickets": 48,
+    "PredBreachRate": 35.81,
+    "ActualBreachRate": 33.33
+   },
+   {
+    "MerchantKey": "M016",
+    "Merchant": "Pretoria PayPoint",
+    "Tickets": 32,
+    "PredBreachRate": 32.31,
+    "ActualBreachRate": 31.25
+   },
+   {
+    "MerchantKey": "M014",
+    "Merchant": "Golden Mile Grocers",
+    "Tickets": 30,
+    "PredBreachRate": 28.36,
+    "ActualBreachRate": 30.0
+   },
+   {
+    "MerchantKey": "M015",
+    "Merchant": "Mango Tree Mobile",
+    "Tickets": 109,
+    "PredBreachRate": 25.31,
+    "ActualBreachRate": 29.36
+   },
+   {
+    "MerchantKey": "M022",
+    "Merchant": "North Coast Connect",
+    "Tickets": 45,
+    "PredBreachRate": 30.61,
+    "ActualBreachRate": 28.89
+   },
+   {
+    "MerchantKey": "M012",
+    "Merchant": "Wild Coast Convenience",
+    "Tickets": 30,
+    "PredBreachRate": 25.59,
+    "ActualBreachRate": 26.67
+   },
+   {
+    "MerchantKey": "M024",
+    "Merchant": "Ubuntu Trading Post",
+    "Tickets": 80,
+    "PredBreachRate": 27.09,
+    "ActualBreachRate": 26.25
+   },
+   {
+    "MerchantKey": "M023",
+    "Merchant": "Valley View Retail",
+    "Tickets": 39,
+    "PredBreachRate": 26.52,
+    "ActualBreachRate": 25.64
+   },
+   {
+    "MerchantKey": "M005",
+    "Merchant": "Jozi Corner Store",
+    "Tickets": 43,
+    "PredBreachRate": 26.69,
+    "ActualBreachRate": 25.58
+   },
+   {
+    "MerchantKey": "M003",
+    "Merchant": "Kudu Digital Kiosk",
+    "Tickets": 63,
+    "PredBreachRate": 25.43,
+    "ActualBreachRate": 25.4
+   },
+   {
+    "MerchantKey": "M013",
+    "Merchant": "Highveld Voucher Depot",
+    "Tickets": 66,
+    "PredBreachRate": 24.87,
+    "ActualBreachRate": 24.24
+   },
+   {
+    "MerchantKey": "M011",
+    "Merchant": "Berg River Retail",
+    "Tickets": 69,
+    "PredBreachRate": 25.66,
+    "ActualBreachRate": 23.19
+   },
+   {
+    "MerchantKey": "M010",
+    "Merchant": "Nelson Bay Traders",
+    "Tickets": 76,
+    "PredBreachRate": 24.93,
+    "ActualBreachRate": 21.05
+   },
+   {
+    "MerchantKey": "M006",
+    "Merchant": "Marula Market",
+    "Tickets": 62,
+    "PredBreachRate": 21.8,
+    "ActualBreachRate": 20.97
+   },
+   {
+    "MerchantKey": "M001",
+    "Merchant": "Blue Crane Trading",
+    "Tickets": 44,
+    "PredBreachRate": 20.64,
+    "ActualBreachRate": 20.45
+   },
+   {
+    "MerchantKey": "M017",
+    "Merchant": "Lighthouse General Dealer",
+    "Tickets": 35,
+    "PredBreachRate": 21.43,
+    "ActualBreachRate": 20.0
+   },
+   {
+    "MerchantKey": "M025",
+    "Merchant": "Karoo Quick Shop",
+    "Tickets": 51,
+    "PredBreachRate": 18.76,
+    "ActualBreachRate": 19.61
+   },
+   {
+    "MerchantKey": "M002",
+    "Merchant": "Umhlanga Value Mart",
+    "Tickets": 69,
+    "PredBreachRate": 19.26,
+    "ActualBreachRate": 18.84
+   },
+   {
+    "MerchantKey": "M019",
+    "Merchant": "Mzansi Mini Market",
+    "Tickets": 23,
+    "PredBreachRate": 14.17,
+    "ActualBreachRate": 17.39
+   },
+   {
+    "MerchantKey": "M009",
+    "Merchant": "Soweto Super Save",
+    "Tickets": 41,
+    "PredBreachRate": 16.57,
+    "ActualBreachRate": 17.07
+   },
+   {
+    "MerchantKey": "M020",
+    "Merchant": "Sunbird Topups",
+    "Tickets": 43,
+    "PredBreachRate": 15.03,
+    "ActualBreachRate": 16.28
+   }
+  ]
+ },
+ "segmentation": {
+  "k": 3,
+  "silhouette_by_k": {
+   "2": 0.3092,
+   "3": 0.3498,
+   "4": 0.1915,
+   "5": 0.1983,
+   "6": 0.2203
+  },
+  "pca_variance": 0.5901,
+  "segments": [
+   {
+    "SegmentID": 0,
+    "Segment": "Steady core",
+    "Profile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "Merchants": [
+     "Blue Crane Trading",
+     "Jozi Corner Store",
+     "Marula Market",
+     "Durban Cash Hub",
+     "Table Bay Express",
+     "Soweto Super Save",
+     "Nelson Bay Traders",
+     "Berg River Retail",
+     "Wild Coast Convenience",
+     "Golden Mile Grocers",
+     "Mango Tree Mobile",
+     "Pretoria PayPoint",
+     "Lighthouse General Dealer",
+     "Zebra Route Services",
+     "Mzansi Mini Market",
+     "Sunbird Topups",
+     "Liberty Lane Stores",
+     "North Coast Connect",
+     "Ubuntu Trading Post",
+     "Karoo Quick Shop"
+    ],
+    "Count": 20
+   },
+   {
+    "SegmentID": 1,
+    "Segment": "High-friction accounts",
+    "Profile": "4 merchants | avg sales R697,130 | growth slope +2.6%/mo | 11.73 tickets/1k tx | redemption 85.7%",
+    "Merchants": [
+     "Umhlanga Value Mart",
+     "Cape Point Cellular",
+     "Highveld Voucher Depot",
+     "Valley View Retail"
+    ],
+    "Count": 4
+   },
+   {
+    "SegmentID": 2,
+    "Segment": "Scale drivers",
+    "Profile": "1 merchants | avg sales R4,535,330 | growth slope +13.0%/mo | 1.78 tickets/1k tx | redemption 84.5%",
+    "Merchants": [
+     "Kudu Digital Kiosk"
+    ],
+    "Count": 1
+   }
+  ],
+  "merchants": [
+   {
+    "MerchantKey": "M016",
+    "Merchant": "Pretoria PayPoint",
+    "Region": "Eastern Cape",
+    "Channel": "Online",
+    "ActiveStatus": "Active",
+    "AccountManager": "L. Govender",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -0.414,
+    "PCA2": -2.204,
+    "HealthScore": 29.0,
+    "RiskTier": "Critical",
+    "TotalSales": 2066202.17,
+    "TotalTransactions": 16127,
+    "AvgBasket": 128.121,
+    "GrowthSlopePct": 1.671,
+    "Volatility": 0.08,
+    "RedemptionRate": 82.628,
+    "AvgDaysToRedeem": 3.434,
+    "DelayedRate": 12.034,
+    "Tickets": 32,
+    "TicketsPer1kTx": 1.984,
+    "AvgResolutionHours": 23.422,
+    "SLABreachRate": 31.25,
+    "BaseMonthlySalesTarget": 49440.0,
+    "TargetAttainmentPct": 597.03
+   },
+   {
+    "MerchantKey": "M002",
+    "Merchant": "Umhlanga Value Mart",
+    "Region": "Free State",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "High-friction accounts",
+    "SegmentID": 1,
+    "SegmentProfile": "4 merchants | avg sales R697,130 | growth slope +2.6%/mo | 11.73 tickets/1k tx | redemption 85.7%",
+    "PCA1": 3.854,
+    "PCA2": -0.006,
+    "HealthScore": 30.0,
+    "RiskTier": "Critical",
+    "TotalSales": 684341.39,
+    "TotalTransactions": 4954,
+    "AvgBasket": 138.139,
+    "GrowthSlopePct": -0.744,
+    "Volatility": 0.181,
+    "RedemptionRate": 84.317,
+    "AvgDaysToRedeem": 3.365,
+    "DelayedRate": 12.19,
+    "Tickets": 69,
+    "TicketsPer1kTx": 13.928,
+    "AvgResolutionHours": 19.804,
+    "SLABreachRate": 18.841,
+    "BaseMonthlySalesTarget": 22077.0,
+    "TargetAttainmentPct": 442.828
+   },
+   {
+    "MerchantKey": "M012",
+    "Merchant": "Wild Coast Convenience",
+    "Region": "Free State",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -0.846,
+    "PCA2": -0.663,
+    "HealthScore": 34.8,
+    "RiskTier": "Critical",
+    "TotalSales": 3040622.49,
+    "TotalTransactions": 23836,
+    "AvgBasket": 127.564,
+    "GrowthSlopePct": 4.203,
+    "Volatility": 0.097,
+    "RedemptionRate": 83.34,
+    "AvgDaysToRedeem": 3.567,
+    "DelayedRate": 13.829,
+    "Tickets": 30,
+    "TicketsPer1kTx": 1.259,
+    "AvgResolutionHours": 28.43,
+    "SLABreachRate": 26.667,
+    "BaseMonthlySalesTarget": 90358.95,
+    "TargetAttainmentPct": 480.721
+   },
+   {
+    "MerchantKey": "M010",
+    "Merchant": "Nelson Bay Traders",
+    "Region": "Free State",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "R. Pillay",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.777,
+    "PCA2": -0.121,
+    "HealthScore": 36.4,
+    "RiskTier": "At risk",
+    "TotalSales": 1694276.03,
+    "TotalTransactions": 12930,
+    "AvgBasket": 131.034,
+    "GrowthSlopePct": 4.552,
+    "Volatility": 0.102,
+    "RedemptionRate": 83.407,
+    "AvgDaysToRedeem": 3.634,
+    "DelayedRate": 14.166,
+    "Tickets": 76,
+    "TicketsPer1kTx": 5.878,
+    "AvgResolutionHours": 22.147,
+    "SLABreachRate": 21.053,
+    "BaseMonthlySalesTarget": 63610.0,
+    "TargetAttainmentPct": 380.505
+   },
+   {
+    "MerchantKey": "M008",
+    "Merchant": "Table Bay Express",
+    "Region": "Eastern Cape",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -0.988,
+    "PCA2": -1.497,
+    "HealthScore": 38.2,
+    "RiskTier": "At risk",
+    "TotalSales": 3325306.26,
+    "TotalTransactions": 26056,
+    "AvgBasket": 127.622,
+    "GrowthSlopePct": 2.177,
+    "Volatility": 0.083,
+    "RedemptionRate": 83.757,
+    "AvgDaysToRedeem": 3.559,
+    "DelayedRate": 13.701,
+    "Tickets": 48,
+    "TicketsPer1kTx": 1.842,
+    "AvgResolutionHours": 25.606,
+    "SLABreachRate": 33.333,
+    "BaseMonthlySalesTarget": 73388.0,
+    "TargetAttainmentPct": 647.304
+   },
+   {
+    "MerchantKey": "M004",
+    "Merchant": "Cape Point Cellular",
+    "Region": "Eastern Cape",
+    "Channel": "Online",
+    "ActiveStatus": "Active",
+    "AccountManager": "R. Pillay",
+    "Segment": "High-friction accounts",
+    "SegmentID": 1,
+    "SegmentProfile": "4 merchants | avg sales R697,130 | growth slope +2.6%/mo | 11.73 tickets/1k tx | redemption 85.7%",
+    "PCA1": 2.9,
+    "PCA2": -0.694,
+    "HealthScore": 39.4,
+    "RiskTier": "At risk",
+    "TotalSales": 776438.09,
+    "TotalTransactions": 5668,
+    "AvgBasket": 136.986,
+    "GrowthSlopePct": 1.801,
+    "Volatility": 0.076,
+    "RedemptionRate": 86.754,
+    "AvgDaysToRedeem": 3.541,
+    "DelayedRate": 13.654,
+    "Tickets": 44,
+    "TicketsPer1kTx": 7.763,
+    "AvgResolutionHours": 29.53,
+    "SLABreachRate": 34.091,
+    "BaseMonthlySalesTarget": 18708.0,
+    "TargetAttainmentPct": 592.9
+   },
+   {
+    "MerchantKey": "M007",
+    "Merchant": "Durban Cash Hub",
+    "Region": "Western Cape",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -2.238,
+    "PCA2": -0.359,
+    "HealthScore": 42.4,
+    "RiskTier": "At risk",
+    "TotalSales": 5776118.74,
+    "TotalTransactions": 45371,
+    "AvgBasket": 127.309,
+    "GrowthSlopePct": 4.447,
+    "Volatility": 0.099,
+    "RedemptionRate": 83.786,
+    "AvgDaysToRedeem": 3.754,
+    "DelayedRate": 14.661,
+    "Tickets": 124,
+    "TicketsPer1kTx": 2.733,
+    "AvgResolutionHours": 27.286,
+    "SLABreachRate": 35.484,
+    "BaseMonthlySalesTarget": 119929.66,
+    "TargetAttainmentPct": 688.036
+   },
+   {
+    "MerchantKey": "M015",
+    "Merchant": "Mango Tree Mobile",
+    "Region": "Free State",
+    "Channel": "Agent Network",
+    "ActiveStatus": "At Risk",
+    "AccountManager": "S. Jacobs",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.742,
+    "PCA2": 0.026,
+    "HealthScore": 44.2,
+    "RiskTier": "At risk",
+    "TotalSales": 2196476.67,
+    "TotalTransactions": 16929,
+    "AvgBasket": 129.746,
+    "GrowthSlopePct": 4.643,
+    "Volatility": 0.105,
+    "RedemptionRate": 84.442,
+    "AvgDaysToRedeem": 3.511,
+    "DelayedRate": 14.338,
+    "Tickets": 109,
+    "TicketsPer1kTx": 6.439,
+    "AvgResolutionHours": 27.089,
+    "SLABreachRate": 29.358,
+    "BaseMonthlySalesTarget": 82137.0,
+    "TargetAttainmentPct": 382.023
+   },
+   {
+    "MerchantKey": "M022",
+    "Merchant": "North Coast Connect",
+    "Region": "Free State",
+    "Channel": "Online",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.052,
+    "PCA2": -0.296,
+    "HealthScore": 45.2,
+    "RiskTier": "At risk",
+    "TotalSales": 3731381.85,
+    "TotalTransactions": 29341,
+    "AvgBasket": 127.173,
+    "GrowthSlopePct": 4.447,
+    "Volatility": 0.103,
+    "RedemptionRate": 84.05,
+    "AvgDaysToRedeem": 3.582,
+    "DelayedRate": 14.128,
+    "Tickets": 45,
+    "TicketsPer1kTx": 1.534,
+    "AvgResolutionHours": 25.413,
+    "SLABreachRate": 28.889,
+    "BaseMonthlySalesTarget": 100843.98,
+    "TargetAttainmentPct": 528.593
+   },
+   {
+    "MerchantKey": "M021",
+    "Merchant": "Liberty Lane Stores",
+    "Region": "Western Cape",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "L. Govender",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.786,
+    "PCA2": -0.493,
+    "HealthScore": 46.2,
+    "RiskTier": "At risk",
+    "TotalSales": 3185149.79,
+    "TotalTransactions": 24828,
+    "AvgBasket": 128.289,
+    "GrowthSlopePct": 4.095,
+    "Volatility": 0.1,
+    "RedemptionRate": 83.663,
+    "AvgDaysToRedeem": 3.822,
+    "DelayedRate": 15.198,
+    "Tickets": 30,
+    "TicketsPer1kTx": 1.208,
+    "AvgResolutionHours": 28.2,
+    "SLABreachRate": 33.333,
+    "BaseMonthlySalesTarget": 56306.0,
+    "TargetAttainmentPct": 808.122
+   },
+   {
+    "MerchantKey": "M009",
+    "Merchant": "Soweto Super Save",
+    "Region": "Western Cape",
+    "Channel": "Online",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.49,
+    "PCA2": 0.083,
+    "HealthScore": 48.6,
+    "RiskTier": "At risk",
+    "TotalSales": 3029370.8,
+    "TotalTransactions": 23409,
+    "AvgBasket": 129.411,
+    "GrowthSlopePct": 4.417,
+    "Volatility": 0.1,
+    "RedemptionRate": 83.289,
+    "AvgDaysToRedeem": 3.885,
+    "DelayedRate": 16.01,
+    "Tickets": 41,
+    "TicketsPer1kTx": 1.751,
+    "AvgResolutionHours": 18.915,
+    "SLABreachRate": 17.073,
+    "BaseMonthlySalesTarget": 57857.0,
+    "TargetAttainmentPct": 747.995
+   },
+   {
+    "MerchantKey": "M024",
+    "Merchant": "Ubuntu Trading Post",
+    "Region": "KwaZulu-Natal",
+    "Channel": "Retail",
+    "ActiveStatus": "At Risk",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.388,
+    "PCA2": -0.413,
+    "HealthScore": 49.6,
+    "RiskTier": "At risk",
+    "TotalSales": 3548946.51,
+    "TotalTransactions": 27865,
+    "AvgBasket": 127.362,
+    "GrowthSlopePct": 4.55,
+    "Volatility": 0.103,
+    "RedemptionRate": 83.318,
+    "AvgDaysToRedeem": 3.48,
+    "DelayedRate": 13.459,
+    "Tickets": 80,
+    "TicketsPer1kTx": 2.871,
+    "AvgResolutionHours": 20.786,
+    "SLABreachRate": 26.25,
+    "BaseMonthlySalesTarget": 70177.0,
+    "TargetAttainmentPct": 722.448
+   },
+   {
+    "MerchantKey": "M019",
+    "Merchant": "Mzansi Mini Market",
+    "Region": "Eastern Cape",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "R. Pillay",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.031,
+    "PCA2": -1.117,
+    "HealthScore": 49.8,
+    "RiskTier": "At risk",
+    "TotalSales": 2613183.07,
+    "TotalTransactions": 20364,
+    "AvgBasket": 128.324,
+    "GrowthSlopePct": 1.994,
+    "Volatility": 0.084,
+    "RedemptionRate": 84.263,
+    "AvgDaysToRedeem": 3.48,
+    "DelayedRate": 13.084,
+    "Tickets": 23,
+    "TicketsPer1kTx": 1.129,
+    "AvgResolutionHours": 22.296,
+    "SLABreachRate": 17.391,
+    "BaseMonthlySalesTarget": 69029.0,
+    "TargetAttainmentPct": 540.804
+   },
+   {
+    "MerchantKey": "M023",
+    "Merchant": "Valley View Retail",
+    "Region": "Free State",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "L. Govender",
+    "Segment": "High-friction accounts",
+    "SegmentID": 1,
+    "SegmentProfile": "4 merchants | avg sales R697,130 | growth slope +2.6%/mo | 11.73 tickets/1k tx | redemption 85.7%",
+    "PCA1": 2.123,
+    "PCA2": 0.621,
+    "HealthScore": 53.4,
+    "RiskTier": "At risk",
+    "TotalSales": 822002.78,
+    "TotalTransactions": 6032,
+    "AvgBasket": 136.274,
+    "GrowthSlopePct": 4.54,
+    "Volatility": 0.108,
+    "RedemptionRate": 85.86,
+    "AvgDaysToRedeem": 3.64,
+    "DelayedRate": 14.35,
+    "Tickets": 39,
+    "TicketsPer1kTx": 6.466,
+    "AvgResolutionHours": 21.679,
+    "SLABreachRate": 25.641,
+    "BaseMonthlySalesTarget": 20714.0,
+    "TargetAttainmentPct": 566.906
+   },
+   {
+    "MerchantKey": "M011",
+    "Merchant": "Berg River Retail",
+    "Region": "Western Cape",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 1.298,
+    "PCA2": 0.613,
+    "HealthScore": 53.8,
+    "RiskTier": "At risk",
+    "TotalSales": 1077657.92,
+    "TotalTransactions": 8197,
+    "AvgBasket": 131.47,
+    "GrowthSlopePct": 4.639,
+    "Volatility": 0.106,
+    "RedemptionRate": 85.138,
+    "AvgDaysToRedeem": 3.841,
+    "DelayedRate": 15.595,
+    "Tickets": 69,
+    "TicketsPer1kTx": 8.418,
+    "AvgResolutionHours": 21.561,
+    "SLABreachRate": 23.188,
+    "BaseMonthlySalesTarget": 28687.0,
+    "TargetAttainmentPct": 536.658
+   },
+   {
+    "MerchantKey": "M013",
+    "Merchant": "Highveld Voucher Depot",
+    "Region": "Free State",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "L. Govender",
+    "Segment": "High-friction accounts",
+    "SegmentID": 1,
+    "SegmentProfile": "4 merchants | avg sales R697,130 | growth slope +2.6%/mo | 11.73 tickets/1k tx | redemption 85.7%",
+    "PCA1": 5.111,
+    "PCA2": 1.091,
+    "HealthScore": 57.4,
+    "RiskTier": "Watch",
+    "TotalSales": 505737.91,
+    "TotalTransactions": 3517,
+    "AvgBasket": 143.798,
+    "GrowthSlopePct": 4.772,
+    "Volatility": 0.11,
+    "RedemptionRate": 85.769,
+    "AvgDaysToRedeem": 3.478,
+    "DelayedRate": 13.148,
+    "Tickets": 66,
+    "TicketsPer1kTx": 18.766,
+    "AvgResolutionHours": 24.988,
+    "SLABreachRate": 24.242,
+    "BaseMonthlySalesTarget": 18834.0,
+    "TargetAttainmentPct": 383.606
+   },
+   {
+    "MerchantKey": "M018",
+    "Merchant": "Zebra Route Services",
+    "Region": "Gauteng",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.53,
+    "PCA2": -0.455,
+    "HealthScore": 58.6,
+    "RiskTier": "Watch",
+    "TotalSales": 4519761.94,
+    "TotalTransactions": 35910,
+    "AvgBasket": 125.864,
+    "GrowthSlopePct": 4.762,
+    "Volatility": 0.112,
+    "RedemptionRate": 84.059,
+    "AvgDaysToRedeem": 3.425,
+    "DelayedRate": 12.687,
+    "Tickets": 67,
+    "TicketsPer1kTx": 1.866,
+    "AvgResolutionHours": 25.148,
+    "SLABreachRate": 37.313,
+    "BaseMonthlySalesTarget": 104055.48,
+    "TargetAttainmentPct": 620.515
+   },
+   {
+    "MerchantKey": "M014",
+    "Merchant": "Golden Mile Grocers",
+    "Region": "KwaZulu-Natal",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.203,
+    "PCA2": -0.229,
+    "HealthScore": 59.2,
+    "RiskTier": "Watch",
+    "TotalSales": 1432312.7,
+    "TotalTransactions": 10942,
+    "AvgBasket": 130.9,
+    "GrowthSlopePct": 4.457,
+    "Volatility": 0.102,
+    "RedemptionRate": 84.715,
+    "AvgDaysToRedeem": 3.581,
+    "DelayedRate": 13.451,
+    "Tickets": 30,
+    "TicketsPer1kTx": 2.742,
+    "AvgResolutionHours": 24.863,
+    "SLABreachRate": 30.0,
+    "BaseMonthlySalesTarget": 28453.0,
+    "TargetAttainmentPct": 719.137
+   },
+   {
+    "MerchantKey": "M006",
+    "Merchant": "Marula Market",
+    "Region": "Free State",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "R. Pillay",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.889,
+    "PCA2": 0.137,
+    "HealthScore": 59.8,
+    "RiskTier": "Watch",
+    "TotalSales": 2138321.62,
+    "TotalTransactions": 16518,
+    "AvgBasket": 129.454,
+    "GrowthSlopePct": 4.892,
+    "Volatility": 0.11,
+    "RedemptionRate": 84.627,
+    "AvgDaysToRedeem": 3.434,
+    "DelayedRate": 12.642,
+    "Tickets": 62,
+    "TicketsPer1kTx": 3.753,
+    "AvgResolutionHours": 21.563,
+    "SLABreachRate": 20.968,
+    "BaseMonthlySalesTarget": 80029.0,
+    "TargetAttainmentPct": 381.705
+   },
+   {
+    "MerchantKey": "M020",
+    "Merchant": "Sunbird Topups",
+    "Region": "Free State",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "R. Pillay",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.295,
+    "PCA2": 0.1,
+    "HealthScore": 60.4,
+    "RiskTier": "Watch",
+    "TotalSales": 1693657.85,
+    "TotalTransactions": 13079,
+    "AvgBasket": 129.494,
+    "GrowthSlopePct": 4.651,
+    "Volatility": 0.107,
+    "RedemptionRate": 84.062,
+    "AvgDaysToRedeem": 3.456,
+    "DelayedRate": 13.471,
+    "Tickets": 43,
+    "TicketsPer1kTx": 3.288,
+    "AvgResolutionHours": 21.877,
+    "SLABreachRate": 16.279,
+    "BaseMonthlySalesTarget": 42832.0,
+    "TargetAttainmentPct": 564.884
+   },
+   {
+    "MerchantKey": "M005",
+    "Merchant": "Jozi Corner Store",
+    "Region": "Free State",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "S. Jacobs",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": 0.799,
+    "PCA2": 0.252,
+    "HealthScore": 61.2,
+    "RiskTier": "Watch",
+    "TotalSales": 1502983.68,
+    "TotalTransactions": 11483,
+    "AvgBasket": 130.888,
+    "GrowthSlopePct": 5.128,
+    "Volatility": 0.114,
+    "RedemptionRate": 84.595,
+    "AvgDaysToRedeem": 3.576,
+    "DelayedRate": 13.409,
+    "Tickets": 43,
+    "TicketsPer1kTx": 3.745,
+    "AvgResolutionHours": 24.179,
+    "SLABreachRate": 25.581,
+    "BaseMonthlySalesTarget": 44459.0,
+    "TargetAttainmentPct": 482.944
+   },
+   {
+    "MerchantKey": "M001",
+    "Merchant": "Blue Crane Trading",
+    "Region": "Gauteng",
+    "Channel": "Retail",
+    "ActiveStatus": "Active",
+    "AccountManager": "S. Jacobs",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.074,
+    "PCA2": 0.189,
+    "HealthScore": 65.0,
+    "RiskTier": "Watch",
+    "TotalSales": 3265565.26,
+    "TotalTransactions": 25532,
+    "AvgBasket": 127.901,
+    "GrowthSlopePct": 4.423,
+    "Volatility": 0.099,
+    "RedemptionRate": 84.857,
+    "AvgDaysToRedeem": 3.695,
+    "DelayedRate": 14.841,
+    "Tickets": 44,
+    "TicketsPer1kTx": 1.723,
+    "AvgResolutionHours": 23.205,
+    "SLABreachRate": 20.455,
+    "BaseMonthlySalesTarget": 60133.0,
+    "TargetAttainmentPct": 775.796
+   },
+   {
+    "MerchantKey": "M025",
+    "Merchant": "Karoo Quick Shop",
+    "Region": "Gauteng",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "S. Jacobs",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -1.847,
+    "PCA2": 0.058,
+    "HealthScore": 65.2,
+    "RiskTier": "Watch",
+    "TotalSales": 4395067.11,
+    "TotalTransactions": 34657,
+    "AvgBasket": 126.816,
+    "GrowthSlopePct": 4.29,
+    "Volatility": 0.1,
+    "RedemptionRate": 84.607,
+    "AvgDaysToRedeem": 3.559,
+    "DelayedRate": 13.975,
+    "Tickets": 51,
+    "TicketsPer1kTx": 1.472,
+    "AvgResolutionHours": 19.865,
+    "SLABreachRate": 19.608,
+    "BaseMonthlySalesTarget": 68598.0,
+    "TargetAttainmentPct": 915.284
+   },
+   {
+    "MerchantKey": "M017",
+    "Merchant": "Lighthouse General Dealer",
+    "Region": "Gauteng",
+    "Channel": "Wholesale",
+    "ActiveStatus": "Active",
+    "AccountManager": "T. Mokoena",
+    "Segment": "Steady core",
+    "SegmentID": 0,
+    "SegmentProfile": "20 merchants | avg sales R2,909,872 | growth slope +4.2%/mo | 2.84 tickets/1k tx | redemption 84.0%",
+    "PCA1": -2.206,
+    "PCA2": -0.14,
+    "HealthScore": 67.8,
+    "RiskTier": "Watch",
+    "TotalSales": 3965086.39,
+    "TotalTransactions": 31124,
+    "AvgBasket": 127.396,
+    "GrowthSlopePct": 4.575,
+    "Volatility": 0.102,
+    "RedemptionRate": 83.369,
+    "AvgDaysToRedeem": 3.616,
+    "DelayedRate": 14.223,
+    "Tickets": 35,
+    "TicketsPer1kTx": 1.125,
+    "AvgResolutionHours": 20.317,
+    "SLABreachRate": 20.0,
+    "BaseMonthlySalesTarget": 61833.0,
+    "TargetAttainmentPct": 916.082
+   },
+   {
+    "MerchantKey": "M003",
+    "Merchant": "Kudu Digital Kiosk",
+    "Region": "KwaZulu-Natal",
+    "Channel": "Agent Network",
+    "ActiveStatus": "Active",
+    "AccountManager": "A. Naidoo",
+    "Segment": "Scale drivers",
+    "SegmentID": 2,
+    "SegmentProfile": "1 merchants | avg sales R4,535,330 | growth slope +13.0%/mo | 1.78 tickets/1k tx | redemption 84.5%",
+    "PCA1": -2.165,
+    "PCA2": 5.516,
+    "HealthScore": 74.4,
+    "RiskTier": "Watch",
+    "TotalSales": 4535329.73,
+    "TotalTransactions": 35458,
+    "AvgBasket": 127.907,
+    "GrowthSlopePct": 12.958,
+    "Volatility": 0.3,
+    "RedemptionRate": 84.503,
+    "AvgDaysToRedeem": 3.554,
+    "DelayedRate": 13.771,
+    "Tickets": 63,
+    "TicketsPer1kTx": 1.777,
+    "AvgResolutionHours": 22.386,
+    "SLABreachRate": 25.397,
+    "BaseMonthlySalesTarget": 92782.42,
+    "TargetAttainmentPct": 698.305
+   }
+  ],
+  "feature_names": [
+   "TotalSales",
+   "AvgBasket",
+   "GrowthSlopePct",
+   "Volatility",
+   "RedemptionRate",
+   "DelayedRate",
+   "TicketsPer1kTx",
+   "SLABreachRate",
+   "TargetAttainmentPct"
+  ],
+  "health_weights": {
+   "GrowthSlopePct": 0.3,
+   "TargetAttainmentPct": 0.2,
+   "RedemptionRate": 0.2,
+   "TicketsPer1kTx": -0.15,
+   "SLABreachRate": -0.1,
+   "DelayedRate": -0.05
+  }
+ },
+ "forecast": {
+  "selected_model": "Holt-Winters (damped trend, add seasonal)",
+  "candidates": {
+   "Holt-Winters (damped trend, add seasonal)": 2.467,
+   "Holt-Winters (add trend, mul seasonal)": 2.553,
+   "Seasonal naive (last week repeated)": 2.65,
+   "Holt-Winters (add trend, add seasonal)": 3.334,
+   "OLS linear trend + day-of-week": 6.124
+  },
+  "mape": 2.47,
+  "mae": 8134.98,
+  "naive_mape": 2.65,
+  "beats_benchmark": true,
+  "horizon_days": 30,
+  "forecast_total": 10195093.21,
+  "last_30d_actual": 10109998.78,
+  "forecast": [
+   {
+    "Date": "2026-08-01",
+    "ForecastSalesValue": 283656.34,
+    "LowerBound": 270438.79,
+    "UpperBound": 296873.9,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-02",
+    "ForecastSalesValue": 284745.34,
+    "LowerBound": 269026.93,
+    "UpperBound": 300463.76,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-03",
+    "ForecastSalesValue": 360819.9,
+    "LowerBound": 343424.62,
+    "UpperBound": 378215.19,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-04",
+    "ForecastSalesValue": 365165.46,
+    "LowerBound": 346473.01,
+    "UpperBound": 383857.91,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-05",
+    "ForecastSalesValue": 364221.13,
+    "LowerBound": 344456.27,
+    "UpperBound": 383985.98,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-06",
+    "ForecastSalesValue": 364939.64,
+    "LowerBound": 344253.05,
+    "UpperBound": 385626.23,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-07",
+    "ForecastSalesValue": 365429.61,
+    "LowerBound": 343930.25,
+    "UpperBound": 386928.98,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-08",
+    "ForecastSalesValue": 285131.71,
+    "LowerBound": 262902.52,
+    "UpperBound": 307360.91,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-09",
+    "ForecastSalesValue": 286213.21,
+    "LowerBound": 263319.73,
+    "UpperBound": 309106.69,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-10",
+    "ForecastSalesValue": 362280.3,
+    "LowerBound": 338775.8,
+    "UpperBound": 385784.81,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-11",
+    "ForecastSalesValue": 366618.43,
+    "LowerBound": 342547.14,
+    "UpperBound": 390689.72,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-12",
+    "ForecastSalesValue": 365666.71,
+    "LowerBound": 341066.06,
+    "UpperBound": 390267.35,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-13",
+    "ForecastSalesValue": 366377.87,
+    "LowerBound": 341279.99,
+    "UpperBound": 391475.75,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-14",
+    "ForecastSalesValue": 366860.53,
+    "LowerBound": 341293.33,
+    "UpperBound": 392427.73,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-15",
+    "ForecastSalesValue": 286555.35,
+    "LowerBound": 260543.33,
+    "UpperBound": 312567.36,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-16",
+    "ForecastSalesValue": 287629.6,
+    "LowerBound": 261194.49,
+    "UpperBound": 314064.72,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-17",
+    "ForecastSalesValue": 363689.49,
+    "LowerBound": 336850.67,
+    "UpperBound": 390528.31,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-18",
+    "ForecastSalesValue": 368020.45,
+    "LowerBound": 340795.36,
+    "UpperBound": 395245.54,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-19",
+    "ForecastSalesValue": 367061.6,
+    "LowerBound": 339466.01,
+    "UpperBound": 394657.18,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-20",
+    "ForecastSalesValue": 367765.66,
+    "LowerBound": 339813.93,
+    "UpperBound": 395717.39,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-21",
+    "ForecastSalesValue": 368241.26,
+    "LowerBound": 339946.5,
+    "UpperBound": 396536.02,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-22",
+    "ForecastSalesValue": 287929.06,
+    "LowerBound": 259303.31,
+    "UpperBound": 316554.81,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-23",
+    "ForecastSalesValue": 288996.33,
+    "LowerBound": 260050.69,
+    "UpperBound": 317941.97,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-24",
+    "ForecastSalesValue": 365049.26,
+    "LowerBound": 335794.0,
+    "UpperBound": 394304.53,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-25",
+    "ForecastSalesValue": 369373.3,
+    "LowerBound": 339817.95,
+    "UpperBound": 398928.66,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-26",
+    "ForecastSalesValue": 368407.57,
+    "LowerBound": 338560.99,
+    "UpperBound": 398254.15,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-27",
+    "ForecastSalesValue": 369104.79,
+    "LowerBound": 338975.27,
+    "UpperBound": 399234.3,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-28",
+    "ForecastSalesValue": 369573.57,
+    "LowerBound": 339168.88,
+    "UpperBound": 399978.27,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-29",
+    "ForecastSalesValue": 289254.6,
+    "LowerBound": 258581.99,
+    "UpperBound": 319927.2,
+    "Scope": "Total"
+   },
+   {
+    "Date": "2026-08-30",
+    "ForecastSalesValue": 290315.12,
+    "LowerBound": 259381.45,
+    "UpperBound": 321248.79,
+    "Scope": "Total"
+   }
+  ],
+  "backtest": [
+   {
+    "Date": "2026-07-04",
+    "Actual": 275615.0,
+    "Predicted": 284020.38
+   },
+   {
+    "Date": "2026-07-05",
+    "Actual": 270661.09,
+    "Predicted": 283642.1
+   },
+   {
+    "Date": "2026-07-06",
+    "Actual": 351387.47,
+    "Predicted": 361362.72
+   },
+   {
+    "Date": "2026-07-07",
+    "Actual": 367877.28,
+    "Predicted": 368009.42
+   },
+   {
+    "Date": "2026-07-08",
+    "Actual": 355584.82,
+    "Predicted": 364025.77
+   },
+   {
+    "Date": "2026-07-09",
+    "Actual": 348480.89,
+    "Predicted": 361202.88
+   },
+   {
+    "Date": "2026-07-10",
+    "Actual": 361631.76,
+    "Predicted": 361409.64
+   },
+   {
+    "Date": "2026-07-11",
+    "Actual": 275474.32,
+    "Predicted": 285758.94
+   },
+   {
+    "Date": "2026-07-12",
+    "Actual": 273534.95,
+    "Predicted": 285371.98
+   },
+   {
+    "Date": "2026-07-13",
+    "Actual": 348719.18,
+    "Predicted": 363083.94
+   },
+   {
+    "Date": "2026-07-14",
+    "Actual": 357985.34,
+    "Predicted": 369722.04
+   },
+   {
+    "Date": "2026-07-15",
+    "Actual": 361548.93,
+    "Predicted": 365729.83
+   },
+   {
+    "Date": "2026-07-16",
+    "Actual": 359779.86,
+    "Predicted": 362898.41
+   },
+   {
+    "Date": "2026-07-17",
+    "Actual": 366643.95,
+    "Predicted": 363096.69
+   },
+   {
+    "Date": "2026-07-18",
+    "Actual": 274870.6,
+    "Predicted": 287437.56
+   },
+   {
+    "Date": "2026-07-19",
+    "Actual": 284526.42,
+    "Predicted": 287042.2
+   },
+   {
+    "Date": "2026-07-20",
+    "Actual": 359135.95,
+    "Predicted": 364745.81
+   },
+   {
+    "Date": "2026-07-21",
+    "Actual": 361184.73,
+    "Predicted": 371375.6
+   },
+   {
+    "Date": "2026-07-22",
+    "Actual": 359730.07,
+    "Predicted": 367375.12
+   },
+   {
+    "Date": "2026-07-23",
+    "Actual": 350646.87,
+    "Predicted": 364535.48
+   },
+   {
+    "Date": "2026-07-24",
+    "Actual": 363286.77,
+    "Predicted": 364725.58
+   },
+   {
+    "Date": "2026-07-25",
+    "Actual": 286003.77,
+    "Predicted": 289058.3
+   },
+   {
+    "Date": "2026-07-26",
+    "Actual": 287688.94,
+    "Predicted": 288654.84
+   },
+   {
+    "Date": "2026-07-27",
+    "Actual": 360070.97,
+    "Predicted": 366350.39
+   },
+   {
+    "Date": "2026-07-28",
+    "Actual": 351579.27,
+    "Predicted": 372972.15
+   },
+   {
+    "Date": "2026-07-29",
+    "Actual": 357644.95,
+    "Predicted": 368963.69
+   },
+   {
+    "Date": "2026-07-30",
+    "Actual": 378645.64,
+    "Predicted": 366116.11
+   },
+   {
+    "Date": "2026-07-31",
+    "Actual": 359864.52,
+    "Predicted": 366298.3
+   }
+  ],
+  "per_merchant": [
+   {
+    "MerchantKey": "M002",
+    "Last30DaysActual": 62261.45,
+    "Next30DaysForecast": 35547.61,
+    "ExpectedChangePct": -42.91,
+    "Merchant": "Umhlanga Value Mart",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 22077.0,
+    "ForecastVsTargetPct": 161.0
+   },
+   {
+    "MerchantKey": "M012",
+    "Last30DaysActual": 462357.13,
+    "Next30DaysForecast": 466480.97,
+    "ExpectedChangePct": 0.89,
+    "Merchant": "Wild Coast Convenience",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 90358.95,
+    "ForecastVsTargetPct": 516.3
+   },
+   {
+    "MerchantKey": "M013",
+    "Last30DaysActual": 76387.27,
+    "Next30DaysForecast": 77183.78,
+    "ExpectedChangePct": 1.04,
+    "Merchant": "Highveld Voucher Depot",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 18834.0,
+    "ForecastVsTargetPct": 409.8
+   },
+   {
+    "MerchantKey": "M016",
+    "Last30DaysActual": 286039.34,
+    "Next30DaysForecast": 290222.85,
+    "ExpectedChangePct": 1.46,
+    "Merchant": "Pretoria PayPoint",
+    "Region": "Eastern Cape",
+    "BaseMonthlySalesTarget": 49440.0,
+    "ForecastVsTargetPct": 587.0
+   },
+   {
+    "MerchantKey": "M009",
+    "Last30DaysActual": 469046.76,
+    "Next30DaysForecast": 476489.37,
+    "ExpectedChangePct": 1.59,
+    "Merchant": "Soweto Super Save",
+    "Region": "Western Cape",
+    "BaseMonthlySalesTarget": 57857.0,
+    "ForecastVsTargetPct": 823.6
+   },
+   {
+    "MerchantKey": "M005",
+    "Last30DaysActual": 237425.63,
+    "Next30DaysForecast": 241475.56,
+    "ExpectedChangePct": 1.71,
+    "Merchant": "Jozi Corner Store",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 44459.0,
+    "ForecastVsTargetPct": 543.1
+   },
+   {
+    "MerchantKey": "M021",
+    "Last30DaysActual": 485655.86,
+    "Next30DaysForecast": 494300.34,
+    "ExpectedChangePct": 1.78,
+    "Merchant": "Liberty Lane Stores",
+    "Region": "Western Cape",
+    "BaseMonthlySalesTarget": 56306.0,
+    "ForecastVsTargetPct": 877.9
+   },
+   {
+    "MerchantKey": "M007",
+    "Last30DaysActual": 891415.86,
+    "Next30DaysForecast": 908835.08,
+    "ExpectedChangePct": 1.95,
+    "Merchant": "Durban Cash Hub",
+    "Region": "Western Cape",
+    "BaseMonthlySalesTarget": 119929.66,
+    "ForecastVsTargetPct": 757.8
+   },
+   {
+    "MerchantKey": "M003",
+    "Last30DaysActual": 851770.4,
+    "Next30DaysForecast": 868579.2,
+    "ExpectedChangePct": 1.97,
+    "Merchant": "Kudu Digital Kiosk",
+    "Region": "KwaZulu-Natal",
+    "BaseMonthlySalesTarget": 92782.42,
+    "ForecastVsTargetPct": 936.1
+   },
+   {
+    "MerchantKey": "M008",
+    "Last30DaysActual": 458952.83,
+    "Next30DaysForecast": 468608.13,
+    "ExpectedChangePct": 2.1,
+    "Merchant": "Table Bay Express",
+    "Region": "Eastern Cape",
+    "BaseMonthlySalesTarget": 73388.0,
+    "ForecastVsTargetPct": 638.5
+   },
+   {
+    "MerchantKey": "M017",
+    "Last30DaysActual": 615950.1,
+    "Next30DaysForecast": 630645.15,
+    "ExpectedChangePct": 2.39,
+    "Merchant": "Lighthouse General Dealer",
+    "Region": "Gauteng",
+    "BaseMonthlySalesTarget": 61833.0,
+    "ForecastVsTargetPct": 1019.9
+   },
+   {
+    "MerchantKey": "M010",
+    "Last30DaysActual": 261646.01,
+    "Next30DaysForecast": 268250.33,
+    "ExpectedChangePct": 2.52,
+    "Merchant": "Nelson Bay Traders",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 63610.0,
+    "ForecastVsTargetPct": 421.7
+   },
+   {
+    "MerchantKey": "M014",
+    "Last30DaysActual": 216909.13,
+    "Next30DaysForecast": 222505.66,
+    "ExpectedChangePct": 2.58,
+    "Merchant": "Golden Mile Grocers",
+    "Region": "KwaZulu-Natal",
+    "BaseMonthlySalesTarget": 28453.0,
+    "ForecastVsTargetPct": 782.0
+   },
+   {
+    "MerchantKey": "M022",
+    "Last30DaysActual": 575189.24,
+    "Next30DaysForecast": 590032.1,
+    "ExpectedChangePct": 2.58,
+    "Merchant": "North Coast Connect",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 100843.98,
+    "ForecastVsTargetPct": 585.1
+   },
+   {
+    "MerchantKey": "M004",
+    "Last30DaysActual": 108757.88,
+    "Next30DaysForecast": 111719.36,
+    "ExpectedChangePct": 2.72,
+    "Merchant": "Cape Point Cellular",
+    "Region": "Eastern Cape",
+    "BaseMonthlySalesTarget": 18708.0,
+    "ForecastVsTargetPct": 597.2
+   },
+   {
+    "MerchantKey": "M025",
+    "Last30DaysActual": 680346.48,
+    "Next30DaysForecast": 700603.11,
+    "ExpectedChangePct": 2.98,
+    "Merchant": "Karoo Quick Shop",
+    "Region": "Gauteng",
+    "BaseMonthlySalesTarget": 68598.0,
+    "ForecastVsTargetPct": 1021.3
+   },
+   {
+    "MerchantKey": "M020",
+    "Last30DaysActual": 263878.19,
+    "Next30DaysForecast": 271896.32,
+    "ExpectedChangePct": 3.04,
+    "Merchant": "Sunbird Topups",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 42832.0,
+    "ForecastVsTargetPct": 634.8
+   },
+   {
+    "MerchantKey": "M023",
+    "Last30DaysActual": 126283.74,
+    "Next30DaysForecast": 130270.94,
+    "ExpectedChangePct": 3.16,
+    "Merchant": "Valley View Retail",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 20714.0,
+    "ForecastVsTargetPct": 628.9
+   },
+   {
+    "MerchantKey": "M011",
+    "Last30DaysActual": 169688.64,
+    "Next30DaysForecast": 176345.22,
+    "ExpectedChangePct": 3.92,
+    "Merchant": "Berg River Retail",
+    "Region": "Western Cape",
+    "BaseMonthlySalesTarget": 28687.0,
+    "ForecastVsTargetPct": 614.7
+   },
+   {
+    "MerchantKey": "M006",
+    "Last30DaysActual": 333348.56,
+    "Next30DaysForecast": 346702.98,
+    "ExpectedChangePct": 4.01,
+    "Merchant": "Marula Market",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 80029.0,
+    "ForecastVsTargetPct": 433.2
+   },
+   {
+    "MerchantKey": "M024",
+    "Last30DaysActual": 554952.74,
+    "Next30DaysForecast": 577784.73,
+    "ExpectedChangePct": 4.11,
+    "Merchant": "Ubuntu Trading Post",
+    "Region": "KwaZulu-Natal",
+    "BaseMonthlySalesTarget": 70177.0,
+    "ForecastVsTargetPct": 823.3
+   },
+   {
+    "MerchantKey": "M019",
+    "Last30DaysActual": 369405.57,
+    "Next30DaysForecast": 385192.07,
+    "ExpectedChangePct": 4.27,
+    "Merchant": "Mzansi Mini Market",
+    "Region": "Eastern Cape",
+    "BaseMonthlySalesTarget": 69029.0,
+    "ForecastVsTargetPct": 558.0
+   },
+   {
+    "MerchantKey": "M015",
+    "Last30DaysActual": 342846.66,
+    "Next30DaysForecast": 358095.33,
+    "ExpectedChangePct": 4.45,
+    "Merchant": "Mango Tree Mobile",
+    "Region": "Free State",
+    "BaseMonthlySalesTarget": 82137.0,
+    "ForecastVsTargetPct": 436.0
+   },
+   {
+    "MerchantKey": "M018",
+    "Last30DaysActual": 704466.08,
+    "Next30DaysForecast": 737866.76,
+    "ExpectedChangePct": 4.74,
+    "Merchant": "Zebra Route Services",
+    "Region": "Gauteng",
+    "BaseMonthlySalesTarget": 104055.48,
+    "ForecastVsTargetPct": 709.1
+   },
+   {
+    "MerchantKey": "M001",
+    "Last30DaysActual": 505017.23,
+    "Next30DaysForecast": 529733.67,
+    "ExpectedChangePct": 4.89,
+    "Merchant": "Blue Crane Trading",
+    "Region": "Gauteng",
+    "BaseMonthlySalesTarget": 60133.0,
+    "ForecastVsTargetPct": 880.9
+   }
+  ]
+ },
+ "performance": [
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Metric": "ROC-AUC",
+   "Value": 0.6213,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 85890,
+   "TestRows": 35079,
+   "Note": "winning algorithm: Logistic regression"
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Metric": "PR-AUC",
+   "Value": 0.8922,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 85890,
+   "TestRows": 35079,
+   "Note": "base rate 0.843"
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Metric": "Brier score",
+   "Value": 0.1293,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 85890,
+   "TestRows": 35079,
+   "Note": "lower is better; measures probability calibration"
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Metric": "ROC-AUC (Gradient boosting)",
+   "Value": 0.6181,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 85890,
+   "TestRows": 35079,
+   "Note": "challenger"
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Metric": "ROC-AUC",
+   "Value": 0.506,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 72279,
+   "TestRows": 29564,
+   "Note": "winning algorithm: Gradient boosting"
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Metric": "PR-AUC",
+   "Value": 0.1436,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 72279,
+   "TestRows": 29564,
+   "Note": "base rate 0.139"
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Metric": "Brier score",
+   "Value": 0.1204,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 72279,
+   "TestRows": 29564,
+   "Note": "lower is better; measures probability calibration"
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Metric": "ROC-AUC (Logistic regression)",
+   "Value": 0.5018,
+   "HoldoutMethod": "Time split: train <202606, test >=",
+   "TrainRows": 72279,
+   "TestRows": 29564,
+   "Note": "challenger"
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Metric": "ROC-AUC (Jan-Mar -> April diagnostic)",
+   "Value": 0.4575,
+   "HoldoutMethod": "Time split: train <202604, test = April",
+   "TrainRows": 42925,
+   "TestRows": 14431,
+   "Note": "tests whether the April incident was predictable from prior months"
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Metric": "ROC-AUC",
+   "Value": 0.9661,
+   "HoldoutMethod": "Stratified 5-fold CV",
+   "TrainRows": 1090,
+   "TestRows": 272,
+   "Note": "base breach rate 0.263; Status excluded as leakage"
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Metric": "PR-AUC",
+   "Value": 0.9091,
+   "HoldoutMethod": "Stratified 5-fold CV",
+   "TrainRows": 1090,
+   "TestRows": 272,
+   "Note": ""
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Metric": "ROC-AUC (with leaked Status feature)",
+   "Value": 0.9656,
+   "HoldoutMethod": "Stratified 5-fold CV",
+   "TrainRows": 1090,
+   "TestRows": 272,
+   "Note": "rejected: Status is unknown at ticket creation"
+  },
+  {
+   "Model": "Merchant Segmentation",
+   "Metric": "Silhouette score",
+   "Value": 0.3498,
+   "HoldoutMethod": "K-Means, k=3 of [2, 3, 4, 5, 6] by silhouette",
+   "TrainRows": 25,
+   "TestRows": 0,
+   "Note": "all k: k=2:0.309, k=3:0.350, k=4:0.191, k=5:0.198, k=6:0.220"
+  },
+  {
+   "Model": "Merchant Segmentation",
+   "Metric": "PCA variance explained (2 components)",
+   "Value": 0.5901,
+   "HoldoutMethod": "n/a",
+   "TrainRows": 25,
+   "TestRows": 0,
+   "Note": "how much of the 9-feature spread the scatter plot shows"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE % - Holt-Winters (damped trend, add seasonal)",
+   "Value": 2.4668,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "selected"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE % - Holt-Winters (add trend, mul seasonal)",
+   "Value": 2.5529,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "challenger"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE % - Seasonal naive (last week repeated)",
+   "Value": 2.6496,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "benchmark"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE % - Holt-Winters (add trend, add seasonal)",
+   "Value": 3.334,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "challenger"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE % - OLS linear trend + day-of-week",
+   "Value": 6.1245,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "challenger"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAE (ZAR)",
+   "Value": 8134.9781,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "selected model: Holt-Winters (damped trend, add seasonal)"
+  },
+  {
+   "Model": "Daily Sales Forecast",
+   "Metric": "MAPE improvement vs benchmark (pp)",
+   "Value": 0.1827,
+   "HoldoutMethod": "Held-out last 28 days",
+   "TrainRows": 184,
+   "TestRows": 28,
+   "Note": "positive means the selected model beats seasonal naive"
+  }
+ ],
+ "importance": [
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "VTypePrior",
+   "ImportanceAUCDrop": 0.08369
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "VoucherTypeKey",
+   "ImportanceAUCDrop": 0.00519
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "SettlementModel",
+   "ImportanceAUCDrop": 0.0011
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "ValueBand",
+   "ImportanceAUCDrop": 0.00084
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "MerchantPrior",
+   "ImportanceAUCDrop": 0.00083
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "Region",
+   "ImportanceAUCDrop": 0.00045
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "TenureMonths",
+   "ImportanceAUCDrop": 0.00043
+  },
+  {
+   "Model": "Voucher Redemption Propensity",
+   "Feature": "Day",
+   "ImportanceAUCDrop": 0.00017
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "Region",
+   "ImportanceAUCDrop": 0.0065
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "VoucherTypeKey",
+   "ImportanceAUCDrop": 0.0061
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "VoucherValue",
+   "ImportanceAUCDrop": 0.00455
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "DayOfWeek",
+   "ImportanceAUCDrop": 0.00372
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "ValueBand",
+   "ImportanceAUCDrop": 0.00151
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "VTypePrior",
+   "ImportanceAUCDrop": 0.00137
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "Channel",
+   "ImportanceAUCDrop": 0.00097
+  },
+  {
+   "Model": "Delayed Redemption Risk",
+   "Feature": "MerchantPrior",
+   "ImportanceAUCDrop": 0.00069
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "SLATargetHours",
+   "ImportanceAUCDrop": 0.05325
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "PrioritySort",
+   "ImportanceAUCDrop": 0.05325
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "TicketCategory",
+   "ImportanceAUCDrop": 0.00285
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "PriorityKey",
+   "ImportanceAUCDrop": 0.00281
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "TicketTypeKey",
+   "ImportanceAUCDrop": 0.00161
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "Region",
+   "ImportanceAUCDrop": 0.00145
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "MonthNumber",
+   "ImportanceAUCDrop": 0.00079
+  },
+  {
+   "Model": "SLA Breach Risk",
+   "Feature": "Channel",
+   "ImportanceAUCDrop": 0.00012
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+<!doctype html><meta charset='utf-8'><title>Core four ERD</title><style>body{font-family:Segoe UI,Arial,sans-serif;background:#F4F7FB;margin:0;padding:28px}.c{max-width:1200px;margin:auto;background:#fff;padding:22px;border-radius:10px;box-shadow:0 2px 10px rgba(18,48,91,.10)}h1{color:#12305B;font-size:20px;margin:0 0 4px}p{color:#5A6672;font-size:13px;margin:0 0 18px}</style><div class='c'><h1>The four supplied tables</h1><p>Relationships read from the dbt manifest — every line is an enforced <code>relationships</code> test.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 700" style="width:100%;height:auto;font-family:Segoe UI,Arial,sans-serif">
+<rect width="1160" height="700" fill="#FFFFFF"/>
+<text x="580.0" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#12305B">The four supplied tables — one conformed dimension, three facts</text>
+<text x="580.0" y="50" text-anchor="middle" font-size="11.5" fill="#5A6672">Every relationship shown is an enforced dbt relationships test. Facts join to the dimension, never to each other.</text>
+<path d="M185.0,156.0 L580.0,386.0" stroke="#0E8B8B" stroke-width="2.2" fill="none" opacity=".75"/>
+<rect x="330.5" y="260.0" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#0E8B8B" stroke-width="1"/>
+<text x="382.5" y="275.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">merchant_key</text>
+<path d="M207.5,169.1 L224.0,172.9" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M207.5,169.1 L222.2,177.6" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M207.5,169.1 L219.0,181.6" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M553.5,379.8 L561.6,366.0" stroke="#12305B" stroke-width="2.4"/>
+<path d="M975.0,156.0 L580.0,386.0" stroke="#0E8B8B" stroke-width="2.2" fill="none" opacity=".75"/>
+<rect x="725.5" y="260.0" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#0E8B8B" stroke-width="1"/>
+<text x="777.5" y="275.0" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">merchant_key</text>
+<path d="M952.5,169.1 L941.0,181.6" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M952.5,169.1 L937.8,177.6" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M952.5,169.1 L936.0,172.9" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M598.4,366.0 L606.5,379.8" stroke="#12305B" stroke-width="2.4"/>
+<path d="M580.0,631.0 L580.0,386.0" stroke="#0E8B8B" stroke-width="2.2" fill="none" opacity=".75"/>
+<rect x="528.0" y="497.5" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#0E8B8B" stroke-width="1"/>
+<text x="580.0" y="512.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">merchant_key</text>
+<path d="M580.0,605.0 L575.0,588.8" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M580.0,605.0 L580.0,588.0" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M580.0,605.0 L585.0,588.8" stroke="#0E8B8B" stroke-width="1.7" fill="none"/>
+<path d="M588.0,412.0 L572.0,412.0" stroke="#12305B" stroke-width="2.4"/>
+<rect x="455" y="300" width="250" height="172.0" rx="7" fill="#fff" stroke="#12305B" stroke-width="2"/>
+<path d="M455,307 a7,7 0 0 1 7,-7 h236 a7,7 0 0 1 7,7 v27 h-250 Z" fill="#12305B"/>
+<text x="465" y="316" font-size="11.5" font-weight="700" fill="#fff">dim_merchant</text>
+<text x="465" y="328" font-size="9" fill="#CFE0F2">MerchantReference.csv</text>
+<rect x="643.0" y="306" width="54.0" height="17" rx="8.5" fill="#FFFFFF" opacity=".92"/>
+<text x="670.0" y="318" text-anchor="middle" font-size="9.5" font-weight="700" fill="#12305B">26 rows</text>
+<text x="465" y="347.0" font-size="9.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="695" y="347.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="362.5" font-size="9.5" fill="#12305B" font-weight="700">merchant_id</text>
+<text x="695" y="362.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="378.0" font-size="9.5" fill="#5A6672" font-weight="400">merchant_name</text>
+<text x="465" y="393.5" font-size="9.5" fill="#5A6672" font-weight="400">region</text>
+<text x="465" y="409.0" font-size="9.5" fill="#5A6672" font-weight="400">channel</text>
+<text x="465" y="424.5" font-size="9.5" fill="#5A6672" font-weight="400">active_status</text>
+<text x="465" y="440.0" font-size="9.5" fill="#5A6672" font-weight="400">is_at_risk</text>
+<text x="465" y="455.5" font-size="9.5" fill="#5A6672" font-weight="400">account_manager</text>
+<text x="465" y="471.0" font-size="8.5" fill="#5A6672" font-style="italic">+8 more</text>
+<text x="455" y="486.0" font-size="9" fill="#5A6672" font-style="italic">Conformed dimension</text>
+<rect x="60" y="70" width="250" height="172.0" rx="7" fill="#fff" stroke="#0E8B8B" stroke-width="2"/>
+<path d="M60,77 a7,7 0 0 1 7,-7 h236 a7,7 0 0 1 7,7 v27 h-250 Z" fill="#0E8B8B"/>
+<text x="70" y="86" font-size="11.5" font-weight="700" fill="#fff">fct_merchant_sales</text>
+<text x="70" y="98" font-size="9" fill="#CFE0F2">MerchantSales.csv</text>
+<rect x="224.0" y="76" width="78.0" height="17" rx="8.5" fill="#FFFFFF" opacity=".92"/>
+<text x="263.0" y="88" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">26,500 rows</text>
+<text x="70" y="117.0" font-size="9.5" fill="#12305B" font-weight="700">sales_key</text>
+<text x="300" y="117.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="70" y="132.5" font-size="9.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="300" y="132.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="70" y="148.0" font-size="9.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="300" y="148.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="70" y="163.5" font-size="9.5" fill="#12305B" font-weight="700">voucher_type_key</text>
+<text x="300" y="163.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="70" y="179.0" font-size="9.5" fill="#5A6672" font-weight="400">sales_date</text>
+<text x="70" y="194.5" font-size="9.5" fill="#5A6672" font-weight="400">sales_value</text>
+<text x="70" y="210.0" font-size="9.5" fill="#5A6672" font-weight="400">transactions</text>
+<text x="70" y="225.5" font-size="9.5" fill="#5A6672" font-weight="400">avg_basket_value</text>
+<text x="70" y="241.0" font-size="8.5" fill="#5A6672" font-style="italic">+2 more</text>
+<text x="60" y="256.0" font-size="9" fill="#5A6672" font-style="italic">Grain: Date x Merchant x VoucherType</text>
+<rect x="850" y="70" width="250" height="172.0" rx="7" fill="#fff" stroke="#0E8B8B" stroke-width="2"/>
+<path d="M850,77 a7,7 0 0 1 7,-7 h236 a7,7 0 0 1 7,7 v27 h-250 Z" fill="#0E8B8B"/>
+<text x="860" y="86" font-size="11.5" font-weight="700" fill="#fff">fct_voucher_redemptions</text>
+<text x="860" y="98" font-size="9" fill="#CFE0F2">VoucherRedemptions.csv</text>
+<rect x="1008.0" y="76" width="84.0" height="17" rx="8.5" fill="#FFFFFF" opacity=".92"/>
+<text x="1050.0" y="88" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">120,969 rows</text>
+<text x="860" y="117.0" font-size="9.5" fill="#12305B" font-weight="700">voucher_id</text>
+<text x="1090" y="117.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="860" y="132.5" font-size="9.5" fill="#12305B" font-weight="700">sold_date_key</text>
+<text x="1090" y="132.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="860" y="148.0" font-size="9.5" fill="#12305B" font-weight="700">redeemed_date_key</text>
+<text x="1090" y="148.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="860" y="163.5" font-size="9.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="1090" y="163.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="860" y="179.0" font-size="9.5" fill="#12305B" font-weight="700">voucher_type_key</text>
+<text x="1090" y="179.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="860" y="194.5" font-size="9.5" fill="#5A6672" font-weight="400">sold_date</text>
+<text x="860" y="210.0" font-size="9.5" fill="#5A6672" font-weight="400">redeemed_date</text>
+<text x="860" y="225.5" font-size="9.5" fill="#5A6672" font-weight="400">voucher_value</text>
+<text x="860" y="241.0" font-size="8.5" fill="#5A6672" font-style="italic">+13 more</text>
+<text x="850" y="256.0" font-size="9" fill="#5A6672" font-style="italic">Grain: one row per voucher</text>
+<rect x="455" y="545" width="250" height="172.0" rx="7" fill="#fff" stroke="#0E8B8B" stroke-width="2"/>
+<path d="M455,552 a7,7 0 0 1 7,-7 h236 a7,7 0 0 1 7,7 v27 h-250 Z" fill="#0E8B8B"/>
+<text x="465" y="561" font-size="11.5" font-weight="700" fill="#fff">fct_support_tickets</text>
+<text x="465" y="573" font-size="9" fill="#CFE0F2">SupportTickets.csv</text>
+<rect x="625.0" y="551" width="72.0" height="17" rx="8.5" fill="#FFFFFF" opacity=".92"/>
+<text x="661.0" y="563" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0E8B8B">1,363 rows</text>
+<text x="465" y="592.0" font-size="9.5" fill="#12305B" font-weight="700">ticket_id</text>
+<text x="695" y="592.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="607.5" font-size="9.5" fill="#12305B" font-weight="700">date_key</text>
+<text x="695" y="607.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="623.0" font-size="9.5" fill="#12305B" font-weight="700">merchant_key</text>
+<text x="695" y="623.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="638.5" font-size="9.5" fill="#12305B" font-weight="700">ticket_type_key</text>
+<text x="695" y="638.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="654.0" font-size="9.5" fill="#12305B" font-weight="700">priority_key</text>
+<text x="695" y="654.0" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="669.5" font-size="9.5" fill="#12305B" font-weight="700">status_key</text>
+<text x="695" y="669.5" font-size="8" text-anchor="end" fill="#B8860B" font-weight="700">KEY</text>
+<text x="465" y="685.0" font-size="9.5" fill="#5A6672" font-weight="400">ticket_date</text>
+<text x="465" y="700.5" font-size="9.5" fill="#5A6672" font-weight="400">ticket_count</text>
+<text x="465" y="716.0" font-size="8.5" fill="#5A6672" font-style="italic">+14 more</text>
+<text x="455" y="731.0" font-size="9" fill="#5A6672" font-style="italic">Grain: one row per ticket</text>
+<rect x="30" y="76" width="286" height="74" rx="7" fill="#F4F7FB" stroke="#C9D6E6"/>
+<text x="40" y="92" font-size="10" font-weight="700" fill="#12305B">How to read this</text>
+<text x="40" y="107" font-size="9" fill="#5A6672">Crow’s foot = many side · bar = one side</text>
+<text x="40" y="121" font-size="9" fill="#5A6672">Bold column + KEY = joins to another table</text>
+<text x="40" y="135" font-size="9" fill="#5A6672">Navy header = dimension · teal = fact</text>
+<rect x="810" y="76" width="330" height="74" rx="7" fill="#FDF6F5" stroke="#F0997B"/>
+<text x="820" y="92" font-size="10" font-weight="700" fill="#993C1D">Removed during cleanup — 9 redundant columns</text>
+<text x="820" y="107" font-size="9" fill="#5A6672">Merchant, Region, Channel repeated on all three facts</text>
+<text x="820" y="121" font-size="9" fill="#5A6672">Profiling proved 100% agreement, so removal was lossless</text>
+<text x="820" y="135" font-size="9" fill="#5A6672">They now live once, on dim_merchant</text>
+<text x="40" y="570" font-size="11" font-weight="700" fill="#B8860B">Also joined, outside these four (7 enforced relationships):</text>
+<text x="40" y="586" font-size="9.5" fill="#5A6672">dim_date (date_key), dim_date (redeemed_date_key), dim_date (sold_date_key), dim_priority (priority_key), dim_ticket_s</text>
+<text x="40" y="600" font-size="9.5" fill="#5A6672">tatus (status_key), dim_ticket_type (ticket_type_key), dim_voucher_type (voucher_type_key)</text></svg></div>

@@ -1,0 +1,314 @@
+{
+  "MerchantReference": {
+    "rows": 25,
+    "columns": [
+      "MerchantID",
+      "Merchant",
+      "Region",
+      "Channel",
+      "ActiveStatus",
+      "OnboardedDate",
+      "AccountManager",
+      "BaseMonthlySalesTarget"
+    ],
+    "dtypes": {
+      "MerchantID": "str",
+      "Merchant": "str",
+      "Region": "str",
+      "Channel": "str",
+      "ActiveStatus": "str",
+      "OnboardedDate": "str",
+      "AccountManager": "str",
+      "BaseMonthlySalesTarget": "float64"
+    },
+    "nulls": {
+      "MerchantID": 0,
+      "Merchant": 0,
+      "Region": 0,
+      "Channel": 0,
+      "ActiveStatus": 0,
+      "OnboardedDate": 0,
+      "AccountManager": 0,
+      "BaseMonthlySalesTarget": 0
+    },
+    "distinct": {
+      "MerchantID": 25,
+      "Merchant": 25,
+      "Region": 5,
+      "Channel": 4,
+      "ActiveStatus": 2,
+      "OnboardedDate": 24,
+      "AccountManager": 5,
+      "BaseMonthlySalesTarget": 25
+    },
+    "duplicate_rows": 0
+  },
+  "MerchantSales": {
+    "rows": 26500,
+    "columns": [
+      "Date",
+      "MerchantID",
+      "Merchant",
+      "Region",
+      "Channel",
+      "VoucherType",
+      "SalesValue",
+      "Transactions"
+    ],
+    "dtypes": {
+      "Date": "str",
+      "MerchantID": "str",
+      "Merchant": "str",
+      "Region": "str",
+      "Channel": "str",
+      "VoucherType": "str",
+      "SalesValue": "float64",
+      "Transactions": "int64"
+    },
+    "nulls": {
+      "Date": 0,
+      "MerchantID": 0,
+      "Merchant": 0,
+      "Region": 0,
+      "Channel": 0,
+      "VoucherType": 0,
+      "SalesValue": 0,
+      "Transactions": 0
+    },
+    "distinct": {
+      "Date": 212,
+      "MerchantID": 25,
+      "Merchant": 25,
+      "Region": 5,
+      "Channel": 4,
+      "VoucherType": 5,
+      "SalesValue": 25780,
+      "Transactions": 159
+    },
+    "duplicate_rows": 0
+  },
+  "SupportTickets": {
+    "rows": 1363,
+    "columns": [
+      "TicketID",
+      "Date",
+      "MerchantID",
+      "Merchant",
+      "Region",
+      "TicketType",
+      "Priority",
+      "ResolutionHours",
+      "SLAHours",
+      "Status"
+    ],
+    "dtypes": {
+      "TicketID": "str",
+      "Date": "str",
+      "MerchantID": "str",
+      "Merchant": "str",
+      "Region": "str",
+      "TicketType": "str",
+      "Priority": "str",
+      "ResolutionHours": "float64",
+      "SLAHours": "int64",
+      "Status": "str"
+    },
+    "nulls": {
+      "TicketID": 0,
+      "Date": 0,
+      "MerchantID": 0,
+      "Merchant": 0,
+      "Region": 0,
+      "TicketType": 0,
+      "Priority": 0,
+      "ResolutionHours": 0,
+      "SLAHours": 0,
+      "Status": 0
+    },
+    "distinct": {
+      "TicketID": 1363,
+      "Date": 211,
+      "MerchantID": 25,
+      "Merchant": 25,
+      "Region": 5,
+      "TicketType": 6,
+      "Priority": 4,
+      "ResolutionHours": 489,
+      "SLAHours": 4,
+      "Status": 4
+    },
+    "duplicate_rows": 0
+  },
+  "VoucherRedemptions": {
+    "rows": 120969,
+    "columns": [
+      "VoucherID",
+      "MerchantID",
+      "Merchant",
+      "SoldDate",
+      "VoucherType",
+      "VoucherValue",
+      "Redeemed",
+      "RedeemedDate"
+    ],
+    "dtypes": {
+      "VoucherID": "str",
+      "MerchantID": "str",
+      "Merchant": "str",
+      "SoldDate": "str",
+      "VoucherType": "str",
+      "VoucherValue": "float64",
+      "Redeemed": "str",
+      "RedeemedDate": "str"
+    },
+    "nulls": {
+      "VoucherID": 0,
+      "MerchantID": 0,
+      "Merchant": 0,
+      "SoldDate": 0,
+      "VoucherType": 0,
+      "VoucherValue": 0,
+      "Redeemed": 0,
+      "RedeemedDate": 19126
+    },
+    "distinct": {
+      "VoucherID": 120969,
+      "MerchantID": 25,
+      "Merchant": 25,
+      "SoldDate": 212,
+      "VoucherType": 5,
+      "VoucherValue": 12545,
+      "Redeemed": 2,
+      "RedeemedDate": 232
+    },
+    "duplicate_rows": 0
+  },
+  "date_coverage": {
+    "MerchantSales.Date": {
+      "min": "2026-01-01 00:00:00",
+      "max": "2026-07-31 00:00:00",
+      "nulls": 0
+    },
+    "SupportTickets.Date": {
+      "min": "2026-01-01 00:00:00",
+      "max": "2026-07-31 00:00:00",
+      "nulls": 0
+    },
+    "VoucherRedemptions.SoldDate": {
+      "min": "2026-01-01 00:00:00",
+      "max": "2026-07-31 00:00:00",
+      "nulls": 0
+    },
+    "VoucherRedemptions.RedeemedDate": {
+      "min": "2026-01-01 00:00:00",
+      "max": "2026-08-20 00:00:00",
+      "nulls": 19126
+    }
+  },
+  "grain_MerchantSales": {
+    "unique": true,
+    "max": 1
+  },
+  "orphans_MerchantSales": [],
+  "orphans_SupportTickets": [],
+  "orphans_VoucherRedemptions": [],
+  "conformance_Merchant": 0,
+  "conformance_Region": 0,
+  "conformance_Channel": 0,
+  "conformance_Region_tickets": 0,
+  "categoricals": {
+    "MerchantSales.Region": {
+      "Free State": 10600,
+      "Gauteng": 4240,
+      "Eastern Cape": 4240,
+      "Western Cape": 4240,
+      "KwaZulu-Natal": 3180
+    },
+    "MerchantSales.Channel": {
+      "Retail": 8480,
+      "Agent Network": 7420,
+      "Wholesale": 6360,
+      "Online": 4240
+    },
+    "MerchantSales.VoucherType": {
+      "Airtime": 5300,
+      "Electricity": 5300,
+      "Gaming": 5300,
+      "Groceries": 5300,
+      "Bill Payment": 5300
+    },
+    "SupportTickets.TicketType": {
+      "Voucher Not Received": 253,
+      "Pricing Query": 247,
+      "Merchant Support": 234,
+      "Reversal Query": 215,
+      "Settlement Delay": 212,
+      "Redemption Issue": 202
+    },
+    "SupportTickets.Priority": {
+      "Low": 520,
+      "Medium": 454,
+      "High": 270,
+      "Critical": 119
+    },
+    "SupportTickets.Status": {
+      "Closed": 1124,
+      "Pending Merchant": 93,
+      "Open": 87,
+      "Escalated": 59
+    },
+    "VoucherRedemptions.VoucherType": {
+      "Airtime": 26253,
+      "Groceries": 24856,
+      "Electricity": 24691,
+      "Gaming": 22680,
+      "Bill Payment": 22489
+    },
+    "VoucherRedemptions.Redeemed": {
+      "Yes": 101843,
+      "No": 19126
+    },
+    "MerchantReference.Region": {
+      "Free State": 10,
+      "Gauteng": 4,
+      "Eastern Cape": 4,
+      "Western Cape": 4,
+      "KwaZulu-Natal": 3
+    },
+    "MerchantReference.Channel": {
+      "Retail": 8,
+      "Agent Network": 7,
+      "Wholesale": 6,
+      "Online": 4
+    },
+    "MerchantReference.ActiveStatus": {
+      "Active": 23,
+      "At Risk": 2
+    },
+    "MerchantReference.AccountManager": {
+      "A. Naidoo": 6,
+      "T. Mokoena": 6,
+      "R. Pillay": 5,
+      "S. Jacobs": 4,
+      "L. Govender": 4
+    }
+  },
+  "redemption": {
+    "yes_no_date": 0,
+    "no_with_date": 0,
+    "negative_lag": 0,
+    "overall_rate": 0.8418933776422058,
+    "mean_days": 3.582327700480151
+  },
+  "tickets": {
+    "breach_rate": 0.26265590608950845,
+    "mean_res_hours": 23.729640498899485
+  },
+  "july_decline_merchant": "Umhlanga Value Mart",
+  "may_growth_merchant": "Kudu Digital Kiosk",
+  "june_ticket_spike_merchant": "Durban Cash Hub",
+  "april_delay_combo": [
+    "Western Cape",
+    "Bill Payment"
+  ]
+}

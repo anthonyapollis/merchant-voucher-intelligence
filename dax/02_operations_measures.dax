@@ -1,0 +1,165 @@
+// =============================================================================================
+//  DAX MEASURE LIBRARY — File 2 of 4: Operational, SLA and support measures
+//  Display folder: 03 Operations
+// =============================================================================================
+
+Total Tickets =
+COUNTROWS ( fct_support_tickets )
+// Format: "#,##0"
+
+Avg Resolution Hours =
+AVERAGE ( fct_support_tickets[resolution_hours] )
+// Format: "0.0"
+
+Median Resolution Hours =
+MEDIAN ( fct_support_tickets[resolution_hours] )
+// The distribution is heavily right-skewed (mean 23.7h, median 16.4h, max 190.7h). Showing
+// the mean alone makes typical performance look far worse than it is; showing the median
+// alone hides the tail that actually breaches SLA. The report shows both.
+// Format: "0.0"
+
+Max Resolution Hours =
+MAX ( fct_support_tickets[resolution_hours] )
+// Format: "0.0"
+
+SLA Breaches =
+SUM ( fct_support_tickets[sla_breach_count] )
+// Format: "#,##0"
+
+SLA Breach Rate % =
+DIVIDE ( [SLA Breaches], [Total Tickets] )
+// Format: "0.0%"
+
+SLA Compliance % =
+1 - [SLA Breach Rate %]
+// Stated positively for the executive page; operations teams prefer the breach rate.
+// Format: "0.0%"
+
+Avg SLA Breach Hours =
+CALCULATE (
+    AVERAGE ( fct_support_tickets[sla_breach_hours] ),
+    fct_support_tickets[is_sla_breach] = TRUE ()
+)
+// Averaged over BREACHING tickets only. Including compliant tickets (breach_hours = 0)
+// would dilute the number and understate how far over the line the failures actually run.
+// Format: "0.0"
+
+Total Breach Hours =
+SUM ( fct_support_tickets[sla_breach_hours] )
+// Cumulative hours beyond SLA — the closest thing to a "size of the problem" measure,
+// and what capacity planning should be sized against.
+// Format: "#,##0"
+
+High Priority Tickets =
+SUM ( fct_support_tickets[high_priority_count] )
+// High + Critical.
+// Format: "#,##0"
+
+High Priority Ticket % =
+DIVIDE ( [High Priority Tickets], [Total Tickets] )
+// Format: "0.0%"
+
+Open Tickets =
+SUM ( fct_support_tickets[open_count] )
+// Anything not Closed: Open, Escalated or Pending Merchant.
+// Format: "#,##0"
+
+Escalated Tickets =
+SUM ( fct_support_tickets[escalated_count] )
+// Format: "#,##0"
+
+Open Ticket Backlog % =
+DIVIDE ( [Open Tickets], [Total Tickets] )
+// Format: "0.0%"
+
+Tickets per 1k Transactions =
+DIVIDE ( [Total Tickets] * 1000, [Total Transactions] )
+// Operational friction, normalised for merchant size.
+//
+// IMPORTANT CAVEAT, carried into the report tooltip: this ratio is strongly size-dependent
+// (it correlates with log of total sales at r = -0.83). Small merchants look far worse than
+// they are simply because the denominator is small. It is a screening measure, not a
+// performance judgement — see [Ticket Volume vs Own History] for a size-neutral alternative.
+// Format: "0.00"
+
+Ticket Volume vs Own History =
+// Size-neutral operational deterioration: latest month against the merchant's own prior
+// three months. This is what drives the Health Score, not the raw ratio above.
+VAR LatestMonth = MAX ( dim_date[month_year_sort] )
+VAR CurrentTickets =
+    CALCULATE ( [Total Tickets], dim_date[month_year_sort] = LatestMonth )
+VAR PriorAvg =
+    CALCULATE (
+        AVERAGEX (
+            VALUES ( dim_date[month_year_sort] ),
+            [Total Tickets]
+        ),
+        dim_date[month_year_sort] >= LatestMonth - 3,
+        dim_date[month_year_sort] < LatestMonth
+    )
+RETURN
+    DIVIDE ( CurrentTickets - PriorAvg, PriorAvg )
+// Format: "+0.0%;-0.0%"
+
+// ---------------------------------------------------------------------------------------------
+// SLA POLICY DIAGNOSTIC
+// ---------------------------------------------------------------------------------------------
+//
+//  The single most important operational finding in this dataset. SLA targets are INVERSELY
+//  related to how long the work actually takes:
+//
+//      Priority   SLA    Avg resolution   Breach rate
+//      Critical   12h        52.7h           98.3%
+//      High       24h        41.6h           82.2%
+//      Medium     36h        19.8h            4.0%
+//      Low        48h        11.3h            0.2%
+//
+//  94.7% of all breaches come from High and Critical. The measures below quantify that so
+//  the Operational page can make the argument on screen rather than in a footnote.
+// ---------------------------------------------------------------------------------------------
+
+SLA Headroom Ratio =
+DIVIDE ( [Avg Resolution Hours], AVERAGE ( fct_support_tickets[sla_hours] ) )
+// > 1 means the average ticket in this slice cannot be resolved inside its SLA.
+// Format: "0.00"
+
+Breach Concentration in High Priority % =
+VAR HighPriorityBreaches =
+    CALCULATE ( [SLA Breaches], dim_priority[priority] IN { "High", "Critical" } )
+RETURN
+    DIVIDE (
+        HighPriorityBreaches,
+        CALCULATE ( [SLA Breaches], REMOVEFILTERS ( dim_priority ) )
+    )
+// Format: "0.0%"
+
+Implied SLA Required for 90% Compliance =
+// The SLA that WOULD have been met by 90% of tickets in the current slice — i.e. what the
+// target should be set to if the process is left unchanged. Turns "we breach constantly"
+// into a specific, negotiable number.
+PERCENTILEX.INC (
+    fct_support_tickets,
+    fct_support_tickets[resolution_hours],
+    0.90
+)
+// Format: "0.0"
+
+
+// ---------------------------------------------------------------------------------------------
+// COMBINED OPERATIONAL / COMMERCIAL
+// ---------------------------------------------------------------------------------------------
+
+Revenue per Ticket =
+DIVIDE ( [Total Sales], [Total Tickets] )
+// How much revenue each unit of support effort supports. Low values flag merchants that
+// consume disproportionate operational capacity.
+// Format: "R #,##0"
+
+Ops Cost Exposure =
+// Indicative: breach hours costed at an assumed loaded support rate. The rate is a stated
+// ASSUMPTION (documented in the report), not a figure supplied with the data — it is here
+// so the operational conversation has a currency value attached.
+VAR HourlyCost = 450    // ZAR per support hour, loaded. Replace with Finance's actual rate.
+RETURN
+    [Total Breach Hours] * HourlyCost
+// Format: "R #,##0"

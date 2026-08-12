@@ -1,0 +1,5 @@
+status,status_sort,status_group,is_open_status
+Closed,1,Resolved,false
+Pending Merchant,2,Waiting,true
+Open,3,In Progress,true
+Escalated,4,Escalated,true

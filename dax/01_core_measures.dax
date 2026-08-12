@@ -1,0 +1,190 @@
+// =============================================================================================
+//  MERCHANT SALES & VOUCHER INTELLIGENCE — DAX MEASURE LIBRARY
+//  File 1 of 4: Core sales, transaction and voucher measures
+// =============================================================================================
+//
+//  CONVENTIONS USED THROUGHOUT
+//  ---------------------------
+//  * Measures live in a dedicated empty table `_Measures` so they are not tied to a fact
+//    table's lifecycle and appear at the top of the field list.
+//  * Display folders group measures by business area (Sales \ Redemption \ Operations \
+//    Time Intelligence \ Ranking \ Formatting).
+//  * DIVIDE() is used everywhere instead of "/" — it returns BLANK on a zero denominator
+//    rather than an error, so a visual with no data shows empty instead of breaking.
+//  * Ratios are always SUM/SUM, never AVERAGE of a per-row ratio. Averaging a ratio weights
+//    a 1-transaction day equally with a 500-transaction day.
+//  * Every measure has a format string set so exported and pinned visuals stay consistent.
+//
+//  Each measure below is the DAX counterpart of a SQL aggregate in scripts/03_analytics.py.
+//  The SQL is the reference definition; these were validated against it (see docs/).
+// =============================================================================================
+
+
+// ---------------------------------------------------------------------------------------------
+// SALES  —  display folder: 01 Sales
+// ---------------------------------------------------------------------------------------------
+
+Total Sales =
+SUM ( fct_merchant_sales[sales_value] )
+// Format: "R #,##0;-R #,##0"   Description: Gross voucher sales value in ZAR.
+
+Total Transactions =
+SUM ( fct_merchant_sales[transactions] )
+// Format: "#,##0"
+
+Average Basket Value =
+DIVIDE (
+    [Total Sales],
+    [Total Transactions]
+)
+// Deliberately SUM/SUM. AVERAGE(fct_merchant_sales[avg_basket_value]) would average a
+// per-row ratio and silently over-weight low-volume merchant-days.
+// Format: "R #,##0.00"
+
+Sales Target =
+SUM ( fct_merchant_target[monthly_sales_target] )
+// Format: "R #,##0"
+
+Target Attainment % =
+DIVIDE ( [Total Sales], [Sales Target] )
+// KNOWN DATA ISSUE: the supplied BaseMonthlySalesTarget is approximately 6.1x below realised
+// sales for every merchant, so this reads ~614%. It is retained for transparency but the
+// report surfaces [Target Attainment Index] instead. See the documentation page.
+// Format: "0.0%"
+
+Target Attainment Index =
+VAR MerchantAttainment = DIVIDE ( [Total Sales], [Sales Target] )
+VAR PortfolioAttainment =
+    CALCULATE (
+        DIVIDE ( [Total Sales], [Sales Target] ),
+        REMOVEFILTERS ( dim_merchant )
+    )
+RETURN
+    DIVIDE ( MerchantAttainment, PortfolioAttainment )
+// 1.00 = performing exactly in line with the portfolio. Immune to the calibration error
+// above, because the error cancels between numerator and denominator.
+// Format: "0.00"
+
+Active Merchants =
+CALCULATE (
+    DISTINCTCOUNT ( fct_merchant_sales[merchant_key] ),
+    fct_merchant_sales[sales_value] > 0
+)
+// Format: "#,##0"
+
+Sales per Merchant =
+DIVIDE ( [Total Sales], [Active Merchants] )
+// Format: "R #,##0"
+
+
+// ---------------------------------------------------------------------------------------------
+// VOUCHER & REDEMPTION  —  display folder: 02 Redemption
+// ---------------------------------------------------------------------------------------------
+
+Vouchers Sold =
+COUNTROWS ( fct_voucher_redemptions )
+// Format: "#,##0"
+
+Vouchers Redeemed =
+SUM ( fct_voucher_redemptions[redeemed_count] )
+// Format: "#,##0"
+
+Redemption Rate % =
+DIVIDE ( [Vouchers Redeemed], [Vouchers Sold] )
+// Volume-based rate. Reported alongside the value-based rate below because they answer
+// different questions: this one is about customer behaviour, the other about money.
+// Format: "0.0%"
+
+Voucher Value Sold =
+SUM ( fct_voucher_redemptions[voucher_value] )
+// Format: "R #,##0"
+
+Voucher Value Redeemed =
+SUM ( fct_voucher_redemptions[redeemed_value] )
+// Format: "R #,##0"
+
+Value Redemption Rate % =
+DIVIDE ( [Voucher Value Redeemed], [Voucher Value Sold] )
+// Diverges from the volume rate when high-value vouchers redeem at a different rate to
+// low-value ones — which is exactly the case worth spotting.
+// Format: "0.0%"
+
+Outstanding Liability =
+SUM ( fct_voucher_redemptions[outstanding_value] )
+// Unredeemed voucher value. This is a balance-sheet liability, not lost revenue, and
+// Finance tracks it as such.
+// Format: "R #,##0"
+
+Breakage Value =
+SUM ( fct_voucher_redemptions[breakage_value] )
+// Unredeemed AND past the 90-day expiry window: the portion of the liability that can
+// reasonably be released to income.
+// Format: "R #,##0"
+
+Avg Days to Redeem =
+AVERAGE ( fct_voucher_redemptions[days_to_redeem] )
+// days_to_redeem is BLANK for unredeemed vouchers, and AVERAGE ignores BLANK, so this
+// correctly averages over redeemed vouchers only without an explicit filter.
+// Format: "0.0"
+
+Median Days to Redeem =
+MEDIAN ( fct_voucher_redemptions[days_to_redeem] )
+// Reported next to the mean because the distribution is right-skewed (max 54 days).
+// Format: "0.0"
+
+Delayed Redemptions =
+SUM ( fct_voucher_redemptions[delayed_redemption_count] )
+// Redeemed more than 7 days after sale. Threshold is set once in dbt_project.yml.
+// Format: "#,##0"
+
+Delayed Redemption Rate % =
+DIVIDE ( [Delayed Redemptions], [Vouchers Redeemed] )
+// Denominator is REDEEMED vouchers, not all vouchers: an unredeemed voucher is not "late",
+// it is outstanding. Conflating the two overstates the operational problem.
+// Format: "0.0%"
+
+Unredeemed Vouchers =
+[Vouchers Sold] - [Vouchers Redeemed]
+// Format: "#,##0"
+
+
+// ---------------------------------------------------------------------------------------------
+// REDEMPTION BY REDEMPTION DATE  —  role-playing date via USERELATIONSHIP
+// ---------------------------------------------------------------------------------------------
+//
+//  fct_voucher_redemptions carries two dates: sold_date_key (ACTIVE relationship) and
+//  redeemed_date_key (INACTIVE). The default view answers "of vouchers SOLD in July, how
+//  many redeemed?" — an issuance-cohort question.
+//
+//  These measures answer the operational question instead: "how many redemptions were
+//  PROCESSED in July?" Without them a redemption backlog is invisible, because late
+//  redemptions get attributed back to the month of sale.
+// ---------------------------------------------------------------------------------------------
+
+Redemptions (by Redemption Date) =
+CALCULATE (
+    SUM ( fct_voucher_redemptions[redeemed_count] ),
+    USERELATIONSHIP ( fct_voucher_redemptions[redeemed_date_key], dim_date[date_key] )
+)
+// Format: "#,##0"
+
+Redemption Value (by Redemption Date) =
+CALCULATE (
+    SUM ( fct_voucher_redemptions[redeemed_value] ),
+    USERELATIONSHIP ( fct_voucher_redemptions[redeemed_date_key], dim_date[date_key] )
+)
+// Format: "R #,##0"
+
+Redemption Backlog =
+// Vouchers sold in the period that have not yet been redeemed as at the end of it.
+VAR PeriodEnd = MAX ( dim_date[date] )
+RETURN
+    CALCULATE (
+        COUNTROWS ( fct_voucher_redemptions ),
+        FILTER (
+            fct_voucher_redemptions,
+            fct_voucher_redemptions[is_redeemed] = FALSE ()
+                || RELATED ( dim_date[date] ) > PeriodEnd
+        )
+    )
+// Format: "#,##0"

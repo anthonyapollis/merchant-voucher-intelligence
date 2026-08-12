@@ -1,0 +1,247 @@
+{
+  "anomaly_detection": {
+    "model": "IsolationForest(n_estimators=400, contamination=0.05)",
+    "observations_scored": 150,
+    "anomalies_flagged": 8,
+    "features": [
+      "SalesVsOwnHistory",
+      "TxnVsOwnHistory",
+      "TicketsVsOwnHistory",
+      "BasketVsOwnHistory",
+      "RedemptionDelta",
+      "DaysToRedeemDelta",
+      "SLADelta"
+    ],
+    "top_findings": [
+      {
+        "Merchant": "Umhlanga Value Mart",
+        "YearMonth": "2026-07",
+        "AnomalyScore": 0.7642480041155418,
+        "Explanation": "sales -38% vs own history; tickets +594%; redemption -8.6%"
+      },
+      {
+        "Merchant": "Kudu Digital Kiosk",
+        "YearMonth": "2026-05",
+        "AnomalyScore": 0.6371355361946693,
+        "Explanation": "sales +68% vs own history"
+      },
+      {
+        "Merchant": "Cape Point Cellular",
+        "YearMonth": "2026-02",
+        "AnomalyScore": 0.632899661443981,
+        "Explanation": "tickets +450%; redemption -3.5%"
+      },
+      {
+        "Merchant": "Liberty Lane Stores",
+        "YearMonth": "2026-04",
+        "AnomalyScore": 0.5957074869674311,
+        "Explanation": "time-to-redeem +2.0 days; redemption -3.8%"
+      },
+      {
+        "Merchant": "Kudu Digital Kiosk",
+        "YearMonth": "2026-06",
+        "AnomalyScore": 0.5838520680228005,
+        "Explanation": "sales +50% vs own history"
+      },
+      {
+        "Merchant": "Durban Cash Hub",
+        "YearMonth": "2026-06",
+        "AnomalyScore": 0.5563209457700027,
+        "Explanation": "tickets +686%; SLA breach +16%"
+      },
+      {
+        "Merchant": "Kudu Digital Kiosk",
+        "YearMonth": "2026-07",
+        "AnomalyScore": 0.5521063418444302,
+        "Explanation": "sales +44% vs own history"
+      },
+      {
+        "Merchant": "Durban Cash Hub",
+        "YearMonth": "2026-07",
+        "AnomalyScore": 0.536018814881841,
+        "Explanation": "tickets +333%; SLA breach +19%"
+      }
+    ]
+  },
+  "redemption_propensity": {
+    "model": "HistGradientBoostingClassifier(max_iter=300, lr=0.06, depth=6)",
+    "split": "time-based: train Jan-May 2026, test Jun-Jul 2026",
+    "train_rows": 85890,
+    "test_rows": 35079,
+    "roc_auc": 0.6196300896694701,
+    "pr_auc": 0.8929342958532649,
+    "brier": 0.1297163258171196,
+    "base_rate_test": 0.8427834316827731,
+    "oracle_auc_ceiling": 0.6208137380826182,
+    "pct_of_achievable_signal": 0.9980933920425089,
+    "ceiling_note": "Redemption is generated almost purely as a function of VoucherType in this synthetic dataset. A voucher-type base-rate oracle achieves AUC 0.621, so 0.620 is close to the irreducible ceiling rather than an underfit model. Decile ranking remains operationally useful.",
+    "top_features": [
+      {
+        "Feature": "VoucherType",
+        "Importance": 0.1205714230600761
+      },
+      {
+        "Feature": "VoucherValue",
+        "Importance": 0.0005562445689821117
+      },
+      {
+        "Feature": "ValueBand",
+        "Importance": 0.000259875366804585
+      },
+      {
+        "Feature": "TenureMonths",
+        "Importance": 4.925676864384609e-05
+      },
+      {
+        "Feature": "MerchantSizeBand",
+        "Importance": 1.8281835501543496e-05
+      },
+      {
+        "Feature": "DayOfWeek",
+        "Importance": 1.5486522846419602e-05
+      }
+    ],
+    "top_decile_lift": 1.5362055580588596,
+    "top_vs_bottom_decile_ratio": 3.4044231536926177,
+    "top_decile_value_at_risk": 171688.58
+  },
+  "resolution_time": {
+    "model": "HistGradientBoostingRegressor(max_iter=400, lr=0.05, depth=5)",
+    "split": "time-based: train Jan-May, test Jun-Jul",
+    "mae_hours": 9.804456131443988,
+    "r2": 0.3093203991875134,
+    "naive_mae_hours": 12.79957805907173,
+    "improvement_vs_naive": 0.23400161425672483,
+    "top_features": [
+      {
+        "Feature": "Priority",
+        "Importance": 8.619753562939568
+      },
+      {
+        "Feature": "SeverityWeight",
+        "Importance": 0.26718119309801497
+      },
+      {
+        "Feature": "Status",
+        "Importance": 0.16732701535254116
+      },
+      {
+        "Feature": "TicketType",
+        "Importance": 0.1436762564444459
+      },
+      {
+        "Feature": "Channel",
+        "Importance": 0.11426682386914884
+      }
+    ],
+    "implied_breach_confusion_matrix": [
+      [
+        329,
+        16
+      ],
+      [
+        7,
+        122
+      ]
+    ]
+  },
+  "sales_forecast": {
+    "model": "ExponentialSmoothing(trend=add, seasonal=add, periods=7)",
+    "backtest_horizon_days": 30,
+    "mape": 0.04694051214228016,
+    "smape": 0.04568710207761546,
+    "naive_mape": 0.09337867499492655,
+    "improvement_vs_naive": 0.4973101498299207,
+    "next30_forecast_total": 10302971.885679513,
+    "last30_actual_total": 10109998.78,
+    "forecast_change": 0.019087352024340642
+  },
+  "segmentation": {
+    "model": "KMeans(k=4)",
+    "k_selected": 4,
+    "k_statistically_optimal": 2,
+    "silhouette_at_selected_k": 0.18508287047465302,
+    "silhouette_at_optimal_k": 0.4328377784520561,
+    "selection_note": "Silhouette peaks at k=2, but that produces a 21/4 split with no operational value across only 25 merchants. k=4 was chosen so each segment is large enough to assign an owner and distinct enough to warrant a different play; the silhouette cost is reported openly.",
+    "features": [
+      "TotalSales",
+      "AvgBasketValue",
+      "RedemptionRate",
+      "AvgDaysToRedeem",
+      "TicketsPer1kTxn",
+      "SLABreachRate",
+      "Last3vsFirst3",
+      "SalesVsPrior3Avg"
+    ],
+    "segments": [
+      {
+        "Segment": 0,
+        "Merchants": 20,
+        "TotalSales": 58197448.85000001,
+        "AvgSales": 2909872.4425000004,
+        "AvgBasket": 128.60686927633887,
+        "AvgRedemption": 0.8399854630651855,
+        "AvgDaysToRedeem": 3.5945911737940284,
+        "AvgTicketsPer1k": 2.837945954317317,
+        "AvgSLABreach": 0.2567367161450341,
+        "AvgGrowth": 0.18354693094621805,
+        "AvgRecentMomentum": 0.05212217297878361,
+        "AvgHealth": 50.214999999999996,
+        "SegmentName": "Stable core",
+        "SegmentSize": 20,
+        "IsSingleton": false
+      },
+      {
+        "Segment": 1,
+        "Merchants": 3,
+        "TotalSales": 2104178.7800000003,
+        "AvgSales": 701392.9266666668,
+        "AvgBasket": 139.01934088192138,
+        "AvgRedemption": 0.8612782390532817,
+        "AvgDaysToRedeem": 3.5530694894451833,
+        "AvgTicketsPer1k": 10.998130102853471,
+        "AvgSLABreach": 0.27991452991452986,
+        "AvgGrowth": 0.17286628349489183,
+        "AvgRecentMomentum": 0.014635558400473444,
+        "AvgHealth": 50.5,
+        "SegmentName": "High-friction sub-scale",
+        "SegmentSize": 3,
+        "IsSingleton": false
+      },
+      {
+        "Segment": 2,
+        "Merchants": 1,
+        "TotalSales": 4535329.729999999,
+        "AvgSales": 4535329.729999999,
+        "AvgBasket": 127.90709374471201,
+        "AvgRedemption": 0.8450331125827815,
+        "AvgDaysToRedeem": 3.554411106135244,
+        "AvgTicketsPer1k": 1.7767499576964296,
+        "AvgSLABreach": 0.25396825396825395,
+        "AvgGrowth": 0.7756933487434969,
+        "AvgRecentMomentum": 0.19231820456703708,
+        "AvgHealth": 75.6,
+        "SegmentName": "Breakout growth",
+        "SegmentSize": 1,
+        "IsSingleton": true
+      },
+      {
+        "Segment": 3,
+        "Merchants": 1,
+        "TotalSales": 684341.39,
+        "AvgSales": 684341.39,
+        "AvgBasket": 138.13915825595478,
+        "AvgRedemption": 0.8431740081224617,
+        "AvgDaysToRedeem": 3.3649499814746204,
+        "AvgTicketsPer1k": 13.928138877674606,
+        "AvgSLABreach": 0.18840579710144928,
+        "AvgGrowth": 0.03142880784186808,
+        "AvgRecentMomentum": -0.42515822608249043,
+        "AvgHealth": 17.3,
+        "SegmentName": "Deteriorating - intervene now",
+        "SegmentSize": 1,
+        "IsSingleton": true
+      }
+    ]
+  }
+}

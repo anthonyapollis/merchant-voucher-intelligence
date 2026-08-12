@@ -1,0 +1,143 @@
+Table,Column,Type,Nulls,Rows,Definition,Definition source
+DimDate,Date,Text,0,365,Daily sales date,Supplied DataDictionary
+DimDate,DateKey,Integer,0,365,Surrogate key. Joins to the matching dimension.,Convention
+DimDate,Year,Integer,0,365,Calendar year.,Defined in this build
+DimDate,QuarterNumber,Integer,0,365,"Quarter as 1-4, for sorting.",Defined in this build
+DimDate,Quarter,Text,0,365,"Calendar quarter, e.g. Q3.",Defined in this build
+DimDate,MonthNumber,Integer,0,365,"Month as 1-12, for sorting.",Defined in this build
+DimDate,MonthName,Text,0,365,Full month name.,Defined in this build
+DimDate,MonthShort,Text,0,365,Three-letter month abbreviation.,Defined in this build
+DimDate,MonthYear,Text,0,365,"Month and year for display, e.g. Jul 2026.",Defined in this build
+DimDate,MonthYearSort,Integer,0,365,"Integer YYYYMM so MonthYear sorts chronologically, not alphabetically.",Defined in this build
+DimDate,Day,Integer,0,365,Calendar day number.,Defined in this build
+DimDate,DayName,Text,0,365,Full weekday name.,Defined in this build
+DimDate,DayOfWeek,Integer,0,365,"ISO weekday, Monday = 1.",Defined in this build
+DimDate,IsWeekend,Integer,0,365,True for Saturday and Sunday.,Defined in this build
+DimDate,WeekOfYear,Integer,0,365,ISO week number.,Defined in this build
+DimDate,WeekStartDate,Text,0,365,Date value.,Convention
+DimDate,MonthStartDate,Text,0,365,First day of the month this date falls in.,Defined in this build
+DimDate,MonthEndDate,Text,0,365,Last day of the month this date falls in.,Defined in this build
+DimMerchant,MerchantKey,Text,0,25,Surrogate key issued; natural key retained as MerchantID,Lineage — MerchantReference.MerchantID
+DimMerchant,Merchant,Text,0,25,Fictional merchant name,Supplied DataDictionary
+DimMerchant,Region,Text,0,25,Merchant operating region,Supplied DataDictionary
+DimMerchant,Channel,Text,0,25,Primary merchant sales channel,Supplied DataDictionary
+DimMerchant,ActiveStatus,Text,0,25,Merchant standing at the last load. A churned merchant must not be scored as an attrition risk.,Defined in this build
+DimMerchant,AccountManager,Text,0,25,Owner the merchant is routed to — makes the risk register actionable.,Defined in this build
+DimMerchant,OnboardedDate,Text,0,25,Derives TenureMonths and TenureBand,Lineage — MerchantReference.OnboardedDate
+DimMerchant,TenureMonths,Integer,0,25,Whole months between OnboardedDate and the end of the window.,Defined in this build
+DimMerchant,TenureBand,Text,0,25,Tenure grouped for reporting.,Defined in this build
+DimMerchant,BaseMonthlySalesTarget,Decimal,0,25,"Supplied monthly target. Not on the same scale as actual sales — attainment runs 381% to 916%, so it is a relative ranking device only.",Defined in this build
+DimVoucherType,VoucherTypeKey,Text,0,5,Surrogate key. Joins to the matching dimension.,Convention
+DimVoucherType,VoucherType,Text,0,5,"Voucher product, e.g. Airtime, Electricity, Gaming.",Defined in this build
+DimVoucherType,SettlementModel,Text,0,5,How the voucher settles commercially.,Defined in this build
+DimPriority,PriorityKey,Text,0,4,Surrogate key. Joins to the matching dimension.,Convention
+DimPriority,Priority,Text,0,4,"Ticket priority: Critical, High, Medium or Low.",Defined in this build
+DimPriority,PrioritySort,Integer,0,4,"Severity order for sorting, Critical first.",Defined in this build
+DimPriority,SLATargetHours,Integer,0,4,Contracted resolution target for the priority. Critical is 12h against an observed P90 of 74h — the queue runs in reverse priority order.,Defined in this build
+DimTicketType,TicketTypeKey,Text,0,6,Surrogate key. Joins to the matching dimension.,Convention
+DimTicketType,TicketType,Text,0,6,Ticket reason as supplied.,Defined in this build
+DimTicketType,TicketCategory,Text,0,6,"Grouping of ticket types: Fulfilment, Financial or Commercial.",Defined in this build
+FactMerchantSales,DateKey,Integer,0,26500,Converted to an integer date key joining DimDate,Lineage — MerchantSales.Date
+FactMerchantSales,MerchantKey,Text,0,26500,Resolved to the surrogate key,Lineage — MerchantSales.MerchantID
+FactMerchantSales,VoucherTypeKey,Text,0,26500,Resolved against DimVoucherType — conformed with the redemption fact,Lineage — MerchantSales.VoucherType
+FactMerchantSales,SalesValue,Decimal,0,26500,Synthetic daily sales value in ZAR,Supplied DataDictionary
+FactMerchantSales,Transactions,Integer,0,26500,Synthetic transaction count,Supplied DataDictionary
+FactVoucherRedemptions,VoucherID,Text,0,120969,"Degenerate dimension — unique by construction, which is why duplicate-redemption fraud cannot be detected in this extract",Lineage — VoucherRedemptions.VoucherID
+FactVoucherRedemptions,SoldDateKey,Integer,0,120969,ACTIVE relationship to DimDate,Lineage — VoucherRedemptions.SoldDate
+FactVoucherRedemptions,RedeemedDateKey,Decimal,19126,120969,"INACTIVE relationship, activated by USERELATIONSHIP. Blank when unredeemed — kept blank, not defaulted",Lineage — VoucherRedemptions.RedeemedDate
+FactVoucherRedemptions,MerchantKey,Text,0,120969,From VoucherRedemptions.MerchantID.,Lineage — VoucherRedemptions.MerchantID
+FactVoucherRedemptions,VoucherTypeKey,Text,0,120969,From VoucherRedemptions.VoucherType.,Lineage — VoucherRedemptions.VoucherType
+FactVoucherRedemptions,VoucherValue,Decimal,0,120969,Face value of the voucher in ZAR.,Defined in this build
+FactVoucherRedemptions,IsRedeemed,Integer,0,120969,Yes/No text converted to 1/0 so it sums,Lineage — VoucherRedemptions.Redeemed
+FactVoucherRedemptions,DaysToRedeem,Decimal,19126,120969,Days between sale and redemption. Null when unredeemed.,Defined in this build
+FactVoucherRedemptions,IsDelayedRedemption,Decimal,19126,120969,"1 when DaysToRedeem exceeds 7 — an assumption, no threshold was supplied.",Defined in this build
+FactSupportTickets,TicketID,Text,0,1363,Degenerate dimension,Lineage — SupportTickets.TicketID
+FactSupportTickets,DateKey,Integer,0,1363,Ticket created date,Lineage — SupportTickets.Date
+FactSupportTickets,MerchantKey,Text,0,1363,From SupportTickets.MerchantID.,Lineage — SupportTickets.MerchantID
+FactSupportTickets,TicketTypeKey,Text,0,1363,Resolved against DimTicketType,Lineage — SupportTickets.TicketType
+FactSupportTickets,PriorityKey,Text,0,1363,Resolved against DimPriority,Lineage — SupportTickets.Priority
+FactSupportTickets,ResolutionHours,Decimal,0,1363,Synthetic hours to resolve or current elapsed hours,Supplied DataDictionary
+FactSupportTickets,SLAHours,Integer,0,1363,SLA target by priority,Supplied DataDictionary
+FactSupportTickets,Status,Text,0,1363,Ticket status as supplied.,Defined in this build
+FactSupportTickets,IsSLABreach,Integer,0,1363,1 when ResolutionHours exceeds SLAHours.,Defined in this build
+FactSupportTickets,IsOpen,Integer,0,1363,1 when the ticket is not yet resolved.,Defined in this build
+DimMerchantSegment,MerchantKey,Text,0,25,Surrogate key. Joins to the matching dimension.,Convention
+DimMerchantSegment,Merchant,Text,0,25,Fictional merchant name,Supplied DataDictionary
+DimMerchantSegment,Region,Text,0,25,Merchant operating region,Supplied DataDictionary
+DimMerchantSegment,Channel,Text,0,25,Primary merchant sales channel,Supplied DataDictionary
+DimMerchantSegment,ActiveStatus,Text,0,25,Merchant standing at the last load. A churned merchant must not be scored as an attrition risk.,Defined in this build
+DimMerchantSegment,AccountManager,Text,0,25,Owner the merchant is routed to — makes the risk register actionable.,Defined in this build
+DimMerchantSegment,Segment,Text,0,25,K-Means segment label.,Defined in this build
+DimMerchantSegment,SegmentID,Integer,0,25,K-Means cluster number.,Defined in this build
+DimMerchantSegment,SegmentProfile,Text,0,25,Plain-English description of the segment.,Defined in this build
+DimMerchantSegment,PCA1,Decimal,0,25,"First principal component, for the segment scatter.",Defined in this build
+DimMerchantSegment,PCA2,Decimal,0,25,"Second principal component, for the segment scatter.",Defined in this build
+DimMerchantSegment,HealthScore,Decimal,0,25,"Weighted 0-100 composite of momentum, trend, target, redemption, speed and operations. Authoritative version — see the single-banding note.",Defined in this build
+DimMerchantSegment,RiskTier,Text,0,25,"Health band: Critical, Watch, Healthy or Star.",Defined in this build
+DimMerchantSegment,TotalSales,Decimal,0,25,Sum of SalesValue for the merchant.,Defined in this build
+DimMerchantSegment,TotalTransactions,Integer,0,25,Sum of Transactions for the merchant.,Defined in this build
+DimMerchantSegment,AvgBasket,Decimal,0,25,SalesValue divided by Transactions.,Defined in this build
+DimMerchantSegment,GrowthSlopePct,Decimal,0,25,"Least-squares slope of monthly sales, as a percentage of the mean.",Defined in this build
+DimMerchantSegment,Volatility,Decimal,0,25,Coefficient of variation of monthly sales.,Defined in this build
+DimMerchantSegment,RedemptionRate,Decimal,0,25,Vouchers redeemed divided by vouchers sold.,Defined in this build
+DimMerchantSegment,AvgDaysToRedeem,Decimal,0,25,Mean DaysToRedeem across redeemed vouchers.,Defined in this build
+DimMerchantSegment,DelayedRate,Decimal,0,25,Share of redemptions taking more than 7 days.,Defined in this build
+DimMerchantSegment,Tickets,Integer,0,25,Ticket count for the merchant.,Defined in this build
+DimMerchantSegment,TicketsPer1kTx,Decimal,0,25,"Tickets per 1,000 transactions — size-adjusted, so a large merchant is not flagged simply for being large.",Defined in this build
+DimMerchantSegment,AvgResolutionHours,Decimal,0,25,"Mean ResolutionHours, closed tickets only.",Defined in this build
+DimMerchantSegment,SLABreachRate,Decimal,0,25,Share of tickets breaching their SLA.,Defined in this build
+DimMerchantSegment,BaseMonthlySalesTarget,Decimal,0,25,"Supplied monthly target. Not on the same scale as actual sales — attainment runs 381% to 916%, so it is a relative ranking device only.",Defined in this build
+DimMerchantSegment,TargetAttainmentPct,Decimal,0,25,Actual divided by target. See the calibration caveat above.,Defined in this build
+MerchantValueRisk,merchant_key,Text,0,25,Surrogate key. Joins to the matching dimension.,Convention
+MerchantValueRisk,merchant_name,Text,0,25,Merchant trading name.,Defined in this build
+MerchantValueRisk,region,Text,0,25,Merchant operating region,Supplied DataDictionary
+MerchantValueRisk,channel,Text,0,25,Primary merchant sales channel,Supplied DataDictionary
+MerchantValueRisk,account_manager,Text,0,25,Owner the merchant is routed to.,Defined in this build
+MerchantValueRisk,merchant_size_band,Text,0,25,Banding of the matching score.,Convention
+MerchantValueRisk,health_score,Decimal,0,25,Derived score. See the section that defines it.,Convention
+MerchantValueRisk,health_band,Text,0,25,Banding of the matching score.,Convention
+MerchantValueRisk,total_sales,Decimal,0,25,"Sum of sales value for the merchant, in ZAR.",Defined in this build
+MerchantValueRisk,total_transactions,Integer,0,25,Sum of transaction count for the merchant.,Defined in this build
+MerchantValueRisk,avg_basket_value,Decimal,0,25,Total sales divided by total transactions.,Defined in this build
+MerchantValueRisk,sales_vs_prior_3m_avg,Decimal,0,25,Latest month against the mean of the prior three.,Defined in this build
+MerchantValueRisk,last3_vs_first3,Decimal,0,25,Last three months against the first three — structural trend.,Defined in this build
+MerchantValueRisk,mom_change,Decimal,0,25,Month-on-month change in sales.,Defined in this build
+MerchantValueRisk,redemption_rate,Decimal,0,25,Percentage or rate.,Convention
+MerchantValueRisk,outstanding_value,Decimal,0,25,Face value of vouchers sold but not yet redeemed.,Defined in this build
+MerchantValueRisk,tickets,Integer,0,25,Support ticket count for the merchant.,Defined in this build
+MerchantValueRisk,sla_breach_rate,Decimal,0,25,Percentage or rate.,Convention
+MerchantValueRisk,revenue_at_risk_annualised,Decimal,0,25,"Recent run-rate shortfall, annualised. Ranks merchants by RAND exposed rather than by percentage decline.",Defined in this build
+MerchantValueRisk,onboarded_date,Text,0,25,Date value.,Convention
+MerchantValueRisk,tenure_months,Integer,0,25,Whole months since onboarding.,Defined in this build
+MerchantValueRisk,active_status,Text,0,25,Merchant standing at the last load.,Defined in this build
+MerchantValueRisk,avg_monthly_revenue,Decimal,0,25,Mean monthly sales across the reporting window.,Defined in this build
+MerchantValueRisk,annualised_run_rate,Decimal,0,25,Percentage or rate.,Convention
+MerchantValueRisk,implied_lifetime_value,Decimal,0,25,Annualised run rate multiplied by expected retained years.,Defined in this build
+MerchantValueRisk,reversal_tickets,Integer,0,25,Tickets categorised as reversals — a fraud-adjacent signal.,Defined in this build
+MerchantValueRisk,financial_tickets,Integer,0,25,Tickets in the Financial category.,Defined in this build
+MerchantValueRisk,reversal_per_1k_txn,Decimal,0,25,"Reversal tickets per 1,000 transactions, size-adjusted.",Defined in this build
+MerchantValueRisk,same_day_redemption_rate,Decimal,0,25,Percentage or rate.,Convention
+MerchantValueRisk,very_late_redemptions,Integer,0,25,Redemptions far beyond the typical window.,Defined in this build
+MerchantValueRisk,max_voucher_value,Decimal,0,25,Largest single voucher value for the merchant.,Defined in this build
+MerchantValueRisk,value_outlier_vouchers,Integer,0,25,Vouchers whose value is a statistical outlier for the merchant.,Defined in this build
+MerchantValueRisk,retention_score,Decimal,0,25,Derived score. See the section that defines it.,Convention
+MerchantValueRisk,risk_signal_score,Decimal,0,25,Derived score. See the section that defines it.,Convention
+MerchantValueRisk,attrition_risk_score,Decimal,0,25,Derived score. See the section that defines it.,Convention
+MerchantValueRisk,attrition_risk_band,Text,0,25,Banding of the matching score.,Convention
+MerchantValueRisk,risk_signal_band,Text,0,25,Banding of the matching score.,Convention
+MerchantValueRisk,value_at_stake_if_lost,Decimal,0,25,Implied lifetime value weighted by attrition risk — the expected loss if the merchant churns.,Defined in this build
+RecControls,control_order,Integer,0,7,Display order.,Defined in this build
+RecControls,control_family,Text,0,7,Control grouping.,Defined in this build
+RecControls,control_name,Text,0,7,What the control asserts.,Defined in this build
+RecControls,expected_value,Decimal,0,7,Value the control expects.,Defined in this build
+RecControls,actual_value,Decimal,0,7,Value observed.,Defined in this build
+RecControls,variance,Decimal,0,7,Actual minus expected.,Defined in this build
+RecControls,variance_pct,Decimal,0,7,Variance as a share of expected.,Defined in this build
+RecControls,control_status,Text,0,7,"PASS, WARN, EXPECTED or FAIL.",Defined in this build
+RecControls,txn_per_voucher,Decimal,0,7,"Transactions per voucher, 4.217 — why the two facts differ.",Defined in this build
+RecControls,rationale,Text,0,7,Why the control exists and how to read a failure.,Defined in this build
+ModelGuide,Sort,Integer,0,15,Display order.,Defined in this build
+ModelGuide,Origin,Text,0,15,How the table earns its place.,Defined in this build
+ModelGuide,Table,Text,0,15,Table name.,Defined in this build
+ModelGuide,Rows,Integer,0,15,Row count.,Defined in this build
+ModelGuide,Why this table exists,Text,0,15,Justification for including the table.,Defined in this build

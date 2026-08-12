@@ -1,0 +1,414 @@
+// ===========================================================================
+// Merchant Sales & Voucher Intelligence - measure catalogue
+// ===========================================================================
+// The readable copy of every measure in the semantic model. The authoritative
+// definitions live in the TMDL under
+// MerchantVoucherIntelligence.SemanticModel/definition/tables/_Measures.tmdl;
+// this file exists so the DAX can be reviewed, diffed and discussed without
+// opening Power BI.
+//
+// Conventions used throughout:
+//   * DIVIDE(), never "/". DIVIDE returns BLANK on a zero denominator; "/"
+//     returns Infinity, which renders as a giant number in a card visual and
+//     is the single most common way a BI report loses trust.
+//   * Flags are 0/1 integers in the model, so SUM gives the count and AVERAGE
+//     gives the rate. No IF() in an aggregation.
+//   * Time intelligence goes through DimDate only. No measure filters a fact
+//     table's own date column.
+//   * Anything a user might drag onto a slicer is a column; anything that must
+//     respond to filter context is a measure. There are no calculated columns
+//     doing a measure's job.
+// ===========================================================================
+
+
+// ---------------------------------------------------------------- CORE SALES
+
+Total Sales = SUM ( FactMerchantSales[SalesValue] )
+
+Total Transactions = SUM ( FactMerchantSales[Transactions] )
+
+Average Basket Value =
+DIVIDE ( [Total Sales], [Total Transactions] )
+
+Sales Target =
+// The reference table gives a monthly target per merchant, so the target for
+// any period is that figure times the number of months the filter covers.
+// COUNTROWS over a summarised month list rather than DISTINCTCOUNT of a month
+// column, so a part-month still counts as one month rather than nothing.
+VAR MonthsInContext =
+    COUNTROWS ( SUMMARIZE ( DimDate, DimDate[MonthYearSort] ) )
+RETURN
+    SUMX ( DimMerchant, DimMerchant[BaseMonthlySalesTarget] ) * MonthsInContext
+
+Target Attainment % =
+DIVIDE ( [Total Sales], [Sales Target] )
+
+
+// -------------------------------------------------------- PERIOD COMPARISON
+
+Sales Previous Month =
+// The whole month before the latest one with sales. DATEADD(-1, MONTH) was
+// wrong here for the same reason as the momentum measure: with seven months in
+// context it shifts the entire seven-month window back by one, so "previous
+// month" quietly became "previous seven months" on any visual without a month
+// on it - which is every KPI card and the merchant league table.
+VAR AnchorDate = [Last Month With Sales]
+VAR CurrentMonthStart = EOMONTH ( AnchorDate, -1 ) + 1
+VAR PriorMonthStart = EOMONTH ( CurrentMonthStart, -2 ) + 1
+RETURN
+    CALCULATE (
+        [Total Sales],
+        REMOVEFILTERS ( DimDate ),
+        DimDate[Date] >= PriorMonthStart,
+        DimDate[Date] < CurrentMonthStart
+    )
+
+Sales MoM Change =
+VAR Prior = [Sales Previous Month]
+RETURN IF ( NOT ISBLANK ( Prior ), [Sales Latest Month] - Prior )
+
+Sales MoM % =
+DIVIDE ( [Sales MoM Change], [Sales Previous Month] )
+
+Sales Previous Period =
+// Generic prior-period shift that follows whatever grain is on the axis, so
+// the same measure works on a day, month or quarter visual.
+CALCULATE ( [Total Sales], PREVIOUSMONTH ( DimDate[Date] ) )
+
+Sales YTD =
+TOTALYTD ( [Total Sales], DimDate[Date] )
+
+Sales Rolling 3 Months =
+CALCULATE (
+    [Total Sales],
+    DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -3, MONTH )
+)
+
+Last Month With Sales =
+// The last date in the CURRENT filter context that actually has sales.
+//
+// Not MAX(DimDate[Date]): the calendar deliberately runs to 31 Aug 2026 to
+// cover redemption dates, three weeks past the final sales date, so a plain MAX
+// lands on an empty August and every month-comparison measure returns -100%.
+// Using the current context rather than ALLSELECTED is what lets the same
+// measure work on a month axis (where it resolves to that month) and on a bare
+// KPI card (where it resolves to July).
+MAXX ( VALUES ( DimDate[Date] ), IF ( NOT ISBLANK ( [Total Sales] ), DimDate[Date] ) )
+
+Sales Latest Month =
+VAR AnchorDate = [Last Month With Sales]
+RETURN
+    CALCULATE (
+        [Total Sales],
+        REMOVEFILTERS ( DimDate ),
+        DimDate[Date] >= EOMONTH ( AnchorDate, -1 ) + 1,
+        DimDate[Date] <= EOMONTH ( AnchorDate, 0 )
+    )
+// REMOVEFILTERS(DimDate), not ALL(): the date filter is replaced while the
+// region, merchant and voucher-type filters are left alone, so this still
+// respects the slicers and the axis it is drawn against.
+
+Sales Prior 3 Month Average =
+// The baseline momentum compares against: the three whole months BEFORE the
+// latest one with sales, excluding it. One soft month is noise; a step away
+// from a three-month base is a trend.
+VAR AnchorDate = [Last Month With Sales]
+VAR CurrentMonthStart = EOMONTH ( AnchorDate, -1 ) + 1
+VAR BaseStart = EOMONTH ( CurrentMonthStart, -4 ) + 1
+RETURN
+    DIVIDE (
+        CALCULATE (
+            [Total Sales],
+            REMOVEFILTERS ( DimDate ),
+            DimDate[Date] >= BaseStart,
+            DimDate[Date] < CurrentMonthStart
+        ),
+        3
+    )
+
+Sales Momentum % =
+// Latest month against the average of the three before it.
+//
+// The first version of this compared [Total Sales] - i.e. whatever was in
+// filter context - against the prior-3-month base. On a card or a bar chart
+// with no month selected that put SEVEN months of sales over a three-month
+// average and reported +669% momentum for a region that had actually grown 4%.
+// Both sides of the ratio now resolve to a single month regardless of context.
+DIVIDE (
+    [Sales Latest Month] - [Sales Prior 3 Month Average],
+    [Sales Prior 3 Month Average]
+)
+
+
+// ------------------------------------------------------------- CONTRIBUTION
+
+Sales Share of Total % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLSELECTED ( DimMerchant ) )
+)
+// ALLSELECTED, not ALL: the share should be of what the user is currently
+// looking at. With ALL, filtering to one region would still show each merchant
+// as a share of the national total, which is not what "share" means on a page
+// that has a region slicer on it.
+
+Merchant Rank =
+RANKX (
+    ALLSELECTED ( DimMerchant[Merchant] ),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+
+Merchant Rank by Transactions =
+RANKX ( ALLSELECTED ( DimMerchant[Merchant] ), [Total Transactions], , DESC, DENSE )
+
+Cumulative Sales Share % =
+// Drives the Pareto curve. Ranks every merchant in the current selection, then
+// sums the ones ranked at or above the merchant on this row.
+VAR CurrentRank = [Merchant Rank]
+VAR Ranked =
+    ADDCOLUMNS (
+        ALLSELECTED ( DimMerchant[Merchant] ),
+        "@rank", [Merchant Rank],
+        "@sales", [Total Sales]
+    )
+RETURN
+    DIVIDE (
+        SUMX ( FILTER ( Ranked, [@rank] <= CurrentRank ), [@sales] ),
+        SUMX ( Ranked, [@sales] )
+    )
+
+Top 5 Merchant Share % =
+VAR Ranked =
+    ADDCOLUMNS ( ALLSELECTED ( DimMerchant[Merchant] ), "@rank", [Merchant Rank],
+                 "@sales", [Total Sales] )
+RETURN
+    DIVIDE (
+        SUMX ( FILTER ( Ranked, [@rank] <= 5 ), [@sales] ),
+        SUMX ( Ranked, [@sales] )
+    )
+
+
+// --------------------------------------------------------------- REDEMPTION
+
+Vouchers Sold = COUNTROWS ( FactVoucherRedemptions )
+
+Vouchers Redeemed = SUM ( FactVoucherRedemptions[IsRedeemed] )
+
+Redemption Rate % =
+AVERAGE ( FactVoucherRedemptions[IsRedeemed] )
+// IsRedeemed is a 0/1 integer, so its average IS the rate. Formatted as a
+// percentage in the model.
+
+Voucher Value Sold = SUM ( FactVoucherRedemptions[VoucherValue] )
+
+Unredeemed Voucher Value =
+CALCULATE (
+    [Voucher Value Sold],
+    FactVoucherRedemptions[IsRedeemed] = 0
+)
+// The breakage liability: value taken from customers against vouchers nobody
+// has come back for. Finance's number, not marketing's.
+
+Average Days To Redeem =
+AVERAGE ( FactVoucherRedemptions[DaysToRedeem] )
+// DaysToRedeem is BLANK for unredeemed vouchers and AVERAGE ignores blanks, so
+// this is automatically "average across redeemed vouchers" with no filter
+// needed. That is the intended definition.
+
+Median Days To Redeem =
+MEDIAN ( FactVoucherRedemptions[DaysToRedeem] )
+
+Delayed Redemptions =
+SUM ( FactVoucherRedemptions[IsDelayedRedemption] )
+
+Delayed Redemption % =
+AVERAGE ( FactVoucherRedemptions[IsDelayedRedemption] )
+// Denominator is redeemed vouchers only, because IsDelayedRedemption is BLANK
+// for unredeemed ones. An unredeemed voucher is not "on time" - it has no
+// answer yet, and counting it as a zero would understate the delay rate.
+
+Redemptions by Redemption Date =
+// The redemption-date role, as a VIRTUAL relationship.
+//
+// This answers "how many vouchers were redeemed in July", as opposed to "how
+// many of the vouchers SOLD in July have been redeemed" - a different question,
+// and the one the active SoldDateKey relationship answers.
+//
+// TREATAS rather than a second physical relationship plus USERELATIONSHIP:
+// 19,126 vouchers are unredeemed, so RedeemedDateKey is null for them, and a
+// physical relationship on a nullable key adds a blank member to DimDate that
+// then shows as "(Blank)" in every date slicer in the report. That happens even
+// when the relationship is inactive, so USERELATIONSHIP does not avoid it.
+// TREATAS applies the filter at query time and leaves DimDate clean.
+CALCULATE (
+    [Vouchers Redeemed],
+    TREATAS (
+        VALUES ( DimDate[DateKey] ),
+        FactVoucherRedemptions[RedeemedDateKey]
+    )
+)
+
+Redemption Rate Previous Month =
+CALCULATE ( [Redemption Rate %], DATEADD ( DimDate[Date], -1, MONTH ) )
+
+Redemption Rate MoM Change =
+[Redemption Rate %] - [Redemption Rate Previous Month]
+
+
+// ------------------------------------------------------------- OPERATIONAL
+
+Total Tickets = COUNTROWS ( FactSupportTickets )
+
+Average Resolution Hours =
+AVERAGE ( FactSupportTickets[ResolutionHours] )
+// Caveat carried in the model description: for a ticket that is still open,
+// the source supplies elapsed hours rather than time to resolution, so this
+// mixes two definitions. It is not separable from what was supplied. Use
+// [Average Resolution Hours (Closed)] where the distinction matters.
+
+Average Resolution Hours (Closed) =
+CALCULATE (
+    AVERAGE ( FactSupportTickets[ResolutionHours] ),
+    FactSupportTickets[IsOpen] = 0
+)
+
+SLA Breaches = SUM ( FactSupportTickets[IsSLABreach] )
+
+SLA Breach % = AVERAGE ( FactSupportTickets[IsSLABreach] )
+
+SLA Attainment % = 1 - [SLA Breach %]
+
+Open Tickets = SUM ( FactSupportTickets[IsOpen] )
+
+Open Ticket % = DIVIDE ( [Open Tickets], [Total Tickets] )
+
+Tickets per 1k Transactions =
+DIVIDE ( [Total Tickets], [Total Transactions] ) * 1000
+// Normalising by volume is what makes merchants comparable. Raw ticket counts
+// just rank merchants by size.
+
+SLA Target Hours =
+AVERAGE ( DimPriority[SLATargetHours] )
+// The target as a measure rather than a raw column on the axis. The model sets
+// discourageImplicitMeasures, so a bare column dropped into a value well has no
+// aggregation and the visual refuses to render at all - which is the intended
+// behaviour, not a limitation to work around. Every value role in this report
+// gets an explicit measure.
+
+Resolution vs SLA Target =
+// Positive means the tier is being resolved slower than its own target. This
+// is the measure behind the operational headline: Critical tickets run well
+// past their target while Low tickets clear far inside theirs.
+[Average Resolution Hours] - AVERAGE ( DimPriority[SLATargetHours] )
+
+Tickets MoM Change =
+VAR Prior = CALCULATE ( [Total Tickets], DATEADD ( DimDate[Date], -1, MONTH ) )
+RETURN IF ( NOT ISBLANK ( Prior ), [Total Tickets] - Prior )
+
+Ticket Surge Flag =
+// Used to colour the operational table. A doubling that is also a material
+// absolute rise, so a merchant going from one ticket to three is not flagged.
+VAR Prior = CALCULATE ( [Total Tickets], DATEADD ( DimDate[Date], -1, MONTH ) )
+RETURN
+    IF (
+        NOT ISBLANK ( Prior ) && [Total Tickets] >= Prior * 2
+            && [Total Tickets] - Prior >= 8,
+        1,
+        0
+    )
+
+
+// ------------------------------------------------------- HEADER / NARRATIVE
+
+Selected Period Label =
+VAR MinDate = MIN ( DimDate[Date] )
+VAR MaxDate = MAX ( DimDate[Date] )
+RETURN FORMAT ( MinDate, "d MMM yyyy" ) & " to " & FORMAT ( MaxDate, "d MMM yyyy" )
+
+Sales Trend Narrative =
+// Dynamic subtitle for the executive page. A sentence that updates with the
+// slicers beats a static title that quietly goes out of date.
+VAR Change = [Sales MoM %]
+VAR Direction =
+    SWITCH (
+        TRUE (),
+        Change > 0.05, "growing strongly",
+        Change > 0.01, "growing",
+        Change < -0.05, "declining sharply",
+        Change < -0.01, "declining",
+        "broadly flat"
+    )
+RETURN
+    "Sales are " & Direction & " at "
+        & FORMAT ( Change, "+0.0%;-0.0%;0.0%" ) & " month on month, on "
+        & FORMAT ( [Total Transactions], "#,0" ) & " transactions."
+
+Merchants Needing Attention =
+CALCULATE (
+    DISTINCTCOUNT ( InsightNarrative[MerchantKey] ),
+    InsightNarrative[ActionFlag] IN { "Investigate", "Monitor" }
+)
+
+High Severity Anomalies =
+CALCULATE ( COUNTROWS ( FactAnomaly ), FactAnomaly[Severity] = "High" )
+
+
+// -------------------------------------------------------------- ML / SCORES
+
+Average Health Score = AVERAGE ( DimMerchantSegment[HealthScore] )
+
+Avg PCA 1 = AVERAGE ( DimMerchantSegment[PCA1] )
+
+Avg PCA 2 = AVERAGE ( DimMerchantSegment[PCA2] )
+// The two principal components as measures, so the segmentation scatter has an
+// aggregation on both axes. With one merchant per point the average is the
+// value itself; the aggregation exists to satisfy the visual, not to combine
+// anything.
+
+Forecast Sales Value = SUM ( FactSalesForecast[ForecastSalesValue] )
+
+Forecast Lower Bound = SUM ( FactSalesForecast[LowerBound] )
+
+Forecast Upper Bound = SUM ( FactSalesForecast[UpperBound] )
+
+Merchants At Risk =
+CALCULATE (
+    COUNTROWS ( DimMerchantSegment ),
+    DimMerchantSegment[RiskTier] IN { "Critical", "At risk" }
+)
+
+Forecast Next 30 Days =
+CALCULATE (
+    SUM ( FactSalesForecast[ForecastSalesValue] ),
+    ALL ( DimDate )
+)
+// ALL(DimDate) because the forecast rows sit beyond the last actual date. Left
+// under the page's date filter, this measure would return blank on every view
+// that ends at today, which is every view.
+
+Forecast vs Last 30 Days % =
+VAR Last30 =
+    CALCULATE (
+        [Total Sales],
+        DATESINPERIOD ( DimDate[Date], MAX ( DimDate[Date] ), -30, DAY )
+    )
+RETURN DIVIDE ( [Forecast Next 30 Days] - Last30, Last30 )
+
+
+// ----------------------------------------------------------- FORMAT STRINGS
+// Applied in the model rather than per visual, so a measure looks the same
+// everywhere it appears.
+//
+//   Total Sales, Sales Target, Voucher Value Sold,
+//   Unredeemed Voucher Value, Forecast Next 30 Days     "\R#,0;(\R#,0)"
+//   Average Basket Value                                "\R#,0.00"
+//   Total Transactions, Vouchers Sold, Total Tickets    "#,0"
+//   Redemption Rate %, SLA Breach %, Delayed
+//     Redemption %, Target Attainment %, Sales MoM %    "0.0%"
+//   Sales MoM %, Sales Momentum % (delta context)       "+0.0%;-0.0%;0.0%"
+//   Average Resolution Hours                            "0.0\h"
+//   Average Days To Redeem                              "0.00"
+//   Tickets per 1k Transactions                         "0.00"

@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------- secrets
+# Nothing in this project stores a secret — Fabric authenticates with the token from
+# `az login` — but these patterns are here so that a future change cannot quietly commit one.
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+credentials*
+secrets*
+dbt/.env.fabric.ps1
+
+# ---------------------------------------------------------------- data
+# The warehouse is REBUILDABLE: `python scripts/run_all.py` regenerates every layer from the
+# four supplied CSVs in about two minutes. Committing 109 MB of derived parquet would make the
+# clone slow and the history unreadable, and it would go stale the first time a model changed.
+data/bronze/
+data/silver/
+data/gold/
+data/analytics/
+data/ml/
+data/raw/
+*.duckdb
+*.duckdb.wal
+*.parquet
+
+# ---------------------------------------------------------------- build output
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.tmp
+
+# ---------------------------------------------------------------- local artifacts
+_superseded/
+docs/screenshots/*.png
+!docs/screenshots/SHOTLIST.md
+*.bak
+*.bak.*
+_*.pre_*.bak*
+powerbi/_Report_backup_*
+powerbi/_isolation_tests/
+
+# ---------------------------------------------------------------- OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Office lock files — present only while a document is open, and unreadable while it is.
+~$*
+.~lock.*
+
+# ---------------------------------------------------------------- packaging output
+# All regenerable, and all data copies rather than source:
+#   fabric_upload/   rebuilt by scripts/14_package_for_fabric.py
+#   *_PowerBI/data/  a second copy of data/gold for the Power BI folder
+#   *.zip            code and package archives, rebuilt on demand
+# Keeping them would put ~70 MB of derived CSV in the history for no benefit.
+fabric_upload/
+MerchantVoucherIntelligence_PowerBI/data/
+*.zip
+dbt/OTT/

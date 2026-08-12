@@ -1,0 +1,35 @@
+SourceFile,SourceColumn,DocumentedBySupplier,SupplierDescription,GoldTable,GoldColumn,ModellingNote
+MerchantReference.csv,MerchantID,Yes,Synthetic unique merchant key,DimMerchant,MerchantKey,Surrogate key issued; natural key retained as MerchantID
+MerchantReference.csv,Merchant,Yes,Fictional merchant name,DimMerchant,Merchant,
+MerchantReference.csv,Region,Yes,Merchant operating region,DimMerchant,Region,Single source of truth for region — the copy on the sales fact is dropped
+MerchantReference.csv,Channel,Yes,Primary merchant sales channel,DimMerchant,Channel,
+MerchantReference.csv,ActiveStatus,No  (meaning inferred by profiling),,DimMerchant,ActiveStatus,Also surfaced as active_status on MerchantValueRisk — a churned merchant must not be scored as an attrition risk
+MerchantReference.csv,OnboardedDate,No  (meaning inferred by profiling),,DimMerchant,OnboardedDate,Derives TenureMonths and TenureBand
+MerchantReference.csv,AccountManager,No  (meaning inferred by profiling),,DimMerchant,AccountManager,The owner an at-risk merchant is routed to — carried onto MerchantValueRisk so the risk register is actionable
+MerchantReference.csv,BaseMonthlySalesTarget,No  (meaning inferred by profiling),,DimMerchant,BaseMonthlySalesTarget,"Denominator for target attainment, which is the measure behind the tickets-vs-attainment question"
+MerchantSales.csv,Date,Yes,Daily sales date,FactMerchantSales,DateKey,Converted to an integer date key joining DimDate
+MerchantSales.csv,MerchantID,No  (meaning inferred by profiling),,FactMerchantSales,MerchantKey,Resolved to the surrogate key
+MerchantSales.csv,Merchant,No  (meaning inferred by profiling),,DROPPED,,100% agreement with MerchantReference (profiled). Keeping it would allow two competing versions of merchant name in one model
+MerchantSales.csv,Region,No  (meaning inferred by profiling),,DROPPED,,100% agreement with MerchantReference (profiled). Region belongs on the dimension
+MerchantSales.csv,Channel,No  (meaning inferred by profiling),,DROPPED,,100% agreement with MerchantReference (profiled)
+MerchantSales.csv,VoucherType,No  (meaning inferred by profiling),,FactMerchantSales,VoucherTypeKey,Resolved against DimVoucherType — conformed with the redemption fact
+MerchantSales.csv,SalesValue,Yes,Synthetic daily sales value in ZAR,FactMerchantSales,SalesValue,Additive measure
+MerchantSales.csv,Transactions,Yes,Synthetic transaction count,FactMerchantSales,Transactions,Additive measure
+VoucherRedemptions.csv,VoucherID,No  (meaning inferred by profiling),,FactVoucherRedemptions,VoucherID,"Degenerate dimension — unique by construction, which is why duplicate-redemption fraud cannot be detected in this extract"
+VoucherRedemptions.csv,MerchantID,No  (meaning inferred by profiling),,FactVoucherRedemptions,MerchantKey,
+VoucherRedemptions.csv,Merchant,No  (meaning inferred by profiling),,DROPPED,,Redundant copy of the merchant name — resolved via DimMerchant
+VoucherRedemptions.csv,SoldDate,Yes,Voucher sold date,FactVoucherRedemptions,SoldDateKey,ACTIVE relationship to DimDate
+VoucherRedemptions.csv,VoucherType,No  (meaning inferred by profiling),,FactVoucherRedemptions,VoucherTypeKey,
+VoucherRedemptions.csv,VoucherValue,No  (meaning inferred by profiling),,FactVoucherRedemptions,VoucherValue,
+VoucherRedemptions.csv,Redeemed,Yes,Yes or No redemption flag,FactVoucherRedemptions,IsRedeemed,Yes/No text converted to 1/0 so it sums
+VoucherRedemptions.csv,RedeemedDate,Yes,Blank when not redeemed,FactVoucherRedemptions,RedeemedDateKey,"INACTIVE relationship, activated by USERELATIONSHIP. Blank when unredeemed — kept blank, not defaulted"
+SupportTickets.csv,TicketID,No  (meaning inferred by profiling),,FactSupportTickets,TicketID,Degenerate dimension
+SupportTickets.csv,Date,No  (meaning inferred by profiling),,FactSupportTickets,DateKey,Ticket created date
+SupportTickets.csv,MerchantID,No  (meaning inferred by profiling),,FactSupportTickets,MerchantKey,
+SupportTickets.csv,Merchant,No  (meaning inferred by profiling),,DROPPED,,Redundant copy of the merchant name — resolved via DimMerchant
+SupportTickets.csv,Region,No  (meaning inferred by profiling),,DROPPED,,Redundant copy of region — resolved via DimMerchant so one hierarchy governs every fact
+SupportTickets.csv,TicketType,No  (meaning inferred by profiling),,FactSupportTickets,TicketTypeKey,Resolved against DimTicketType
+SupportTickets.csv,Priority,No  (meaning inferred by profiling),,FactSupportTickets,PriorityKey,Resolved against DimPriority
+SupportTickets.csv,ResolutionHours,Yes,Synthetic hours to resolve or current elapsed hours,FactSupportTickets,ResolutionHours,
+SupportTickets.csv,SLAHours,Yes,SLA target by priority,FactSupportTickets,SLAHours,"Stored ON the fact, not resolved from DimPriority, so a future SLA policy change cannot retrospectively restate whether a historic ticket breached"
+SupportTickets.csv,Status,No  (meaning inferred by profiling),,FactSupportTickets,Status,"Derives IsOpen. Open tickets have elapsed-hours in ResolutionHours rather than a final duration, so they are excluded from average resolution time"

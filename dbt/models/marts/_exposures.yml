@@ -1,0 +1,62 @@
+version: 2
+
+exposures:
+
+  - name: merchant_voucher_intelligence_report
+    label: Merchant Sales & Voucher Intelligence (Power BI)
+    type: dashboard
+    maturity: high
+    url: https://app.powerbi.com/groups/<workspace-id>/reports/<report-id>
+    description: >
+      The four-page executive, merchant, operational and insights report. Declaring it as an
+      exposure means `dbt build` fails loudly if any upstream model breaks, and
+      `dbt ls --select +exposure:merchant_voucher_intelligence_report` answers "what feeds
+      this dashboard" without anyone guessing.
+    owner:
+      name: BI Development
+      email: bi-team@example.com
+    depends_on:
+      - ref('dim_date')
+      - ref('dim_merchant')
+      - ref('dim_voucher_type')
+      - ref('dim_ticket_type')
+      - ref('dim_priority')
+      - ref('dim_ticket_status')
+      - ref('fct_merchant_sales')
+      - ref('fct_voucher_redemptions')
+      - ref('fct_support_tickets')
+      - ref('fct_merchant_target')
+      - ref('mart_merchant_scorecard')
+
+  - name: merchant_intelligence_excel_pack
+    label: Monthly Merchant Intelligence Excel Pack
+    type: analysis
+    maturity: medium
+    description: >
+      The distributed Excel workbook for account managers who work offline. Built from the
+      same gold models as the Power BI report, which is what guarantees the two agree.
+    owner:
+      name: BI Development
+      email: bi-team@example.com
+    depends_on:
+      - ref('mart_merchant_scorecard')
+      - ref('fct_merchant_sales')
+      - ref('fct_support_tickets')
+
+  - name: anomaly_detection_notebook
+    label: Fabric Anomaly Detection & Forecasting Notebook
+    type: ml
+    maturity: medium
+    description: >
+      Isolation Forest anomaly detection, redemption propensity, resolution-time regression,
+      Holt-Winters forecasting and merchant segmentation. Consumes gold and writes scored
+      outputs back to gold, so Power BI reads predictions as ordinary tables rather than
+      calling a model at query time.
+    owner:
+      name: Data Science
+      email: ds-team@example.com
+    depends_on:
+      - ref('mart_merchant_scorecard')
+      - ref('fct_merchant_sales')
+      - ref('fct_voucher_redemptions')
+      - ref('fct_support_tickets')

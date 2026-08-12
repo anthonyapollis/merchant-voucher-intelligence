@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" style="width:100%;height:auto;font-family:Segoe UI,Arial,sans-serif">
+<rect width="1080" height="620" fill="#FDF6F5"/>
+<path d="M276,141.0 C338.0,141.0 338.0,411.0 400,411.0" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="6 4" opacity=".65"/>
+<text x="338.0" y="270.0" text-anchor="middle" font-size="10" fill="#C0392B" font-weight="700">implicit</text>
+<path d="M276,381.0 C338.0,381.0 338.0,411.0 400,411.0" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="6 4" opacity=".65"/>
+<text x="338.0" y="390.0" text-anchor="middle" font-size="10" fill="#C0392B" font-weight="700">implicit</text>
+<path d="M760,156.0 C698.0,156.0 698.0,411.0 636,411.0" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="6 4" opacity=".65"/>
+<text x="698.0" y="277.5" text-anchor="middle" font-size="10" fill="#C0392B" font-weight="700">implicit</text>
+<rect x="40" y="60" width="236" height="162" rx="6" fill="#fff" stroke="#C9D6E6"/>
+<path d="M40,66 a6,6 0 0 1 6,-6 h224 a6,6 0 0 1 6,6 v24 h-236 Z" fill="#C0392B"/>
+<text x="49" y="80" font-size="12" font-weight="700" fill="#fff">MerchantSales.csv  ·  26,500</text>
+<text x="49" y="102" font-size="10" fill="#5A6672" font-weight="400">Date</text>
+<text x="49" y="117" font-size="10" fill="#5A6672" font-weight="400">MerchantID</text>
+<text x="49" y="132" font-size="10" fill="#C0392B" font-weight="700">Merchant</text>
+<text x="268" y="132" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="49" y="147" font-size="10" fill="#C0392B" font-weight="700">Region</text>
+<text x="268" y="147" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="49" y="162" font-size="10" fill="#C0392B" font-weight="700">Channel</text>
+<text x="268" y="162" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="49" y="177" font-size="10" fill="#5A6672" font-weight="400">VoucherType</text>
+<text x="49" y="192" font-size="10" fill="#5A6672" font-weight="400">SalesValue</text>
+<text x="49" y="207" font-size="10" fill="#5A6672" font-weight="400">Transactions</text>
+<rect x="40" y="300" width="236" height="162" rx="6" fill="#fff" stroke="#C9D6E6"/>
+<path d="M40,306 a6,6 0 0 1 6,-6 h224 a6,6 0 0 1 6,6 v24 h-236 Z" fill="#C0392B"/>
+<text x="49" y="320" font-size="12" font-weight="700" fill="#fff">VoucherRedemptions.csv  ·  120,969</text>
+<text x="49" y="342" font-size="10" fill="#5A6672" font-weight="400">VoucherID</text>
+<text x="49" y="357" font-size="10" fill="#5A6672" font-weight="400">MerchantID</text>
+<text x="49" y="372" font-size="10" fill="#C0392B" font-weight="700">Merchant</text>
+<text x="268" y="372" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="49" y="387" font-size="10" fill="#5A6672" font-weight="400">SoldDate</text>
+<text x="49" y="402" font-size="10" fill="#5A6672" font-weight="400">VoucherType</text>
+<text x="49" y="417" font-size="10" fill="#5A6672" font-weight="400">VoucherValue</text>
+<text x="49" y="432" font-size="10" fill="#5A6672" font-weight="400">Redeemed</text>
+<text x="49" y="447" font-size="10" fill="#5A6672" font-weight="400">RedeemedDate</text>
+<rect x="760" y="60" width="236" height="192" rx="6" fill="#fff" stroke="#C9D6E6"/>
+<path d="M760,66 a6,6 0 0 1 6,-6 h224 a6,6 0 0 1 6,6 v24 h-236 Z" fill="#C0392B"/>
+<text x="769" y="80" font-size="12" font-weight="700" fill="#fff">SupportTickets.csv  ·  1,363</text>
+<text x="769" y="102" font-size="10" fill="#5A6672" font-weight="400">TicketID</text>
+<text x="769" y="117" font-size="10" fill="#5A6672" font-weight="400">Date</text>
+<text x="769" y="132" font-size="10" fill="#5A6672" font-weight="400">MerchantID</text>
+<text x="769" y="147" font-size="10" fill="#C0392B" font-weight="700">Merchant</text>
+<text x="988" y="147" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="769" y="162" font-size="10" fill="#C0392B" font-weight="700">Region</text>
+<text x="988" y="162" font-size="8" text-anchor="end" fill="#C0392B" font-weight="700">DUP</text>
+<text x="769" y="177" font-size="10" fill="#5A6672" font-weight="400">TicketType</text>
+<text x="769" y="192" font-size="10" fill="#5A6672" font-weight="400">Priority</text>
+<text x="769" y="207" font-size="10" fill="#5A6672" font-weight="400">ResolutionHours</text>
+<text x="769" y="222" font-size="10" fill="#5A6672" font-weight="400">SLAHours</text>
+<text x="769" y="237" font-size="10" fill="#5A6672" font-weight="400">Status</text>
+<rect x="400" y="330" width="236" height="162" rx="6" fill="#fff" stroke="#C9D6E6"/>
+<path d="M400,336 a6,6 0 0 1 6,-6 h224 a6,6 0 0 1 6,6 v24 h-236 Z" fill="#C0392B"/>
+<text x="409" y="350" font-size="12" font-weight="700" fill="#fff">MerchantReference.csv  ·  25</text>
+<text x="409" y="372" font-size="10" fill="#5A6672" font-weight="400">MerchantID</text>
+<text x="409" y="387" font-size="10" fill="#5A6672" font-weight="400">Merchant</text>
+<text x="409" y="402" font-size="10" fill="#5A6672" font-weight="400">Region</text>
+<text x="409" y="417" font-size="10" fill="#5A6672" font-weight="400">Channel</text>
+<text x="409" y="432" font-size="10" fill="#5A6672" font-weight="400">ActiveStatus</text>
+<text x="409" y="447" font-size="10" fill="#5A6672" font-weight="400">OnboardedDate</text>
+<text x="409" y="462" font-size="10" fill="#5A6672" font-weight="400">AccountManager</text>
+<text x="409" y="477" font-size="10" fill="#5A6672" font-weight="400">BaseMonthlySalesTarget</text>
+<text x="540.0" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="#C0392B">BEFORE — four flat files, no keys, no calendar, 9 duplicated attribute columns</text></svg>

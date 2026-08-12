@@ -1,0 +1,267 @@
+// =============================================================================================
+//  DAX MEASURE LIBRARY — File 4 of 4: Ranking, contribution, conditional formatting
+//                                      and the AI narrative measure
+//  Display folders: 05 Ranking \ 06 Formatting \ 07 Narrative
+// =============================================================================================
+
+
+// ---------------------------------------------------------------------------------------------
+// RANKING & CONTRIBUTION  —  display folder: 05 Ranking
+// ---------------------------------------------------------------------------------------------
+
+Merchant Sales Rank =
+IF (
+    HASONEVALUE ( dim_merchant[merchant_name] ),
+    RANKX (
+        ALLSELECTED ( dim_merchant[merchant_name] ),
+        [Total Sales],
+        ,
+        DESC,
+        DENSE
+    )
+)
+// ALLSELECTED so the rank respects slicers: filtering to Gauteng should rank WITHIN Gauteng,
+// not show each merchant's national rank. HASONEVALUE suppresses a meaningless total row.
+// Format: "#,##0"
+
+Merchant Transaction Rank =
+IF (
+    HASONEVALUE ( dim_merchant[merchant_name] ),
+    RANKX ( ALLSELECTED ( dim_merchant[merchant_name] ), [Total Transactions], , DESC, DENSE )
+)
+// Format: "#,##0"
+
+Merchant Sales Share % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLSELECTED ( dim_merchant ) )
+)
+// Format: "0.0%"
+
+Merchant Cumulative Share % =
+// Pareto: cumulative revenue share ordered by merchant size. Drives the 80/20 line on the
+// contribution chart.
+VAR CurrentSales = [Total Sales]
+VAR Ranked =
+    ADDCOLUMNS (
+        ALLSELECTED ( dim_merchant[merchant_name] ),
+        "@Sales", [Total Sales]
+    )
+VAR AtOrAbove =
+    SUMX ( FILTER ( Ranked, [@Sales] >= CurrentSales ), [@Sales] )
+VAR Grand = SUMX ( Ranked, [@Sales] )
+RETURN
+    DIVIDE ( AtOrAbove, Grand )
+// Format: "0.0%"
+
+Top 5 Merchant Sales =
+CALCULATE (
+    [Total Sales],
+    TOPN ( 5, ALLSELECTED ( dim_merchant[merchant_name] ), [Total Sales], DESC )
+)
+// Format: "R #,##0"
+
+Revenue Concentration (Top 5) % =
+DIVIDE ( [Top 5 Merchant Sales], CALCULATE ( [Total Sales], ALLSELECTED ( dim_merchant ) ) )
+// Concentration risk. 33.9% of revenue sits with 5 of 25 merchants.
+// Format: "0.0%"
+
+Region Sales Share % =
+DIVIDE ( [Total Sales], CALCULATE ( [Total Sales], ALLSELECTED ( dim_merchant[region] ) ) )
+// Format: "0.0%"
+
+Voucher Type Sales Share % =
+DIVIDE (
+    [Total Sales],
+    CALCULATE ( [Total Sales], ALLSELECTED ( dim_voucher_type[voucher_type] ) )
+)
+// Format: "0.0%"
+
+Merchant Health Score =
+// Pre-computed in the warehouse (mart_merchant_scorecard) rather than in DAX, deliberately.
+// The score requires percentile ranking across the whole merchant population, which is
+// expensive in DAX and — more importantly — must be byte-identical in Power BI, the Excel
+// pack and the ML feature set. One definition in SQL is what keeps those three agreeing.
+AVERAGE ( mart_merchant_scorecard[health_score] )
+// Format: "0.0"
+
+Revenue at Risk =
+SUM ( mart_merchant_scorecard[revenue_at_risk_annualised] )
+// Annualised shortfall against each merchant's own recent baseline. Ranking by severity
+// alone misleads: a 43% collapse at a small merchant costs less than a 6% slide at a large
+// one. This weights the decline by what it actually costs.
+// Format: "R #,##0"
+
+Focus Priority Rank =
+IF (
+    HASONEVALUE ( dim_merchant[merchant_name] ),
+    RANKX (
+        ALLSELECTED ( dim_merchant[merchant_name] ),
+        [Revenue at Risk] + ( 100 - [Merchant Health Score] ) * 1000,
+        ,
+        DESC,
+        DENSE
+    )
+)
+// Format: "#,##0"
+
+
+// ---------------------------------------------------------------------------------------------
+// CONDITIONAL FORMATTING  —  display folder: 06 Formatting
+// ---------------------------------------------------------------------------------------------
+//  Returned as hex strings and bound to "Field value" in the formatting pane. Centralising
+//  the thresholds here means the whole report restates consistently when they change.
+// ---------------------------------------------------------------------------------------------
+
+Colour | Sales MoM =
+VAR v = [Sales MoM %]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( v ), "#9AA0A6",   // grey   - no comparative period
+        v <= -0.20,    "#C0392B",   // red    - collapse
+        v <= -0.05,    "#E67E22",   // orange - material decline
+        v < 0.02,      "#F1C40F",   // amber  - flat
+        "#1E8449"                   // green  - growing
+    )
+
+Colour | SLA Breach =
+VAR v = [SLA Breach Rate %]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( v ), "#9AA0A6",
+        v >= 0.40,     "#C0392B",
+        v >= 0.25,     "#E67E22",
+        v >= 0.10,     "#F1C40F",
+        "#1E8449"
+    )
+
+Colour | Redemption Rate =
+VAR v = [Redemption Rate %]
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( v ), "#9AA0A6",
+        v < 0.78,      "#C0392B",
+        v < 0.84,      "#E67E22",
+        v < 0.90,      "#F1C40F",
+        "#1E8449"
+    )
+
+Colour | Health Band =
+SWITCH (
+    SELECTEDVALUE ( mart_merchant_scorecard[health_band] ),
+    "Critical", "#C0392B",
+    "Watch",    "#E67E22",
+    "Healthy",  "#1E8449",
+    "Star",     "#117A65",
+    "#9AA0A6"
+)
+
+KPI Arrow | Sales =
+VAR v = [Sales MoM %]
+RETURN
+    SWITCH ( TRUE (), ISBLANK ( v ), "", v > 0.02, "▲", v < -0.02, "▼", "▬" )
+
+
+// ---------------------------------------------------------------------------------------------
+// AI / NARRATIVE  —  display folder: 07 Narrative
+// ---------------------------------------------------------------------------------------------
+//  The brief's optional AI extension asks for a plain-English explanation of why a merchant
+//  changed performance. Two complementary approaches are implemented:
+//
+//   (a) This deterministic DAX narrative. It always renders, costs nothing, never
+//       hallucinates, and works in the Power BI Service without a Copilot licence.
+//   (b) The Fabric notebook models (anomaly detection, forecasting) whose scored output
+//       is written back to gold and read here as ordinary columns.
+//
+//  Copilot / Q&A sits on top of both. The model is prepared for it via synonyms and the
+//  Q&A linguistic schema — see powerbi/qna_synonyms.json.
+// ---------------------------------------------------------------------------------------------
+
+Merchant Narrative =
+VAR M = SELECTEDVALUE ( dim_merchant[merchant_name] )
+VAR MoM = [Sales MoM %]
+VAR VsPrior3 = [Sales vs Prior 3M Avg %]
+VAR TicketTrend = [Ticket Volume vs Own History]
+VAR Redemption = [Redemption Rate %]
+VAR PortfolioRedemption =
+    CALCULATE ( [Redemption Rate %], REMOVEFILTERS ( dim_merchant ) )
+VAR RiskValue = [Revenue at Risk]
+VAR SalesRank = [Merchant Sales Rank]
+
+VAR Direction =
+    SWITCH (
+        TRUE (),
+        VsPrior3 <= -0.20, "has declined sharply",
+        VsPrior3 <= -0.05, "is softening",
+        VsPrior3 >= 0.20,  "is growing strongly",
+        VsPrior3 >= 0.05,  "is growing",
+        "is broadly stable"
+    )
+
+VAR OpsClause =
+    SWITCH (
+        TRUE (),
+        ISBLANK ( TicketTrend ), "",
+        TicketTrend >= 1.5,
+            " Support volume has risen " & FORMAT ( TicketTrend, "0%" )
+            & " against its own recent average, which usually signals a service incident"
+            & " rather than a demand problem.",
+        TicketTrend <= -0.3, " Support volume has fallen materially over the same period.",
+        ""
+    )
+
+VAR RedemptionClause =
+    IF (
+        Redemption < PortfolioRedemption - 0.02,
+        " Redemption is running " & FORMAT ( PortfolioRedemption - Redemption, "0.0%" )
+            & " below the portfolio average, so issued value is converting more slowly.",
+        ""
+    )
+
+VAR RiskClause =
+    IF (
+        RiskValue > 0,
+        " At the current run rate the annualised revenue shortfall is approximately "
+            & FORMAT ( RiskValue, "R #,##0" ) & ".",
+        ""
+    )
+
+RETURN
+    IF (
+        ISBLANK ( M ),
+        "Select a single merchant to generate a narrative summary.",
+        M & " ranks #" & SalesRank & " by sales value and " & Direction
+            & ", with the latest month " & FORMAT ( VsPrior3, "+0.0%;-0.0%" )
+            & " against its prior three-month average ("
+            & FORMAT ( MoM, "+0.0%;-0.0%" ) & " month on month)."
+            & OpsClause & RedemptionClause & RiskClause
+    )
+
+Executive Summary Narrative =
+VAR Sales = [Total Sales]
+VAR MoM = [Sales MoM %]
+VAR Redemption = [Redemption Rate %]
+VAR Breach = [SLA Breach Rate %]
+VAR AtRisk = [Revenue at Risk]
+RETURN
+    "Portfolio sales of " & FORMAT ( Sales, "R #,##0" ) & " are "
+        & FORMAT ( MoM, "+0.0%;-0.0%" ) & " month on month, with a "
+        & FORMAT ( Redemption, "0.0%" ) & " redemption rate. "
+        & FORMAT ( Breach, "0.0%" ) & " of support tickets breached SLA. "
+        & "Identified revenue at risk across deteriorating merchants is "
+        & FORMAT ( AtRisk, "R #,##0" ) & "."
+
+Anomaly Flag =
+// Reads the Isolation Forest output written back to gold by the Fabric notebook.
+VAR Score = AVERAGE ( ml_anomaly_scores[anomaly_score] )
+RETURN
+    SWITCH (
+        TRUE (),
+        ISBLANK ( Score ), "",
+        Score >= 0.60, "⚠ Anomalous",
+        Score >= 0.50, "◐ Watch",
+        ""
+    )

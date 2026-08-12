@@ -1,0 +1,189 @@
+// =============================================================================================
+//  DAX MEASURE LIBRARY — File 3 of 4: Time intelligence and period comparison
+//  Display folder: 04 Time Intelligence
+// =============================================================================================
+//
+//  PREREQUISITE: dim_date must be Marked as Date Table on dim_date[date] and must be
+//  contiguous. The dbt project enforces contiguity with a dedicated test
+//  (tests/assert_dim_date_is_contiguous.sql) because these functions do NOT error on a
+//  gapped calendar — they return a quietly wrong number, which is far worse.
+//
+//  DATA WINDOW NOTE: the supplied data covers 2026-01-01 to 2026-07-31 only. Year-on-year
+//  measures are therefore written and ready, but will correctly return BLANK until a second
+//  year of history exists. They are included because the brief asks for period comparison
+//  and because leaving them out would mean rebuilding the model later.
+// =============================================================================================
+
+
+// ---------------------------------------------------------------------------------------------
+// MONTH ON MONTH
+// ---------------------------------------------------------------------------------------------
+
+Total Sales PM =
+CALCULATE ( [Total Sales], DATEADD ( dim_date[date], -1, MONTH ) )
+// Format: "R #,##0"
+
+Sales MoM =
+[Total Sales] - [Total Sales PM]
+// Format: "R #,##0;-R #,##0"
+
+Sales MoM % =
+DIVIDE ( [Sales MoM], [Total Sales PM] )
+// Format: "+0.0%;-0.0%"
+
+Transactions PM =
+CALCULATE ( [Total Transactions], DATEADD ( dim_date[date], -1, MONTH ) )
+// Format: "#,##0"
+
+Transactions MoM % =
+DIVIDE ( [Total Transactions] - [Transactions PM], [Transactions PM] )
+// Format: "+0.0%;-0.0%"
+
+Redemption Rate PM =
+CALCULATE ( [Redemption Rate %], DATEADD ( dim_date[date], -1, MONTH ) )
+// Format: "0.0%"
+
+Redemption Rate MoM pp =
+[Redemption Rate %] - [Redemption Rate PM]
+// Expressed in percentage POINTS, not percent. A rate moving 84% -> 82% is "-2pp", not
+// "-2.4%". Mixing the two is a common and confusing reporting error.
+// Format: "+0.0;-0.0"
+
+Tickets PM =
+CALCULATE ( [Total Tickets], DATEADD ( dim_date[date], -1, MONTH ) )
+// Format: "#,##0"
+
+Tickets MoM % =
+DIVIDE ( [Total Tickets] - [Tickets PM], [Tickets PM] )
+// Format: "+0.0%;-0.0%"
+
+
+// ---------------------------------------------------------------------------------------------
+// ROLLING AND CUMULATIVE
+// ---------------------------------------------------------------------------------------------
+
+Sales 3M Moving Avg =
+AVERAGEX (
+    DATESINPERIOD ( dim_date[date], MAX ( dim_date[date] ), -3, MONTH ),
+    [Total Sales]
+)
+// NOTE: this averages the DAILY measure across the window. For a monthly visual use
+// [Sales 3M Moving Avg (Monthly)] below — averaging at the wrong grain is a classic trap.
+// Format: "R #,##0"
+
+Sales 3M Moving Avg (Monthly) =
+VAR CurrentMonth = MAX ( dim_date[month_year_sort] )
+RETURN
+    AVERAGEX (
+        FILTER (
+            ALL ( dim_date[month_year_sort] ),
+            dim_date[month_year_sort] <= CurrentMonth
+                && dim_date[month_year_sort] > CurrentMonth - 3
+        ),
+        CALCULATE ( [Total Sales] )
+    )
+// Format: "R #,##0"
+
+Sales 7D Moving Avg =
+AVERAGEX (
+    DATESINPERIOD ( dim_date[date], MAX ( dim_date[date] ), -7, DAY ),
+    [Total Sales]
+)
+// Smooths the strong weekly seasonality visible in the daily series.
+// Format: "R #,##0"
+
+Sales YTD =
+TOTALYTD ( [Total Sales], dim_date[date] )
+// Format: "R #,##0"
+
+Transactions YTD =
+TOTALYTD ( [Total Transactions], dim_date[date] )
+// Format: "#,##0"
+
+Sales Cumulative =
+CALCULATE (
+    [Total Sales],
+    FILTER ( ALLSELECTED ( dim_date[date] ), dim_date[date] <= MAX ( dim_date[date] ) )
+)
+// ALLSELECTED, not ALL: the running total respects slicers the user has applied, which is
+// almost always what they expect when they filter to a region and watch the line rebuild.
+// Format: "R #,##0"
+
+
+// ---------------------------------------------------------------------------------------------
+// MOMENTUM  —  the measures behind the Health Score and the alerting
+// ---------------------------------------------------------------------------------------------
+
+Sales vs Prior 3M Avg % =
+// Latest month against the average of the prior three. This is the measure that surfaces a
+// single-month collapse: a 6-month trend line averages it away, this does not.
+VAR LatestMonth = MAX ( dim_date[month_year_sort] )
+VAR CurrentSales = CALCULATE ( [Total Sales], dim_date[month_year_sort] = LatestMonth )
+VAR PriorAvg =
+    AVERAGEX (
+        FILTER (
+            ALL ( dim_date[month_year_sort] ),
+            dim_date[month_year_sort] < LatestMonth
+                && dim_date[month_year_sort] >= LatestMonth - 3
+        ),
+        CALCULATE ( [Total Sales] )
+    )
+RETURN
+    DIVIDE ( CurrentSales - PriorAvg, PriorAvg )
+// Format: "+0.0%;-0.0%"
+
+Sales vs Peak Month % =
+VAR PeakSales =
+    MAXX ( ALLSELECTED ( dim_date[month_year_sort] ), CALCULATE ( [Total Sales] ) )
+VAR LatestSales =
+    CALCULATE ( [Total Sales], dim_date[month_year_sort] = MAX ( dim_date[month_year_sort] ) )
+RETURN
+    DIVIDE ( LatestSales - PeakSales, PeakSales )
+// Negative means the entity is off its own high-water mark — how the declining region was
+// identified (Eastern Cape peaked in May; every other region peaked in July).
+// Format: "+0.0%;-0.0%"
+
+Sales Trend Slope =
+// Ordinary least-squares slope of monthly sales, in rand per month. A single signed number
+// per merchant or region, which makes trend sortable in a table — something a sparkline
+// cannot do.
+VAR Months =
+    ADDCOLUMNS (
+        SUMMARIZE ( ALLSELECTED ( dim_date ), dim_date[month_year_sort] ),
+        "@Sales", CALCULATE ( [Total Sales] )
+    )
+VAR N = COUNTROWS ( Months )
+VAR SumX = SUMX ( Months, dim_date[month_year_sort] )
+VAR SumY = SUMX ( Months, [@Sales] )
+VAR SumXY = SUMX ( Months, dim_date[month_year_sort] * [@Sales] )
+VAR SumX2 = SUMX ( Months, dim_date[month_year_sort] ^ 2 )
+RETURN
+    DIVIDE ( N * SumXY - SumX * SumY, N * SumX2 - SumX ^ 2 )
+// Format: "R #,##0;-R #,##0"
+
+
+// ---------------------------------------------------------------------------------------------
+// YEAR ON YEAR  —  ready for a second year of data; returns BLANK until then
+// ---------------------------------------------------------------------------------------------
+
+Total Sales PY =
+CALCULATE ( [Total Sales], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+// Format: "R #,##0"
+
+Sales YoY % =
+DIVIDE ( [Total Sales] - [Total Sales PY], [Total Sales PY] )
+// Format: "+0.0%;-0.0%"
+
+Sales YoY % (Safe) =
+// Returns an explicit message rather than a blank card, so an executive is never left
+// wondering whether the number is zero or simply absent.
+IF (
+    ISBLANK ( [Total Sales PY] ),
+    BLANK (),
+    DIVIDE ( [Total Sales] - [Total Sales PY], [Total Sales PY] )
+)
+// Format: "+0.0%;-0.0%"
+
+Prior Year Data Available =
+IF ( ISBLANK ( [Total Sales PY] ), "No comparative period", "Available" )
+// Used as the subtitle on year-on-year visuals.

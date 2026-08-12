@@ -1,0 +1,34 @@
+Check,Passed,Detail
+dim_date unique on (date_key),True,
+dim_merchant unique on (merchant_key),True,
+dim_merchant_history unique on (merchant_version_key),True,
+dim_priority unique on (priority_key),True,
+dim_ticket_status unique on (status_key),True,
+dim_ticket_type unique on (ticket_type_key),True,
+dim_voucher_type unique on (voucher_type_key),True,
+"fct_merchant_sales unique on (date_key, merchant_key, voucher_type_key)",True,
+"fct_merchant_target unique on (date_key, merchant_key)",True,
+fct_support_tickets unique on (ticket_id),True,
+fct_voucher_redemptions unique on (voucher_id),True,
+mart_merchant_scorecard unique on (merchant_key),True,
+mart_merchant_value_risk unique on (merchant_key),True,
+Same set of gold tables exists,True,before=14 after=14
+Row counts identical after re-run,True,
+Every numeric column sums identically,True,
+dim_date still unique on (date_key),True,
+dim_merchant still unique on (merchant_key),True,
+dim_merchant_history still unique on (merchant_version_key),True,
+dim_priority still unique on (priority_key),True,
+dim_ticket_status still unique on (status_key),True,
+dim_ticket_type still unique on (ticket_type_key),True,
+dim_voucher_type still unique on (voucher_type_key),True,
+"fct_merchant_sales still unique on (date_key, merchant_key, voucher_type_key)",True,
+"fct_merchant_target still unique on (date_key, merchant_key)",True,
+fct_support_tickets still unique on (ticket_id),True,
+fct_voucher_redemptions still unique on (voucher_id),True,
+mart_merchant_scorecard still unique on (merchant_key),True,
+mart_merchant_value_risk still unique on (merchant_key),True,
+Surrogate keys are deterministic (dim joins mart after rebuild),True,25 merchants joined
+SCD2 snapshot did not fork on re-run,True,25 versions for 25 merchants
+Total sales unchanged after re-run,True,"R65,521,298.75"
+All reconciliation controls still pass,True,0 failing control(s)

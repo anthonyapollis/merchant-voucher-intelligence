@@ -1,0 +1,13 @@
+File,Column,Description
+MerchantReference.csv,MerchantID,Synthetic unique merchant key
+MerchantReference.csv,Merchant,Fictional merchant name
+MerchantReference.csv,Region,Merchant operating region
+MerchantReference.csv,Channel,Primary merchant sales channel
+MerchantSales.csv,Date,Daily sales date
+MerchantSales.csv,SalesValue,Synthetic daily sales value in ZAR
+MerchantSales.csv,Transactions,Synthetic transaction count
+VoucherRedemptions.csv,SoldDate,Voucher sold date
+VoucherRedemptions.csv,Redeemed,Yes or No redemption flag
+VoucherRedemptions.csv,RedeemedDate,Blank when not redeemed
+SupportTickets.csv,ResolutionHours,Synthetic hours to resolve or current elapsed hours
+SupportTickets.csv,SLAHours,SLA target by priority

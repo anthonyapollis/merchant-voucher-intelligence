@@ -1,0 +1,203 @@
+{
+  "passed": 27,
+  "warnings": 1,
+  "failures": 0,
+  "checks": [
+    {
+      "Check": "Total sales value",
+      "Python": 65521298.74999973,
+      "dbt": 65521298.75,
+      "Variance": -2.682209014892578e-07,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Total transactions",
+      "Python": 510127.0,
+      "dbt": 510127.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Sales fact row count",
+      "Python": 26500.0,
+      "dbt": 26500.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Vouchers sold",
+      "Python": 120969.0,
+      "dbt": 120969.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Vouchers redeemed",
+      "Python": 101843.0,
+      "dbt": 101843.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Voucher value sold",
+      "Python": 22019852.750000037,
+      "dbt": 22019852.75,
+      "Variance": 3.725290298461914e-08,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Outstanding voucher liability",
+      "Python": 3541563.079999995,
+      "dbt": 3541563.08,
+      "Variance": -5.122274160385132e-09,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Delayed redemptions",
+      "Python": 14125.0,
+      "dbt": 14125.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Total tickets",
+      "Python": 1363.0,
+      "dbt": 1363.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "SLA breaches",
+      "Python": 358.0,
+      "dbt": 358.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Total resolution hours",
+      "Python": 32343.50000000003,
+      "dbt": 32343.5,
+      "Variance": 2.9103830456733704e-11,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Monthly sales target total",
+      "Python": 10676900.430000005,
+      "dbt": 10676900.430000003,
+      "Variance": 1.862645149230957e-09,
+      "Status": "PASS"
+    },
+    {
+      "Check": "dim_date row count",
+      "Python": 365.0,
+      "dbt": 365.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "dim_merchant row count (dbt adds Unknown member)",
+      "Python": 26.0,
+      "dbt": 26.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Per-merchant sales (25 merchants)",
+      "Python": 25.0,
+      "dbt": 25.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Per-month sales (7 months)",
+      "Python": 7.0,
+      "dbt": 7.0,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: total sales",
+      "Python": 65521298.75,
+      "dbt": 65521298.74999999,
+      "Variance": 1.862645149230957e-09,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: redemption rate",
+      "Python": 21.071751099168804,
+      "dbt": 21.071751099168804,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: tickets per 1k txn",
+      "Python": 105.45819823027779,
+      "dbt": 105.45819823027779,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: recent momentum [score input]",
+      "Python": 0.8535101132616393,
+      "dbt": 0.8535101132616422,
+      "Variance": 1.7763568394002505e-15,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: month-on-month [score input]",
+      "Python": 0.35687910737918604,
+      "dbt": 0.35687910737919293,
+      "Variance": 2.4424906541753444e-15,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: structural trend [score input]",
+      "Python": 4.996659625994402,
+      "dbt": 4.996659625994401,
+      "Variance": 6.661338147750939e-16,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: target attainment [score input]",
+      "Python": 151.2113337089579,
+      "dbt": 151.21133370895788,
+      "Variance": 2.6645352591003757e-15,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: days to redeem [score input]",
+      "Python": 89.47039303182599,
+      "dbt": 89.47039303182599,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: SLA breach rate [score input]",
+      "Python": 6.416851963713975,
+      "dbt": 6.416851963713975,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: ticket momentum [score input]",
+      "Python": 10.94145323092507,
+      "dbt": 10.94145323092507,
+      "Variance": 0.0,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: revenue at risk",
+      "Python": 1215520.6799999983,
+      "dbt": 1215520.6800000004,
+      "Variance": 1.3969838619232178e-09,
+      "Status": "PASS"
+    },
+    {
+      "Check": "Scorecard: health score (see rounding note)",
+      "Python": 1248.7,
+      "dbt": 1248.9,
+      "Variance": 0.10000000000000142,
+      "Status": "WARN"
+    }
+  ]
+}

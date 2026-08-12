@@ -1,0 +1,72 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: >
+      Raw landing zone. In Fabric these are Delta tables in the Lakehouse `Files/bronze`
+      area, written by the Data Factory copy activity with no transformation applied.
+      Freshness is monitored so a silent pipeline failure surfaces as a dbt error rather
+      than as stale numbers in the executive report.
+    # Target-aware. DuckDB puts everything in `main`; the Fabric Warehouse uses `dbo`.
+    # Hard-coding `main` is what produced
+    #   Invalid object name 'WH_MerchantVoucher.main.bronze_voucher_redemptions'
+    # on the first Fabric run — the models were correct by then, the source address was not.
+    schema: "{{ 'dbo' if target.type == 'fabric' else 'main' }}"
+    tables:
+
+      - name: bronze_merchant_reference
+        identifier: bronze_merchant_reference
+        description: Merchant master data supplied by the commercial team (25 merchants).
+        columns:
+          - name: MerchantID
+            description: Natural key, format M0nn.
+            data_tests: [not_null, unique]
+          - name: Merchant
+            data_tests: [not_null, unique]
+          - name: Region
+            data_tests: [not_null]
+          - name: ActiveStatus
+            description: CRM lifecycle flag. Only Active / At Risk observed.
+
+      - name: bronze_merchant_sales
+        identifier: bronze_merchant_sales
+        description: Daily sales aggregate at Date x Merchant x VoucherType grain.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 26, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: Date
+            data_tests: [not_null]
+          - name: MerchantID
+            data_tests: [not_null]
+          - name: SalesValue
+            data_tests: [not_null]
+
+      - name: bronze_voucher_redemptions
+        identifier: bronze_voucher_redemptions
+        description: One row per voucher issued, with redemption outcome and date.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 26, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: VoucherID
+            data_tests: [not_null, unique]
+          - name: Redeemed
+            data_tests:
+              - accepted_values: {values: ['Yes', 'No']}
+
+      - name: bronze_support_tickets
+        identifier: bronze_support_tickets
+        description: Operational support tickets with resolution time and SLA target.
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 26, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: TicketID
+            data_tests: [not_null, unique]
+          - name: Priority
+            data_tests:
+              - accepted_values: {values: ['Low', 'Medium', 'High', 'Critical']}

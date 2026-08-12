@@ -1,0 +1,278 @@
+<header class="topbar">
+  <div class="brandrow">
+    <h1>Merchant Sales &amp; Voucher Intelligence</h1>
+    <span class="sub" id="periodLabel"></span>
+    <span class="spacer"></span>
+    <button class="themebtn" id="themeToggle" type="button">Dark mode</button>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-page="exec" aria-selected="true">Executive Overview</button>
+    <button role="tab" data-page="merchant" aria-selected="false">Merchant Analysis</button>
+    <button role="tab" data-page="ops" aria-selected="false">Operational View</button>
+    <button role="tab" data-page="geo" aria-selected="false">Geo Intelligence</button>
+    <button role="tab" data-page="ai" aria-selected="false">Intelligence &amp; ML</button>
+    <button role="tab" data-page="notes" aria-selected="false">Insights &amp; Notes</button>
+  </nav>
+</header>
+
+<div class="filters">
+  <div class="fgroup"><label>Region</label><span id="fRegion"></span></div>
+  <div class="fgroup"><label>Voucher type</label><span id="fVoucher"></span></div>
+  <div class="fgroup"><label>Channel</label><span id="fChannel"></span></div>
+  <div class="fgroup">
+    <label for="fFrom">Period</label>
+    <select id="fFrom"></select><span class="filternote">to</span><select id="fTo"></select>
+  </div>
+  <button class="resetbtn" id="fReset" type="button">Reset filters</button>
+  <span class="filternote" id="filterSummary"></span>
+</div>
+
+<main>
+  <!-- ============================================ 1. EXECUTIVE OVERVIEW -->
+  <section class="page" id="page-exec">
+    <div class="grid g6" id="execTiles" style="margin-bottom:14px"></div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Sales trend</h3>
+        <div class="cardsub">Daily sales value, seven-day average overlaid</div>
+        <div class="chartwrap"><svg class="chart" id="cExecTrend"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Sales by region</h3>
+        <div class="cardsub">Total for the selected period</div>
+        <div class="chartwrap"><svg class="chart" id="cExecRegion"></svg></div>
+      </div>
+    </div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Top 10 merchants by sales value</h3>
+        <div class="cardsub">Click a bar to open the merchant drill-through</div>
+        <div class="chartwrap"><svg class="chart" id="cExecTop"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Monthly sales by voucher type</h3>
+        <div class="cardsub">Stacked, ZAR</div>
+        <div class="legend" id="lExecVoucher"></div>
+        <div class="chartwrap"><svg class="chart" id="cExecVoucher"></svg></div>
+      </div>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>Redemption rate by month</h3>
+        <div class="cardsub">Share of vouchers sold that were redeemed</div>
+        <div class="chartwrap"><svg class="chart" id="cExecRedemption"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Region momentum</h3>
+        <div class="cardsub">Latest month against the prior three-month average</div>
+        <div class="chartwrap"><svg class="chart" id="cExecMomentum"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Sales concentration</h3>
+        <div class="cardsub">Cumulative share of sales by merchant rank</div>
+        <div class="chartwrap"><svg class="chart" id="cExecPareto"></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== 2. MERCHANT ANALYSIS -->
+  <section class="page" id="page-merchant" hidden>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Top 5 merchants</h3>
+        <div class="cardsub">By sales value in the selected period</div>
+        <div class="chartwrap"><svg class="chart" id="cMerchTop"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Bottom 5 merchants</h3>
+        <div class="cardsub">By sales value in the selected period</div>
+        <div class="chartwrap"><svg class="chart" id="cMerchBottom"></svg></div>
+      </div>
+    </div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Growth against scale</h3>
+        <div class="cardsub">Monthly growth slope against total sales; bubble area is ticket volume, colour is ML segment. Click a bubble to drill through.</div>
+        <div class="legend" id="lMerchSeg"></div>
+        <div class="chartwrap"><svg class="chart" id="cMerchScatter"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Voucher type performance</h3>
+        <div class="cardsub">Redemption rate against sales share</div>
+        <div class="chartwrap"><svg class="chart" id="cMerchVoucher"></svg></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Merchant league table</h3>
+      <div class="cardsub">Click any row for the drill-through detail page. Click a column heading to sort.</div>
+      <div class="tablewrap"><table id="tMerchants"></table></div>
+    </div>
+  </section>
+
+  <!-- ============================================== 3. OPERATIONAL VIEW -->
+  <section class="page" id="page-ops" hidden>
+    <div class="grid g6" id="opsTiles" style="margin-bottom:14px"></div>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Resolution time against SLA target, by priority</h3>
+      <div class="cardsub">The finding that drives the operational recommendation - read the two bars per tier against each other</div>
+      <div class="legend" id="lOpsSla"></div>
+      <div class="chartwrap"><svg class="chart" id="cOpsSla"></svg></div>
+      <button class="tablebtn" data-toggle="tvOpsSla" type="button">Show as table</button>
+      <div class="tableview" id="tvOpsSla" hidden><table id="tOpsSla"></table></div>
+    </div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Ticket volume by month</h3>
+        <div class="cardsub">Count of tickets raised</div>
+        <div class="chartwrap"><svg class="chart" id="cOpsTrend"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Ticket status</h3>
+        <div class="cardsub">Current state of the ticket book</div>
+        <div class="chartwrap"><svg class="chart" id="cOpsStatus"></svg></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Ticket types</h3>
+        <div class="cardsub">Volume and average resolution hours</div>
+        <div class="chartwrap"><svg class="chart" id="cOpsTypes"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Redemption lag by region and voucher type</h3>
+        <div class="cardsub">Average days from sale to redemption; darker is slower</div>
+        <div class="chartwrap"><svg class="chart" id="cOpsLag"></svg></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Merchant operational league table</h3>
+      <div class="cardsub">Ranked by ticket intensity. Click a row to drill through.</div>
+      <div class="tablewrap"><table id="tOps"></table></div>
+    </div>
+  </section>
+
+  <!-- ============================================== 4. GEO INTELLIGENCE -->
+  <section class="page" id="page-geo" hidden>
+    <div class="grid g4" id="geoTiles" style="margin-bottom:14px"></div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>South Africa by province</h3>
+        <div class="cardsub">Natural Earth admin-1 boundaries. Provinces with no merchant presence are shown hatched, not shaded - absent is not the same as zero. Click a province to filter the whole report to it.</div>
+        <div class="fgroup" style="margin-bottom:10px">
+          <label for="geoMetric">Shade by</label>
+          <select id="geoMetric"></select>
+          <span class="filternote" id="geoMetricNote"></span>
+        </div>
+        <div class="chartwrap"><svg class="chart" id="cMap"></svg></div>
+        <div class="legend" id="lMap"></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:14px">
+          <h3>Coverage</h3>
+          <div class="cardsub">Merchants per province against provincial land area</div>
+          <div class="chartwrap"><svg class="chart" id="cGeoCoverage"></svg></div>
+        </div>
+        <div class="card">
+          <h3>Sales concentration against footprint</h3>
+          <div class="cardsub">Share of national sales versus share of the merchant base</div>
+          <div class="chartwrap"><svg class="chart" id="cGeoConcentration"></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Provincial momentum</h3>
+        <div class="cardsub">Latest month against the prior three-month average. Diverging scale: blue above, red below.</div>
+        <div class="chartwrap"><svg class="chart" id="cGeoMomentum"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Operational load by province</h3>
+        <div class="cardsub">Tickets per 1,000 transactions and SLA breach rate</div>
+        <div class="chartwrap"><svg class="chart" id="cGeoOps"></svg></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Province league table</h3>
+      <div class="cardsub">Every geographic metric in one place, including the uncovered provinces</div>
+      <div class="tablewrap"><table id="tGeo"></table></div>
+      <div class="footnote">Land area is computed from the boundary geometry with a spherical-polygon formula; the source file ships <code>area_sqkm</code> as zero. Sales per 1,000 km&sup2; is a coverage indicator, not a demand measure - no population or GDP reference feed was supplied with this dataset, and area alone says nothing about how many people live there.</div>
+    </div>
+  </section>
+
+  <!-- ============================================= 5. INTELLIGENCE & ML -->
+  <section class="page" id="page-ai" hidden>
+    <div class="grid g4" id="aiTiles" style="margin-bottom:14px"></div>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Daily sales forecast</h3>
+      <div class="cardsub" id="fcSub"></div>
+      <div class="legend" id="lFc"></div>
+      <div class="chartwrap"><svg class="chart" id="cForecast"></svg></div>
+      <div class="footnote" id="fcNote"></div>
+    </div>
+    <div class="grid g21" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Merchant segments</h3>
+        <div class="cardsub">K-Means on nine behavioural features, projected to two principal components. Click a point to drill through.</div>
+        <div class="legend" id="lSeg"></div>
+        <div class="chartwrap"><svg class="chart" id="cSegments"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Merchant health score</h3>
+        <div class="cardsub">Weighted percentile index, 0-100. Lowest 12 shown.</div>
+        <div class="chartwrap"><svg class="chart" id="cHealth"></svg></div>
+      </div>
+    </div>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>Model performance</h3>
+        <div class="cardsub">Every figure measured on data the model never saw</div>
+        <div class="tablewrap"><table id="tPerf"></table></div>
+      </div>
+      <div class="card">
+        <h3>What drives each model</h3>
+        <div class="cardsub">Permutation importance - the drop in held-out ROC-AUC when the feature is shuffled</div>
+        <div class="chartwrap"><svg class="chart" id="cImportance"></svg></div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <h3>Detected anomalies</h3>
+      <div class="cardsub">Unsupervised. Robust median/MAD z-scores against a trailing baseline, plus month-on-month level-shift detection.</div>
+      <div class="tablewrap"><table id="tAnomalies"></table></div>
+    </div>
+    <div class="card">
+      <h3>Expected non-redemption exposure</h3>
+      <div class="cardsub">Modelled probability that a voucher is never redeemed, applied to voucher value. Top 12 merchant / voucher-type combinations.</div>
+      <div class="tablewrap"><table id="tRisk"></table></div>
+    </div>
+  </section>
+
+  <!-- =============================================== 5. INSIGHTS & NOTES -->
+  <section class="page" id="page-notes" hidden>
+    <div class="grid g2">
+      <div class="card">
+        <h3>The five business questions</h3>
+        <div class="cardsub">Answered from the model, with the supporting number</div>
+        <div class="prose" id="qaBlock" style="margin-top:12px"></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:14px">
+          <h3>Recommended actions</h3>
+          <div class="cardsub">Ordered by expected value at risk</div>
+          <div class="prose" id="recBlock" style="margin-top:12px"></div>
+        </div>
+        <div class="card">
+          <h3>Assumptions, data quality and limitations</h3>
+          <div class="cardsub">What a reader needs to know before trusting these numbers</div>
+          <div class="prose" id="assumeBlock" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drill" id="drill" aria-hidden="true">
+  <button class="closebtn" id="drillClose" type="button" aria-label="Close">&times;</button>
+  <div id="drillBody"></div>
+</aside>
+<div class="tooltip" id="tooltip" role="status"></div>

@@ -1,0 +1,227 @@
+{
+  "_comment": [
+    "Q&A linguistic schema. Loaded via Modeling > Q&A setup > Field synonyms, or pasted into",
+    "the model's linguistic metadata.",
+    "",
+    "Why this file exists: Copilot and Q&A are only as good as the vocabulary the model",
+    "exposes. Out of the box, a user asking 'which merchants are struggling' gets nothing,",
+    "because no field is called 'struggling'. Mapping business language onto model fields is",
+    "the difference between a Q&A visual that gets used and one that gets switched off in the",
+    "first week. This is the least glamorous part of the AI extension and the part that most",
+    "determines whether it survives contact with users."
+  ],
+
+  "Version": "1.0",
+  "Language": "en-ZA",
+
+  "Entities": {
+    "dim_merchant.merchant_name": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_merchant", "ConceptualProperty": "merchant_name" } },
+      "State": "Generated",
+      "Terms": [
+        { "merchant": {} }, { "store": {} }, { "retailer": {} }, { "outlet": {} },
+        { "account": {} }, { "partner": {} }, { "shop": {} }, { "vendor": {} }
+      ]
+    },
+    "dim_merchant.region": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_merchant", "ConceptualProperty": "region" } },
+      "State": "Generated",
+      "Terms": [
+        { "region": {} }, { "province": {} }, { "area": {} }, { "territory": {} },
+        { "location": {} }, { "geography": {} }
+      ]
+    },
+    "dim_merchant.channel": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_merchant", "ConceptualProperty": "channel" } },
+      "State": "Generated",
+      "Terms": [
+        { "channel": {} }, { "route to market": {} }, { "sales channel": {} },
+        { "distribution": {} }
+      ]
+    },
+    "dim_merchant.account_manager": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_merchant", "ConceptualProperty": "account_manager" } },
+      "State": "Generated",
+      "Terms": [
+        { "account manager": {} }, { "rep": {} }, { "owner": {} }, { "am": {} },
+        { "relationship manager": {} }
+      ]
+    },
+    "dim_voucher_type.voucher_type": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_voucher_type", "ConceptualProperty": "voucher_type" } },
+      "State": "Generated",
+      "Terms": [
+        { "voucher type": {} }, { "product": {} }, { "product type": {} },
+        { "category": {} }, { "sku": {} }, { "voucher category": {} }
+      ]
+    },
+    "dim_priority.priority": {
+      "Definition": { "Binding": { "ConceptualEntity": "dim_priority", "ConceptualProperty": "priority" } },
+      "State": "Generated",
+      "Terms": [
+        { "priority": {} }, { "severity": {} }, { "urgency": {} }, { "ticket priority": {} }
+      ]
+    },
+
+    "Measure.Total Sales": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Total Sales" } },
+      "State": "Generated",
+      "Terms": [
+        { "sales": {} }, { "revenue": {} }, { "turnover": {} }, { "sales value": {} },
+        { "gmv": {} }, { "takings": {} }, { "income": {} }, { "how much did we sell": {} }
+      ]
+    },
+    "Measure.Total Transactions": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Total Transactions" } },
+      "State": "Generated",
+      "Terms": [
+        { "transactions": {} }, { "volume": {} }, { "sales count": {} }, { "txns": {} },
+        { "number of sales": {} }, { "throughput": {} }
+      ]
+    },
+    "Measure.Average Basket Value": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Average Basket Value" } },
+      "State": "Generated",
+      "Terms": [
+        { "basket": {} }, { "average basket": {} }, { "average transaction value": {} },
+        { "atv": {} }, { "spend per transaction": {} }, { "average sale": {} }
+      ]
+    },
+    "Measure.Redemption Rate %": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Redemption Rate %" } },
+      "State": "Generated",
+      "Terms": [
+        { "redemption rate": {} }, { "redemption": {} }, { "redeemed": {} },
+        { "conversion": {} }, { "take up": {} }, { "uptake": {} },
+        { "how many were redeemed": {} }
+      ]
+    },
+    "Measure.Avg Days to Redeem": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Avg Days to Redeem" } },
+      "State": "Generated",
+      "Terms": [
+        { "days to redeem": {} }, { "time to redeem": {} }, { "redemption speed": {} },
+        { "how long to redeem": {} }, { "redemption lag": {} }
+      ]
+    },
+    "Measure.Delayed Redemption Rate %": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Delayed Redemption Rate %" } },
+      "State": "Generated",
+      "Terms": [
+        { "delayed redemptions": {} }, { "late redemptions": {} }, { "slow redemptions": {} },
+        { "redemption delays": {} }
+      ]
+    },
+    "Measure.Outstanding Liability": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Outstanding Liability" } },
+      "State": "Generated",
+      "Terms": [
+        { "outstanding": {} }, { "liability": {} }, { "unredeemed value": {} },
+        { "float": {} }, { "unredeemed": {} }, { "money owed": {} }
+      ]
+    },
+    "Measure.Total Tickets": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Total Tickets" } },
+      "State": "Generated",
+      "Terms": [
+        { "tickets": {} }, { "support tickets": {} }, { "cases": {} }, { "issues": {} },
+        { "complaints": {} }, { "queries": {} }, { "problems": {} }
+      ]
+    },
+    "Measure.Avg Resolution Hours": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Avg Resolution Hours" } },
+      "State": "Generated",
+      "Terms": [
+        { "resolution time": {} }, { "resolution hours": {} }, { "time to resolve": {} },
+        { "how long to fix": {} }, { "turnaround": {} }, { "handling time": {} }
+      ]
+    },
+    "Measure.SLA Breach Rate %": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "SLA Breach Rate %" } },
+      "State": "Generated",
+      "Terms": [
+        { "sla breach": {} }, { "breached sla": {} }, { "sla failure": {} },
+        { "missed sla": {} }, { "sla risk": {} }, { "late tickets": {} },
+        { "overdue": {} }
+      ]
+    },
+    "Measure.Open Tickets": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Open Tickets" } },
+      "State": "Generated",
+      "Terms": [
+        { "open tickets": {} }, { "backlog": {} }, { "unresolved": {} },
+        { "outstanding tickets": {} }, { "still open": {} }
+      ]
+    },
+    "Measure.Merchant Health Score": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Merchant Health Score" } },
+      "State": "Generated",
+      "Terms": [
+        { "health": {} }, { "health score": {} }, { "performance score": {} },
+        { "how are they doing": {} }, { "merchant health": {} }, { "struggling": {} },
+        { "at risk": {} }, { "underperforming": {} }, { "doing badly": {} }
+      ]
+    },
+    "Measure.Revenue at Risk": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Revenue at Risk" } },
+      "State": "Generated",
+      "Terms": [
+        { "revenue at risk": {} }, { "at risk": {} }, { "exposure": {} },
+        { "what could we lose": {} }, { "risk": {} }, { "shortfall": {} }
+      ]
+    },
+    "Measure.Sales MoM %": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Sales MoM %" } },
+      "State": "Generated",
+      "Terms": [
+        { "growth": {} }, { "month on month": {} }, { "mom": {} }, { "change": {} },
+        { "trend": {} }, { "increase": {} }, { "decline": {} }, { "movement": {} }
+      ]
+    },
+    "Measure.Tickets per 1k Transactions": {
+      "Definition": { "Binding": { "ConceptualEntity": "_Measures", "ConceptualProperty": "Tickets per 1k Transactions" } },
+      "State": "Generated",
+      "Terms": [
+        { "friction": {} }, { "tickets per transaction": {} }, { "issue rate": {} },
+        { "operational friction": {} }, { "problem rate": {} }
+      ]
+    }
+  },
+
+  "Relationships": {
+    "_comment": "Verb phrasings let users ask naturally rather than in field names.",
+    "merchant_generates_sales": {
+      "Binding": { "ConceptualEntity": "fct_merchant_sales" },
+      "State": "Generated",
+      "Phrasings": [
+        { "Verb": {
+            "Subject": { "Role": "dim_merchant" },
+            "Verb": "generate|make|produce|earn|bring in",
+            "Object": { "Role": "Total Sales" } } }
+      ]
+    },
+    "merchant_raises_tickets": {
+      "Binding": { "ConceptualEntity": "fct_support_tickets" },
+      "State": "Generated",
+      "Phrasings": [
+        { "Verb": {
+            "Subject": { "Role": "dim_merchant" },
+            "Verb": "raise|log|report|have",
+            "Object": { "Role": "Total Tickets" } } }
+      ]
+    }
+  },
+
+  "_exampleQuestions": [
+    "which merchants are struggling",
+    "top 5 merchants by revenue",
+    "redemption rate by voucher type",
+    "which region has declining sales",
+    "show me sla breaches by priority",
+    "revenue at risk by region",
+    "average basket value by channel this month",
+    "which merchants have the most open tickets",
+    "sales growth month on month by region",
+    "how long does it take to redeem a gaming voucher"
+  ]
+}

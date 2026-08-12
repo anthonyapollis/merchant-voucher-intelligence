@@ -1,0 +1,190 @@
+{
+ "screenshots": [
+  {
+   "prefix": "01_workspace",
+   "section": "Part 1 \u2014 Fabric workspace",
+   "caption": "WS_MerchantVoucher on trial capacity.",
+   "file": null
+  },
+  {
+   "prefix": "02_capacity",
+   "section": "Part 1 \u2014 Fabric workspace",
+   "caption": "License mode showing Fabric capacity. A Free account cannot create a Lakehouse.",
+   "file": null
+  },
+  {
+   "prefix": "03_lakehouse",
+   "section": "Part 1 \u2014 Fabric workspace",
+   "caption": "LH_MerchantVoucher \u2014 the bronze and silver landing target.",
+   "file": null
+  },
+  {
+   "prefix": "04_warehouse",
+   "section": "Part 1 \u2014 Fabric workspace",
+   "caption": "WH_MerchantVoucher, created through the Fabric REST API rather than by hand.",
+   "file": "docs\\screenshots\\04_warehouse.png"
+  },
+  {
+   "prefix": "05_sql_endpoint",
+   "section": "Part 1 \u2014 Fabric workspace",
+   "caption": "The SQL endpoint dbt connects to.",
+   "file": null
+  },
+  {
+   "prefix": "06_dbt_debug",
+   "section": "Part 2 \u2014 dbt connected",
+   "caption": "dbt debug --target fabric: All checks passed. Connection and credentials proven.",
+   "file": "docs\\screenshots\\06_dbt_debug.png"
+  },
+  {
+   "prefix": "07_dbt_seed",
+   "section": "Part 2 \u2014 dbt connected",
+   "caption": "dbt seed --target fabric: PASS=4. WRITE access proven, not just connection.",
+   "file": "docs\\screenshots\\07_dbt_seed.png"
+  },
+  {
+   "prefix": "08_warehouse_tables",
+   "section": "Part 2 \u2014 dbt connected",
+   "caption": "The same four tables seen from the Fabric side.",
+   "file": "docs\\screenshots\\08_warehouse_tables.png"
+  },
+  {
+   "prefix": "09_dbt_docs_lineage",
+   "section": "Part 2 \u2014 dbt connected",
+   "caption": "dbt docs lineage \u2014 the build DAG.",
+   "file": "docs\\screenshots\\09_dbt_docs_lineage.png"
+  },
+  {
+   "prefix": "10_erd",
+   "section": "Part 2 \u2014 dbt connected",
+   "caption": "The gold ERD, generated from the manifest's relationships tests.",
+   "file": "docs\\screenshots\\10_erd.png"
+  },
+  {
+   "prefix": "11_pipeline",
+   "section": "Part 3 \u2014 orchestration",
+   "caption": "PL_MerchantVoucher_Master on the pipeline canvas.",
+   "file": null
+  },
+  {
+   "prefix": "12_trigger_disabled",
+   "section": "Part 3 \u2014 orchestration",
+   "caption": "The daily trigger shipped disabled \u2014 the cost control, evidenced.",
+   "file": null
+  },
+  {
+   "prefix": "13_notebook",
+   "section": "Part 3 \u2014 orchestration",
+   "caption": "00_autoload_landing \u2014 detects csv, zip, xlsx, parquet and json, and loads to Delta.",
+   "file": null
+  },
+  {
+   "prefix": "14_monitor",
+   "section": "Part 3 \u2014 orchestration",
+   "caption": "Fabric Monitor run history.",
+   "file": null
+  },
+  {
+   "prefix": "15_pbi_exec",
+   "section": "Part 4 \u2014 Power BI",
+   "caption": "Executive Overview.",
+   "file": null
+  },
+  {
+   "prefix": "16_pbi_business_answers",
+   "section": "Part 4 \u2014 Power BI",
+   "caption": "Business Answers \u2014 the five brief questions answered on the page.",
+   "file": null
+  },
+  {
+   "prefix": "17_pbi_reconciliation",
+   "section": "Part 4 \u2014 Power BI",
+   "caption": "Reconciliation & Controls, including the explained R43.5m population variance.",
+   "file": null
+  },
+  {
+   "prefix": "18_pbi_value_risk",
+   "section": "Part 4 \u2014 Power BI",
+   "caption": "Merchant Value & Risk \u2014 lifetime value, attrition, fraud-adjacent signals.",
+   "file": null
+  },
+  {
+   "prefix": "19_pbi_mobile",
+   "section": "Part 4 \u2014 Power BI",
+   "caption": "Phone layout.",
+   "file": null
+  },
+  {
+   "prefix": "20_cost_guard",
+   "section": "Part 5 \u2014 cost control",
+   "caption": "fabric_cost_guard.py --check: the kill switch.",
+   "file": "docs\\screenshots\\20_cost_guard.png"
+  },
+  {
+   "prefix": "21_trial_days",
+   "section": "Part 5 \u2014 cost control",
+   "caption": "Trial days remaining against the 2026-10-10 expiry.",
+   "file": null
+  },
+  {
+   "prefix": "22_local_build",
+   "section": "Part 6 \u2014 build verification",
+   "caption": "Full dbt build: 156 pass, 0 warnings, 0 errors.",
+   "file": "docs\\screenshots\\22_local_build.png"
+  },
+  {
+   "prefix": "23_landing_zip",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "OneLake Files/landing with the supplied ZIP in place \u2014 the raw input, before anything runs.",
+   "file": null
+  },
+  {
+   "prefix": "24_notebook_unzip",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "nb_01_pc_zip_to_bronze: detects the archive, extracts it and writes Delta. The autoloader handles csv, zip, xlsx, parquet and json rather than one hard-coded format.",
+   "file": null
+  },
+  {
+   "prefix": "25_files_extracted",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "Files/ after extraction \u2014 the four CSVs unpacked from the archive.",
+   "file": null
+  },
+  {
+   "prefix": "26_bronze_tables",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "Lakehouse Tables/dbo showing the four bronze Delta tables, queried live with row counts.",
+   "file": null
+  },
+  {
+   "prefix": "27_silver_tables",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "Silver layer \u2014 typed, cleansed and conformed.",
+   "file": null
+  },
+  {
+   "prefix": "28_gold_tables",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "Gold layer \u2014 the Kimball star schema the report reads from.",
+   "file": null
+  },
+  {
+   "prefix": "29_pipeline_canvas",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "pl_pc_ingestion_bronze_silver_gold on the Data Factory canvas: the four stages in dependency order.",
+   "file": null
+  },
+  {
+   "prefix": "30_pipeline_run",
+   "section": "Part 0 \u2014 ingestion, start to finish",
+   "caption": "A completed pipeline run \u2014 per-activity duration and status. Run history is the proof the chain executes, not just that it exists.",
+   "file": null
+  }
+ ],
+ "erd": {
+  "erd_before": "docs\\erd_before.png",
+  "erd_after": "docs\\erd_after.png"
+ },
+ "present": 5,
+ "total": 30
+}

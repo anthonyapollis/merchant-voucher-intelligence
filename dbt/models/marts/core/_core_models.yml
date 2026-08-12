@@ -1,0 +1,313 @@
+version: 2
+
+models:
+
+  # ---------------------------------------------------------------- dimensions
+  - name: dim_date
+    description: >
+        [README model] The README explicitly says the candidate should create a proper date table.
+        Generated to full calendar-year boundaries rather than derived from the facts. Power BI time
+        intelligence (DATEADD, SAMEPERIODLASTYEAR, TOTALYTD) does not error on a gapped calendar —
+        it silently returns a wrong number. Contiguity is therefore tested, not assumed.
+    # NOTE: contiguity and uniqueness are aggregate-level assertions. dbt_utils.expression_is_true
+    # renders its expression into a WHERE clause, which cannot contain aggregates, so these
+    # live as singular tests in tests/assert_dim_date_is_contiguous.sql instead.
+    columns:
+      - name: date_key
+        description: Integer surrogate in yyyymmdd form; the join key for every fact.
+        data_tests: [not_null, unique]
+      - name: date
+        data_tests: [not_null, unique]
+      - name: year_month
+        data_tests: [not_null]
+
+  - name: dim_merchant
+    description: >
+        [README model] README: DimMerchant from MerchantReference.csv. Conformed dimension — the
+        single filter path for every fact. Carries an Unknown (-1) member so a future unmatched fact
+        row lands somewhere visible instead of vanishing from every total.
+    columns:
+      - name: merchant_key
+        data_tests: [not_null, unique]
+      - name: merchant_id
+        data_tests: [not_null, unique]
+      - name: region
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['Gauteng', 'Western Cape', 'KwaZulu-Natal', 'Eastern Cape',
+                       'Free State', 'Unknown']
+      - name: channel
+        data_tests:
+          - accepted_values:
+              values: ['Retail', 'Wholesale', 'Online', 'Agent Network', 'Unknown']
+      - name: merchant_size_band
+        data_tests:
+          - accepted_values: {values: ['Small', 'Mid', 'Large', 'Strategic', 'Unknown']}
+
+  - name: dim_merchant_history
+    description: >
+        [My extension] NOT requested. The Type 2 face of snap_merchant. dim_merchant answers 'what
+        is this merchant TODAY' and is what the semantic model joins to. This answers 'what was this
+        merchant WHEN that fact happened'. Loading only Type 2 and forcing every query through a
+        date-range join would be purer and practically worse; loading only Type 1 loses history
+        permanently. Both, clearly labelled, is the workable answer.
+    columns:
+      - name: merchant_version_key
+        description: Surrogate per VERSION — this is what makes it Type 2.
+        data_tests: [not_null, unique]
+      - name: merchant_key
+        description: Durable key, stable across versions, joins back to dim_merchant.
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      - name: merchant_id
+        data_tests: [not_null]
+      - name: valid_from
+        data_tests: [not_null]
+      - name: valid_to
+        description: 9999-12-31 for the current version, so BETWEEN range joins work.
+        data_tests: [not_null]
+      - name: is_current
+        data_tests: [not_null]
+
+  - name: dim_ticket_type
+    description: >
+        [Brief deliverable] Brief section 5 requires ticket analysis on the Operational page. Adds
+        category (Fulfilment / Financial / Commercial) and impact area (Customer vs Merchant
+        impacting) — groupings that do not exist in the source but are how operations actually
+        triage.
+    columns:
+      - name: ticket_type_key
+        data_tests: [not_null, unique]
+      - name: ticket_type
+        data_tests: [not_null, unique]
+      - name: ticket_category
+        data_tests:
+          - not_null
+          - accepted_values: {values: ['Fulfilment', 'Financial', 'Commercial', 'Uncategorised']}
+      - name: impact_area
+        data_tests:
+          - accepted_values:
+              values: ['Customer Impacting', 'Merchant Impacting', 'Unclassified']
+
+  - name: dim_priority
+    description: >
+        [Brief deliverable] Brief section 5 requires 'ticket priority' and 'SLA risk'; section 4
+        requires an SLA breach indicator. Carries target_sla_hours plus observed median/P90
+        resolution time, and derives sla_is_achievable from them. This is what turns the headline
+        operational finding into DATA rather than prose: Critical has a 12h target against a 74h
+        P90, and the model says so in a sortable column.
+    columns:
+      - name: priority_key
+        data_tests: [not_null, unique]
+      - name: priority
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values: {values: ['Low', 'Medium', 'High', 'Critical']}
+      - name: target_sla_hours
+        data_tests:
+          - not_null
+          - accepted_values: {values: [12, 24, 36, 48], quote: false}
+      - name: priority_sort
+        data_tests: [not_null]
+
+  - name: dim_ticket_status
+    description: >
+        [Brief deliverable] Brief section 5 requires ticket status and backlog visibility. Carries
+        an explicit `ownership` attribute that splits the backlog into 'awaiting us' (146 tickets)
+        and 'awaiting customer' (93). A single '239 open' figure conflates a capacity problem with a
+        chase-the-customer problem — different remediation entirely.
+    columns:
+      - name: status_key
+        data_tests: [not_null, unique]
+      - name: status
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values: {values: ['Closed', 'Open', 'Escalated', 'Pending Merchant']}
+      - name: is_open_status
+        data_tests: [not_null]
+      - name: ownership
+        data_tests:
+          - accepted_values: {values: ['Resolved', 'Awaiting us', 'Awaiting customer']}
+
+  - name: dim_voucher_type
+    description: >
+        [Brief deliverable] Brief section 5 requires 'voucher type performance' on the Merchant
+        page. Used by BOTH the sales fact and the redemption fact — the textbook definition of a
+        conformed dimension. Also carries category and margin band, which do not exist in the source
+        and are maintained as a dbt seed so the commercial team can change them without a code
+        deployment.
+    columns:
+      - name: voucher_type_key
+        data_tests: [not_null, unique]
+      - name: voucher_type
+        data_tests: [not_null, unique]
+      - name: voucher_category
+        description: Sourced from the voucher_type_reference seed.
+        data_tests:
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['Uncategorised']
+              config:
+                severity: warn   # warn, not error: a new voucher type should not fail the build
+
+  # ---------------------------------------------------------------- facts
+  - name: fct_merchant_sales
+    description: >
+        [README model] README: FactMerchantSales from MerchantSales.csv. Grain Date x Merchant x
+        VoucherType. Merchant/Region/Channel were DROPPED from the fact — profiling proved 100%
+        agreement with MerchantReference, so keeping both would allow two competing versions of
+        'Region' in one model.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [date_key, merchant_key, voucher_type_key]
+      # Revenue reconciliation is aggregate-level -> tests/assert_sales_reconcile_to_source.sql
+    columns:
+      - name: sales_key
+        data_tests: [not_null, unique]
+      - name: date_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: merchant_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      - name: voucher_type_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_voucher_type'), field: voucher_type_key}
+      - name: sales_value
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000000
+      - name: transactions
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between: {min_value: 0}
+
+  - name: fct_voucher_redemptions
+    description: >
+        [README model] README: FactVoucherRedemptions from VoucherRedemptions.csv. Accumulating
+        snapshot — one row per voucher, updated when the second event (redemption) occurs. Carries
+        TWO date foreign keys: sold_date_key active, redeemed_date_key inactive. Without that split,
+        late redemptions are attributed back to the month of sale and a backlog is invisible.
+    data_tests:
+      # The two definitions of "redeemed" must never diverge. Expressed row-wise so the
+      # test renders into a valid WHERE clause and reports the offending rows directly.
+      - dbt_utils.expression_is_true:
+          name: redeemed_vouchers_must_carry_a_redeemed_date
+          expression: "not (is_redeemed and redeemed_date_key is null)"
+      - dbt_utils.expression_is_true:
+          name: unredeemed_vouchers_must_not_carry_a_redeemed_date
+          expression: "not (not is_redeemed and redeemed_date_key is not null)"
+      - dbt_utils.expression_is_true:
+          name: days_to_redeem_must_not_be_negative
+          expression: "days_to_redeem is null or days_to_redeem >= 0"
+    columns:
+      - name: voucher_id
+        data_tests: [not_null, unique]
+      - name: sold_date_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: redeemed_date_key
+        description: Null for unredeemed vouchers. Inactive relationship in the semantic model.
+        data_tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_key
+              config: {where: "redeemed_date_key is not null"}
+      - name: merchant_key
+        data_tests:
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      - name: voucher_value
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between: {min_value: 0}
+      - name: quality_flag
+        description: OK, or the specific integrity rule the row violated.
+        data_tests:
+          - accepted_values:
+              values: ['OK', 'REDEEM_DATE_MISSING', 'REDEEM_DATE_BEFORE_SALE',
+                       'UNREDEEMED_WITH_DATE']
+
+  - name: fct_support_tickets
+    description: >
+        [README model] README: FactSupportTickets from SupportTickets.csv. One row per ticket.
+        sla_hours is stored ON the fact, not resolved from the priority dimension, so a future SLA
+        policy change cannot retrospectively restate whether a historic ticket breached.
+    data_tests:
+      # The stored breach flag must always agree with the arithmetic that defines it.
+      - dbt_utils.expression_is_true:
+          name: sla_breach_flag_matches_resolution_vs_sla
+          expression: "is_sla_breach = (resolution_hours > sla_hours)"
+    columns:
+      - name: ticket_id
+        data_tests: [not_null, unique]
+      - name: date_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: merchant_key
+        data_tests:
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      # These three foreign keys were previously UNTESTABLE — they all pointed at the
+      # combined dim_ticket_attributes table, so a relationships test could not tell
+      # "priority_key resolves to a priority" from "resolves to something, somewhere".
+      - name: ticket_type_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_ticket_type'), field: ticket_type_key}
+      - name: priority_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_priority'), field: priority_key}
+      - name: status_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_ticket_status'), field: status_key}
+      - name: resolution_hours
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 720          # 30 days; anything beyond is a data error, not a slow ticket
+      - name: sla_hours
+        data_tests:
+          - accepted_values: {values: [12, 24, 36, 48], quote: false}
+
+  - name: fct_merchant_target
+    description: >
+        [Grain necessity] Brief section 4 requires period comparison and a target measure;
+        BaseMonthlySalesTarget is supplied on MerchantReference. Could have been an attribute on
+        dim_merchant — but it is a MONTHLY measure while sales are DAILY. On the dimension it would
+        re-count once per fact row. A separate fact at month grain, joined only through shared
+        dimensions, is the standard Kimball answer to multi-grain reporting. 25 merchants x 7 months
+        = 175 rows. Targets are pro-rated by days covered so a part-month never shows a false
+        shortfall.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [date_key, merchant_key]
+      - dbt_utils.expression_is_true:
+          name: target_prorating_never_exceeds_the_base
+          expression: "monthly_sales_target <= base_monthly_sales_target + 0.01"
+      - dbt_utils.expression_is_true:
+          name: days_covered_never_exceeds_days_in_month
+          expression: "days_covered <= days_in_month"
+    columns:
+      - name: date_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_date'), field: date_key}
+      - name: merchant_key
+        data_tests:
+          - not_null
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      - name: monthly_sales_target
+        data_tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between: {min_value: 0}

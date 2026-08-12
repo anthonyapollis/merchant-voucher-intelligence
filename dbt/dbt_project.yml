@@ -1,0 +1,56 @@
+name: 'merchant_voucher_intelligence'
+version: '1.0.0'
+config-version: 2
+
+profile: 'mvi'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  # Business rules live here, in ONE place. The DAX measure library and the Fabric
+  # notebooks reference these same thresholds so a change propagates consistently.
+  delayed_redemption_days: 7      # a redemption taking longer than this is "delayed"
+  voucher_expiry_days: 90         # unredeemed beyond this is treated as breakage
+  high_priority_levels: ['High', 'Critical']
+  reporting_start_date: '2026-01-01'
+  reporting_end_date: '2026-07-31'
+
+models:
+  merchant_voucher_intelligence:
+    +persist_docs:
+      relation: true
+      columns: true
+
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ['staging', 'silver']
+
+    intermediate:
+      +materialized: ephemeral
+      +schema: intermediate
+      +tags: ['intermediate']
+
+    marts:
+      +materialized: table
+      +schema: marts
+      core:
+        +tags: ['gold', 'powerbi']
+      analytics:
+        +tags: ['gold', 'analytics']
+
+seeds:
+  merchant_voucher_intelligence:
+    +schema: seeds
+    +quote_columns: false
+
+snapshots:
+  merchant_voucher_intelligence:
+    +target_schema: snapshots
+    +strategy: check

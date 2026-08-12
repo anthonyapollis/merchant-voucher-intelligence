@@ -1,0 +1,32 @@
+Measure,ExpectedValue,FormatString,SQLReference,Notes
+Total Sales,65521298.74999973,"R #,##0.00",select sum(SalesValue) from fact_merchant_sales,"Grand total across all 26,500 fact rows."
+Total Transactions,510127.0,"#,##0",select sum(Transactions) from fact_merchant_sales,
+Average Basket Value,128.4411504390078,"R #,##0.00",select sum(SalesValue)/sum(Transactions) from fact_merchant_sales,"SUM/SUM, not AVG of a ratio."
+Sales Target,10676900.430000005,"R #,##0.00",select sum(MonthlySalesTarget) from fact_merchant_target,
+Target Attainment %,6.13673408116626,0.0%,select (select sum(SalesValue) from fact_merchant_sales)/(select sum(MonthlySalesTarget) from fact_merchant_target),Reads ~614% - supplied targets are mis-calibrated. Known issue.
+Vouchers Sold,120969.0,"#,##0",select count(*) from fact_voucher_redemptions,
+Vouchers Redeemed,101843.0,"#,##0",select sum(case when IsRedeemed then 1 else 0 end) from fact_voucher_redemptions,
+Redemption Rate %,0.8418933776422058,0.00%,select sum(case when IsRedeemed then 1 else 0 end)*1.0/count(*) from fact_voucher_redemptions,Volume-based.
+Value Redemption Rate %,0.8391649971410388,0.00%,select sum(RedeemedValue)/sum(VoucherValue) from fact_voucher_redemptions,Value-based; differs from volume rate.
+Voucher Value Sold,22019852.750000037,"R #,##0.00",select sum(VoucherValue) from fact_voucher_redemptions,
+Outstanding Liability,3541563.079999995,"R #,##0.00",select sum(OutstandingValue) from fact_voucher_redemptions,"Balance-sheet liability, not lost revenue."
+Avg Days to Redeem,3.582327700480151,0.00,select avg(DaysToRedeem) from fact_voucher_redemptions where IsRedeemed,Redeemed vouchers only; AVERAGE ignores BLANK in DAX.
+Median Days to Redeem,2.0,0.0,select median(DaysToRedeem) from fact_voucher_redemptions where IsRedeemed,Distribution is right-skewed.
+Delayed Redemptions,14125.0,"#,##0",select sum(case when IsDelayedRedemption then 1 else 0 end) from fact_voucher_redemptions,> 7 days.
+Delayed Redemption Rate %,0.13869387194014315,0.0%,select sum(case when IsDelayedRedemption then 1 else 0 end)*1.0/sum(case when IsRedeemed then 1 else 0 end) from fact_voucher_redemptions,Denominator is REDEEMED vouchers.
+Total Tickets,1363.0,"#,##0",select count(*) from fact_support_tickets,
+Avg Resolution Hours,23.729640498899506,0.00,select avg(ResolutionHours) from fact_support_tickets,
+Median Resolution Hours,16.4,0.0,select median(ResolutionHours) from fact_support_tickets,Mean 23.7 vs median 16.4 - heavy right tail.
+SLA Breaches,358.0,"#,##0",select sum(case when IsSLABreach then 1 else 0 end) from fact_support_tickets,
+SLA Breach Rate %,0.26265590608950845,0.00%,select sum(case when IsSLABreach then 1 else 0 end)*1.0/count(*) from fact_support_tickets,
+Avg SLA Breach Hours,28.693016759776526,0.00,select avg(SLABreachHours) from fact_support_tickets where IsSLABreach,Breaching tickets only.
+Total Breach Hours,10272.099999999997,"#,##0",select sum(SLABreachHours) from fact_support_tickets,
+High Priority Tickets,389.0,"#,##0",select sum(case when IsHighPriority then 1 else 0 end) from fact_support_tickets,
+Open Tickets,239.0,"#,##0",select sum(case when IsOpen then 1 else 0 end) from fact_support_tickets,
+Tickets per 1k Transactions,2.6718836681845892,0.00,select (select count(*) from fact_support_tickets)*1000.0/(select sum(Transactions) from fact_merchant_sales),Size-dependent - screening measure only.
+Breach Concentration in High Priority %,0.946927374301676,0.0%,select sum(case when IsSLABreach and IsHighPriority then 1 else 0 end)*1.0/sum(case when IsSLABreach then 1 else 0 end) from fact_support_tickets,Headline operational finding.
+Implied SLA Required for 90% Compliance,48.559999999999995,0.0,"select quantile_cont(ResolutionHours, 0.90) from fact_support_tickets",What the SLA should be if the process is unchanged.
+Revenue Concentration (Top 5) %,0.35395152953985204,0.0%,select sum(s)/(select sum(SalesValue) from fact_merchant_sales) from ( select sum(f.SalesValue) s from fact_merchant_sales f group by f.MerchantKey order by s desc limit 5),Concentration risk.
+Active Merchants,25.0,"#,##0",select count(distinct MerchantKey) from fact_merchant_sales where SalesValue > 0,
+Sales MoM % (July vs June),0.02750057652022786,+0.0%;-0.0%,select (select sum(f.SalesValue) from fact_merchant_sales f join dim_date d using(DateKey) where d.YearMonth='2026-07') / (select sum(f.SalesValue) from fact_merchant_sales f join dim_date d using(DateKey) where d.YearMonth='2026-06') - 1,Latest month movement.
+Revenue at Risk,1215520.6800000002,"R #,##0.00",select sum(revenue_at_risk_annualised) from main_marts.mart_merchant_scorecard,Annualised shortfall vs own baseline.

@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: mart_merchant_scorecard
+    description: >
+        [My extension] NOT requested. Drill-through target for the Merchant page and feature table
+        for the ML layer. Holds the composite Health Score. Computed in SQL rather than DAX
+        deliberately: it needs percentile ranking across the whole merchant population (expensive
+        and awkward in DAX) and it must be byte-identical in Power BI, the Excel pack and the ML
+        feature set. One definition in the warehouse is what keeps three artefacts agreeing.
+    data_tests:
+      # Every real merchant must appear exactly once. A row-count test that merely WARNS on
+      # a difference is not worth having — it fires on both the expected Unknown-member gap
+      # and on a genuinely dropped merchant, so nobody investigates it. The completeness
+      # assertion below is exact and errors, which is the behaviour that catches a refactor
+      # of the intermediate layer silently losing a merchant.
+      - dbt_utils.expression_is_true:
+          name: scorecard_covers_every_real_merchant
+          expression: >
+            (select count(*) from {{ ref('mart_merchant_scorecard') }})
+            = (select count(*) from {{ ref('dim_merchant') }} where merchant_key <> '-1')
+      - dbt_utils.expression_is_true:
+          name: scorecard_health_score_within_bounds
+          expression: "health_score between 0 and 100"
+      - dbt_utils.expression_is_true:
+          name: scorecard_shares_within_bounds
+          expression: "sales_share between 0 and 1 and cumulative_share between 0 and 1.0001"
+      - dbt_utils.expression_is_true:
+          name: revenue_at_risk_is_never_negative
+          expression: "revenue_at_risk_annualised >= 0"
+      - dbt_utils.expression_is_true:
+          name: redemption_rate_within_bounds
+          expression: "redemption_rate is null or redemption_rate between 0 and 1"
+    columns:
+      - name: merchant_key
+        data_tests:
+          - not_null
+          - unique
+          - relationships: {to: ref('dim_merchant'), field: merchant_key}
+      - name: merchant_name
+        data_tests: [not_null, unique]
+      - name: total_sales
+        data_tests: [not_null]
+      - name: health_score
+        data_tests: [not_null]
+      - name: health_band
+        data_tests:
+          - not_null
+          - accepted_values: {values: ['Critical', 'Watch', 'Healthy', 'Star']}
+      - name: pareto_band
+        data_tests:
+          - accepted_values: {values: ['Top 80% of revenue', 'Long tail']}
+      - name: sales_rank
+        data_tests: [not_null]
+      - name: months_observed
+        description: Guards against a merchant silently dropping out of the monthly spine.
+        data_tests:
+          - not_null
+          - accepted_values: {values: [7], quote: false}

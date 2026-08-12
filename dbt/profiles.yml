@@ -1,0 +1,52 @@
+# profiles.yml
+# Two targets are defined deliberately:
+#   dev    - DuckDB against the local parquet lake. Runs in seconds, no cloud cost, used to
+#            develop and test every model before anything touches Fabric.
+#   fabric - the Microsoft Fabric Warehouse (T-SQL endpoint) via dbt-fabric, authenticating
+#            with a service principal / Entra ID. This is what CI deploys.
+# Identical SQL runs against both; only the adapter changes. That is the point of dbt here.
+
+mvi:
+  target: dev
+  outputs:
+
+    dev:
+      type: duckdb
+      path: ../data/mvi.duckdb
+      threads: 8
+      extensions:
+        - parquet
+
+    # Interactive / developer target. Authenticates with the token from `az login`, so there
+    # is no app registration to create and no client secret stored anywhere. This is the
+    # right default for a developer machine — a secret on a laptop is a liability, and for a
+    # 60-day trial the setup cost of a service principal buys nothing.
+    fabric:
+      type: fabric
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: "{{ env_var('FABRIC_SQL_ENDPOINT') }}"
+      database: "{{ env_var('FABRIC_WAREHOUSE', 'WH_MerchantVoucher') }}"
+      schema: dbo
+      authentication: CLI
+      threads: 4
+      encrypt: true
+      trust_cert: false
+      retries: 3
+
+    # Unattended target for CI and the scheduled pipeline. A service principal is required
+    # here because there is no interactive session to borrow a token from. Secrets come from
+    # environment variables injected by the pipeline, never from this file.
+    fabric_sp:
+      type: fabric
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: "{{ env_var('FABRIC_SQL_ENDPOINT') }}"
+      database: "{{ env_var('FABRIC_WAREHOUSE', 'WH_MerchantVoucher') }}"
+      schema: dbo
+      authentication: ServicePrincipal
+      tenant_id: "{{ env_var('AZURE_TENANT_ID') }}"
+      client_id: "{{ env_var('AZURE_CLIENT_ID') }}"
+      client_secret: "{{ env_var('AZURE_CLIENT_SECRET') }}"
+      threads: 4
+      encrypt: true
+      trust_cert: false
+      retries: 3

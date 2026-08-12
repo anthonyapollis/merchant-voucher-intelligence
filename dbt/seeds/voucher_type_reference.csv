@@ -1,0 +1,6 @@
+voucher_type,voucher_category,margin_band,sort_order
+Airtime,Prepaid Telco,Low,1
+Electricity,Utilities,Low,2
+Bill Payment,Utilities,Medium,3
+Groceries,Retail Goods,Medium,4
+Gaming,Digital Content,High,5

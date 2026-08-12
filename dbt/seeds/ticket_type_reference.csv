@@ -1,0 +1,7 @@
+ticket_type,ticket_category,impact_area
+Voucher Not Received,Fulfilment,Customer Impacting
+Redemption Issue,Fulfilment,Customer Impacting
+Reversal Query,Financial,Customer Impacting
+Settlement Delay,Financial,Merchant Impacting
+Pricing Query,Commercial,Merchant Impacting
+Merchant Support,Commercial,Merchant Impacting
